@@ -1,0 +1,86 @@
+---
+import { GAMES, type GameInfo } from '@ebg/game-core';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GameLauncher from '../../components/lobby/GameLauncher';
+
+export function getStaticPaths() {
+  return GAMES.map((game) => ({ params: { slug: game.slug }, props: { game } }));
+}
+
+interface Props {
+  game: GameInfo;
+}
+const { game } = Astro.props;
+const site = Astro.site!.toString().replace(/\/$/, '');
+const url = `${site}/games/${game.slug}`;
+const players = game.minPlayers === game.maxPlayers ? `${game.maxPlayers}` : `${game.minPlayers}–${game.maxPlayers}`;
+
+const title = `Play ${game.name} Online — Free ${game.multiplayer ? 'Multiplayer ' : ''}${game.category} Game | Epic Board Games`;
+const description = `${game.description} Free in your browser on phone, tablet or desktop${game.ai === 'opponent' ? ', with AI opponents' : ''}.`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: game.name,
+    url,
+    description: game.description,
+    genre: [game.category, 'Board game'],
+    gamePlatform: ['Web browser', 'Mobile web'],
+    applicationCategory: 'GameApplication',
+    operatingSystem: 'Any',
+    playMode: game.multiplayer ? ['MultiPlayer', 'SinglePlayer'] : ['SinglePlayer'],
+    numberOfPlayers: { '@type': 'QuantitativeValue', minValue: game.minPlayers, maxValue: game.maxPlayers },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    publisher: { '@type': 'Organization', name: 'Epic Board Games' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to play ${game.name}`,
+    step: game.rules.map((text, i) => ({ '@type': 'HowToStep', position: i + 1, text })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Games', item: `${site}/#games` },
+      { '@type': 'ListItem', position: 2, name: game.name, item: url },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={description} schema={schema} immersive>
+  <!-- The interactive game is an isolated island; the article below stays crawlable. -->
+  <section aria-label={`${game.name} game`} class="min-h-[calc(100dvh-3.5rem)]">
+    <GameLauncher client:only="react" gameId={game.id}>
+      <div slot="fallback" class="grid min-h-[60dvh] place-items-center text-slate-400">Loading {game.name}…</div>
+    </GameLauncher>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-4 py-16">
+    <nav aria-label="Breadcrumb" class="mb-4 text-sm text-slate-400">
+      <a href="/#games" class="hover:text-white">Games</a> <span aria-hidden="true">›</span> <span>{game.name}</span>
+    </nav>
+    <h1 class="text-3xl font-bold sm:text-4xl">{game.emoji} {game.name}</h1>
+    <p class="mt-3 text-lg text-slate-300">{game.description}</p>
+    <dl class="mt-6 grid grid-cols-3 gap-3 text-center">
+      <div class="card p-3"><dt class="text-xs text-slate-400">Players</dt><dd class="font-display text-xl font-semibold">{players}</dd></div>
+      <div class="card p-3"><dt class="text-xs text-slate-400">Category</dt><dd class="font-display text-xl font-semibold">{game.category}</dd></div>
+      <div class="card p-3"><dt class="text-xs text-slate-400">vs AI</dt><dd class="font-display text-xl font-semibold">{game.ai === 'opponent' ? 'Yes' : game.ai === 'hints' ? 'Hints' : '—'}</dd></div>
+    </dl>
+    <h2 class="mt-10 text-2xl font-bold">How to play</h2>
+    <ol class="mt-4 list-decimal space-y-2 pl-6 text-slate-300">
+      {game.rules.map((rule) => <li>{rule}</li>)}
+    </ol>
+    <h2 class="mt-10 text-2xl font-bold">More games</h2>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {
+        GAMES.filter((g) => g.id !== game.id).map((g) => (
+          <li><a href={`/games/${g.slug}`} class="btn-ghost px-3 py-1.5 text-sm">{g.emoji} {g.name}</a></li>
+        ))
+      }
+    </ul>
+  </article>
+</BaseLayout>

@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `wrangler dev`. Never commit .dev.vars.
+# In deployed environments set these with `npx wrangler secret put <NAME> [--env testing]`.
+
+# Cloudflare Realtime (Calls) TURN key — dashboard → Realtime → TURN Server.
+# Leave empty to fall back to STUN-only voice (works on most home networks).
+TURN_KEY_ID=
+TURN_API_TOKEN=

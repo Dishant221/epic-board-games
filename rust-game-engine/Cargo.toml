@@ -1,0 +1,28 @@
+[package]
+name = "epic-game-engine"
+version = "0.1.0"
+edition = "2021"
+description = "Epic Board Games rules + AI engine, compiled to WebAssembly"
+license = "UNLICENSED"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+# 0.2 keeps the wasm32-unknown-unknown story simple: the "js" feature routes
+# entropy through crypto.getRandomValues in the browser / Workers runtime.
+getrandom = { version = "0.2", features = ["js"] }
+
+[dev-dependencies]
+
+# The exhaustive AI tests search deep trees; unoptimised builds are slow.
+[profile.test]
+opt-level = 2
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+panic = "abort"

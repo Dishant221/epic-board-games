@@ -1,0 +1,128 @@
+---
+import { GAMES } from '@ebg/game-core';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/common/GameCard.astro';
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const playable = GAMES.filter((g) => g.status === 'playable');
+const sorted = [...playable, ...GAMES.filter((g) => g.status !== 'playable')];
+
+const faq = [
+  { q: 'Is Epic Board Games free?', a: 'Yes. Every game is free to play in your browser with no download. Create a free account to play online multiplayer and add friends.' },
+  { q: 'How does online matchmaking work?', a: 'Pick a game and choose Online Multiplayer. We match you with other players looking for the same game. The game starts as soon as the room is full, or after 60 seconds if at least two players have joined.' },
+  { q: 'Can I play against the computer?', a: 'Yes. Most games have AI opponents with four difficulty levels: Buddy (easy), Nova (medium), Titan (hard) and the Oracle, who never makes a mistake.' },
+  { q: 'Can I play with my family and friends?', a: 'Add friends and family to your profile, then create a private room and ping them to join. You can chat and use voice chat while you play.' },
+  { q: 'Does it work on phones and tablets?', a: 'Yes. Every game adapts to phones, tablets, laptops and large desktop screens, with touch controls on mobile.' },
+];
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Epic Board Games',
+    url: site,
+    description: 'Play free multiplayer board games online with friends, family or AI.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Board games',
+    itemListElement: GAMES.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.name, url: `${site}/games/${g.slug}` })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<BaseLayout
+  title="Epic Board Games — Play Free Multiplayer Board Games Online"
+  description="Play Snakes & Ladders, Connect 4, Tic Tac Toe, Chess, Sudoku and more free in your browser. Online multiplayer matchmaking, AI opponents, friends, voice and text chat."
+  schema={schema}
+>
+  <section class="relative overflow-hidden">
+    <div class="mx-auto grid max-w-7xl items-center gap-10 px-4 pt-12 pb-8 md:grid-cols-2 md:pt-20">
+      <div>
+        <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-violet-200 ring-1 ring-white/10">
+          <span class="size-2 animate-pulse rounded-full bg-green-400"></span> Multiplayer · vs AI · Voice chat
+        </p>
+        <h1 class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          Board game night,{' '}
+          <span class="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-amber-200 bg-clip-text text-transparent">anywhere.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-lg text-slate-300">
+          Roll the dice with friends, family or players around the world. Twelve beautifully animated games, instant matchmaking and AI rivals that range from friendly to flawless.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/games/snakes-and-ladders" class="btn-primary px-6 py-3 text-base">🎲 Play Snakes &amp; Ladders</a>
+          <a href="#games" class="btn-ghost px-6 py-3 text-base">Browse all games</a>
+        </div>
+      </div>
+      <div class="relative hidden h-80 md:block" aria-hidden="true">
+        {
+          [
+            ['🐍', 'left-[10%] top-[5%] [animation-delay:0s]'],
+            ['🎲', 'left-[45%] top-[0%] [animation-delay:0.6s]'],
+            ['🪜', 'left-[75%] top-[15%] [animation-delay:1.2s]'],
+            ['♟️', 'left-[20%] top-[50%] [animation-delay:1.8s]'],
+            ['🔴', 'left-[60%] top-[45%] [animation-delay:2.4s]'],
+            ['🧩', 'left-[85%] top-[60%] [animation-delay:3s]'],
+            ['🐉', 'left-[35%] top-[80%] [animation-delay:3.6s]'],
+            ['🏆', 'left-[5%] top-[85%] [animation-delay:4.2s]'],
+          ].map(([emoji, pos]) => (
+            <span class:list={['absolute text-6xl drop-shadow-2xl motion-safe:animate-float lg:text-7xl', pos]}>{emoji}</span>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="games" class="mx-auto max-w-7xl scroll-mt-20 px-4 py-10" aria-labelledby="games-title">
+    <div class="mb-6 flex items-end justify-between">
+      <h2 id="games-title" class="text-3xl font-bold">Choose your game</h2>
+      <p class="text-sm text-slate-400">{playable.length} playable now · more coming</p>
+    </div>
+    <ul class="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      {sorted.map((game, i) => <GameCard game={game} index={i} />)}
+    </ul>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-12" aria-labelledby="features-title">
+    <h2 id="features-title" class="mb-6 text-3xl font-bold">Why players love it</h2>
+    <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        [
+          ['🌐', 'Instant matchmaking', 'Up to 4 players per game. Rooms start when full or after 60 seconds.'],
+          ['🤖', 'Four AI personas', 'Buddy, Nova, Titan and the Oracle — from casual to perfect play.'],
+          ['🎙️', 'Voice & text chat', 'Talk while you play, or fire off quick emotes. Safe chat filters built in.'],
+          ['👪', 'Friends & family', 'Add the people you play with, see who is online and ping them to join.'],
+        ].map(([icon, title, text]) => (
+          <li class="card p-5">
+            <span class="text-3xl" aria-hidden="true">{icon}</span>
+            <h3 class="mt-3 font-semibold">{title}</h3>
+            <p class="mt-1 text-sm text-slate-400">{text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="faq" class="mx-auto max-w-3xl scroll-mt-20 px-4 py-12" aria-labelledby="faq-title">
+    <h2 id="faq-title" class="mb-6 text-3xl font-bold">Frequently asked questions</h2>
+    <div class="space-y-3">
+      {
+        faq.map((f) => (
+          <details class="card group p-4">
+            <summary class="cursor-pointer list-none font-semibold marker:hidden">
+              <span class="mr-2 inline-block transition group-open:rotate-90">›</span>
+              {f.q}
+            </summary>
+            <p class="mt-2 text-slate-300">{f.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,85 @@
+// Single Worker: serves the Astro static build (Workers Static Assets) and the
+// /api/* surface, plus the Durable Objects for matchmaking, rooms and presence.
+//
+// Top level = production (deployed from `main`).
+// env.testing  = testing (deployed from `testing`) — `wrangler deploy --env testing`.
+//
+// Before the first deploy, create the resources and paste their ids below:
+//   npx wrangler d1 create epic-board-games
+//   npx wrangler d1 create epic-board-games-testing
+//   npx wrangler kv namespace create KV
+//   npx wrangler kv namespace create KV --env testing
+// Secrets (never commit): see .dev.vars.example
+//   npx wrangler secret put TURN_KEY_ID      [--env testing]
+//   npx wrangler secret put TURN_API_TOKEN   [--env testing]
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "epic-board-games",
+  "main": "worker/src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./apps/web/dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash"
+  },
+  "observability": { "enabled": true },
+  "vars": { "APP_ENV": "production" },
+  "durable_objects": {
+    "bindings": [
+      { "name": "GAME_ROOM", "class_name": "GameRoom" },
+      { "name": "MATCHMAKER", "class_name": "Matchmaker" },
+      { "name": "PRESENCE", "class_name": "Presence" }
+    ]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["GameRoom", "Matchmaker", "Presence"] }],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "epic-board-games",
+      // Placeholder — replace with the id printed by `wrangler d1 create epic-board-games`.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "kv_namespaces": [
+    // Placeholder — replace with the id printed by `wrangler kv namespace create KV`.
+    { "binding": "KV", "id": "00000000000000000000000000000000" }
+  ],
+  // Login/signup brute-force protection (per IP + username key).
+  "ratelimits": [
+    { "name": "AUTH_LIMITER", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } },
+    { "name": "API_LIMITER", "namespace_id": "1002", "simple": { "limit": 120, "period": 60 } }
+  ],
+  "env": {
+    "testing": {
+      "name": "epic-board-games-testing",
+      "vars": { "APP_ENV": "testing" },
+      "durable_objects": {
+        "bindings": [
+          { "name": "GAME_ROOM", "class_name": "GameRoom" },
+          { "name": "MATCHMAKER", "class_name": "Matchmaker" },
+          { "name": "PRESENCE", "class_name": "Presence" }
+        ]
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "epic-board-games-testing",
+          // Placeholder — replace with the id from `wrangler d1 create epic-board-games-testing`.
+          "database_id": "00000000-0000-0000-0000-000000000001",
+          "migrations_dir": "migrations"
+        }
+      ],
+      "kv_namespaces": [
+        // Placeholder — replace with the id from `wrangler kv namespace create KV --env testing`.
+        { "binding": "KV", "id": "00000000000000000000000000000001" }
+      ],
+      "ratelimits": [
+        { "name": "AUTH_LIMITER", "namespace_id": "2001", "simple": { "limit": 10, "period": 60 } },
+        { "name": "API_LIMITER", "namespace_id": "2002", "simple": { "limit": 120, "period": 60 } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+// NOTE: starting template — have it reviewed by counsel before launch.
+const updated = '2026-10-21';
+---
+
+<BaseLayout title="Terms of Service — Epic Board Games" description="The rules for using Epic Board Games.">
+  <article class="mx-auto max-w-3xl space-y-4 px-4 py-12 text-slate-300 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white">
+    <h1 class="text-4xl font-bold text-white">Terms of Service</h1>
+    <p class="text-sm text-slate-500">Last updated {updated}</p>
+
+    <h2>Using the service</h2>
+    <p>Epic Board Games is free to play. You must be at least 13 years old to create an account, and you’re responsible for keeping your password secure.</p>
+
+    <h2>Fair play and conduct</h2>
+    <ul class="list-disc space-y-1 pl-6">
+      <li>Be respectful in text and voice chat. No harassment, hate speech, threats or sharing of other people’s personal information.</li>
+      <li>Don’t cheat, exploit bugs, automate play or interfere with other players’ games.</li>
+      <li>Don’t try to access accounts or systems that aren’t yours.</li>
+    </ul>
+    <p>We may filter messages, mute players, or suspend accounts that break these rules.</p>
+
+    <h2>Content</h2>
+    <p>Game names, artwork and code belong to Epic Board Games or its licensors. “Epic Business” is an original property-trading game and is not affiliated with any other board game brand.</p>
+
+    <h2>Availability</h2>
+    <p>We work to keep the service running smoothly but provide it “as is”, without warranties. We may change or discontinue features.</p>
+
+    <h2>Contact</h2>
+    <p>support@epic-board-games.example.com</p>
+  </article>
+</BaseLayout>
