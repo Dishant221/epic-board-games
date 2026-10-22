@@ -150,7 +150,7 @@ pub fn square_to_grid(square: u8) -> (u8, u8) {
     let idx = square.clamp(1, BOARD_SIZE) - 1;
     let row = idx / 10;
     let offset = idx % 10;
-    let col = if row % 2 == 0 { offset } else { 9 - offset };
+    let col = if row.is_multiple_of(2) { offset } else { 9 - offset };
     (row, col)
 }
 
@@ -161,7 +161,7 @@ mod tests {
     #[test]
     fn every_jump_starts_on_a_unique_square() {
         for (i, a) in JUMPS.iter().enumerate() {
-            assert!(a.from >= 1 && a.from < BOARD_SIZE);
+            assert!((1..BOARD_SIZE).contains(&a.from));
             assert!(JUMPS[i + 1..].iter().all(|b| b.from != a.from));
             match a.kind {
                 JumpKind::Ladder => assert!(a.to > a.from),

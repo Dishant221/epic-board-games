@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // Canonical origin used for SEO tags and the sitemap. Set SITE_URL in CI.
-const site = process.env.SITE_URL ?? 'https://epic-board-games.example.com';
+const site = process.env.SITE_URL || 'https://epic-board-games.example.com';
 
 export default defineConfig({
   site,
