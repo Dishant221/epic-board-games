@@ -11,6 +11,8 @@ import {
   getEmote,
   getEngine,
   getGame,
+  IllegalMoveError,
+  isLegalMove,
   parseRoomClientMessage,
   randomSeed,
   validateChatMessage,
@@ -291,11 +293,21 @@ export class GameRoom extends DurableObject<Env> {
     // Simultaneous games tolerate it: two players may legitimately race.
     if (!engine.simultaneous && payload?.turn !== room.turn) return this.sendError(ws, 'Out of date — resyncing', 'stale_turn');
     const move = engine.parseMove(payload.move);
-    if (move === null || !engine.legalMoves(room.state).some((m) => engine.sameMove(m, move))) {
+    if (move === null || !isLegalMove(engine, room.state, move)) {
       return this.sendError(ws, 'Illegal move', 'illegal_move');
     }
     seat.timeouts = 0;
-    await this.applyMove(seat.seat, move, this.rng());
+    try {
+      await this.applyMove(seat.seat, move, this.rng());
+    } catch (err) {
+      // Free-form moves (validateMove) can still be rejected by the engine itself.
+      if (err instanceof IllegalMoveError) {
+        this.sendError(ws, err.message, 'illegal_move');
+        this.sendSnapshot(ws);
+        return;
+      }
+      throw err;
+    }
     await this.persist();
   }
 

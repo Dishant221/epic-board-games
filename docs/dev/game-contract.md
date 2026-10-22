@@ -41,6 +41,11 @@ export const myGame: GameEngine<MyState, MyMove> = {
   (< ~30 KB serialized). Derived data (e.g. "is in check") may be recomputed by helpers.
 - The GameRoom validates `legalMoves(s).some(m => sameMove(m, move))` before applying, so
   `legalMoves` must enumerate every legal move. Keep `applyMove` O(small).
+  Exception: moves with free-form content that cannot be enumerated (e.g. a trade proposal) —
+  implement `validateMove(s, m)` (it then replaces the enumeration check; return
+  `legalMoves(s).some(...) || isValidFreeform(s, m)`), keep `legalMoves` listing every enumerable
+  move, and have `applyMove` throw `IllegalMoveError` for bad free-form content (the room reports
+  it back to the mover and resyncs).
 - Evaluation scale for `ai.evaluate`: a decided win should be ≥ 900 000 (minus plies) and a loss
   ≤ −900 000 so iterative deepening can stop early. Use `timeBudgetMs` (≈1 500 ms) for games with
   branching factor > 10; keep the deepest `depth` such that depth-1 search is instant.

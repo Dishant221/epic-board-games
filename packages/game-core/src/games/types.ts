@@ -58,6 +58,13 @@ export interface GameEngine<S, M> {
   parseMove(raw: unknown): M | null;
   /** Equality used to check a submitted move against legalMoves(). */
   sameMove(a: M, b: M): boolean;
+  /**
+   * Optional replacement for the `legalMoves().some(sameMove)` check, for
+   * moves with free-form content (e.g. a trade proposal) that cannot be
+   * enumerated. `legalMoves` must still list every *enumerable* move so the
+   * AI and timeout autopilot can pick one.
+   */
+  validateMove?(state: S, move: M): boolean;
   /** Present when the AI can play this game. */
   ai?: EngineAI<S, M>;
   /** One-line result for the game-over dialog, e.g. "The word was CRANE". */

@@ -22,3 +22,9 @@ export const ENGINES: Partial<Record<GameId, GameEngine<any, any>>> = {
 export function getEngine(id: GameId): GameEngine<any, any> | undefined {
   return ENGINES[id];
 }
+
+/** True if `move` may be applied to `state` (uses validateMove when the engine has one). */
+export function isLegalMove<S, M>(engine: GameEngine<S, M>, state: S, move: M): boolean {
+  if (engine.validateMove) return engine.validateMove(state, move);
+  return engine.legalMoves(state).some((m) => engine.sameMove(m, move));
+}

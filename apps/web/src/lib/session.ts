@@ -4,6 +4,7 @@ import {
   createRng,
   getEmote,
   getEngine,
+  isLegalMove,
   randomSeed,
   RateLimiter,
   validateChatMessage,
@@ -105,9 +106,12 @@ export function useLocalSession<S, M>(setup: LocalSetup): GameSessionView<S, M> 
   const apply = useCallback(
     (move: M, seat: number) => {
       setState((s) => {
-        if (engine.isTerminal(s)) return s;
-        const legal = engine.legalMoves(s).some((m: M) => engine.sameMove(m, move));
-        return legal ? engine.applyMove(s, move, rng, seat) : s;
+        if (engine.isTerminal(s) || !isLegalMove(engine, s, move)) return s;
+        try {
+          return engine.applyMove(s, move, rng, seat);
+        } catch {
+          return s; // Engine vetoed a free-form move; keep the state unchanged.
+        }
       });
       setMoveKey((k) => k + 1);
     },
