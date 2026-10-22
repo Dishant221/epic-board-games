@@ -150,7 +150,11 @@ pub fn square_to_grid(square: u8) -> (u8, u8) {
     let idx = square.clamp(1, BOARD_SIZE) - 1;
     let row = idx / 10;
     let offset = idx % 10;
-    let col = if row.is_multiple_of(2) { offset } else { 9 - offset };
+    let col = if row.is_multiple_of(2) {
+        offset
+    } else {
+        9 - offset
+    };
     (row, col)
 }
 
