@@ -8,17 +8,30 @@ Specs: [`docs/specs/first-prompt.txt`](docs/specs/first-prompt.txt) and [`docs/s
 
 | Area | State |
 |---|---|
-| Snakes, Dragons & Ladders (3D, Three.js) | ✅ Playable: vs AI, pass & play, online |
-| Connect 4 | ✅ Playable: vs AI (alpha-beta), pass & play, online |
-| Tic Tac Toe | ✅ Playable: vs AI (perfect minimax), pass & play, online |
-| Epic Business, Epic Puzzle, Crossword, Sudoku, Flappy Flyer, Chess, Checkers, Mahjong, Word Puzzle | 🕐 Listed with SEO pages, marked "coming soon" |
-| Accounts, sessions, profiles | ✅ |
-| Friends & family, requests, live notifications, "ping to play" | ✅ |
+| Snakes, Dragons & Ladders (living 3D board: jungle, creatures that lunge/snap/breathe fire, camera follow, 3 detail tiers) | ✅ vs AI, pass & play, online |
+| Chess (full FIDE rules, perft-verified; alpha-beta AI with piece-square tables) | ✅ vs AI, pass & play, online |
+| Checkers (mandatory multi-jumps, kinging, 40-move/repetition draws; alpha-beta AI) | ✅ vs AI, pass & play, online |
+| Epic Business (40-space original property game: auctions, offices/towers, mortgages, cards, Lock-up, trades, bankruptcy, 120-round cap; heuristic AI) | ✅ vs AI, pass & play, online (2–4) |
+| Connect 4 (alpha-beta AI) · Tic Tac Toe (perfect play) | ✅ vs AI, pass & play, online |
+| Epic Puzzle Board (co-operative jigsaw, 20+ original SVG artworks, 4 sizes) | ✅ solo, pass & play, online co-op |
+| Sudoku (unique-solution generator, 4 levels, pencil marks, logic hints, undo) | ✅ solo |
+| Crossword (8 hand-made themed 11×11 puzzles, reveal hints) | ✅ solo |
+| Mahjong Solitaire (3 layouts, always-solvable deals, hint/shuffle/undo) | ✅ solo |
+| Word Puzzle (938 answers, six tries, share grid) | ✅ solo |
+| Flappy Flyer (canvas arcade, day/night parallax, medals, best score) | ✅ solo |
+| Fullscreen mode (button / `F`), turn clock, one-time tips | ✅ |
+| Guides blog: 20 illustrated how-to-play & strategy articles, 41 SVG diagrams, RSS, tag pages, BlogPosting JSON-LD | ✅ `/blog` |
+| Accounts, sessions, profiles, per-game stats, recent games | ✅ |
+| Password change, data export (JSON), account deletion, nightly retention clean-up | ✅ |
+| Friends & family, requests, blocking, live notifications, "ping to play" | ✅ |
+| Public leaderboards (30-day / all-time, human games only) | ✅ |
 | Matchmaking (fills to max, or starts after 60s with 2+ players) | ✅ |
 | Private rooms with invite link | ✅ |
 | Text chat (moderation, rate limits), quick emotes, typing indicator | ✅ |
 | Voice chat (WebRTC mesh, Cloudflare TURN, mute/deafen/per-player volume, speaking indicator) | ✅ |
-| Rust/Wasm engine (Snakes & Ladders, Tic Tac Toe, Connect 4 + AI) | ✅ Built in CI. The site runs the TypeScript engine; the Wasm engine has the same rules and is not wired in yet |
+| Rust/Wasm engine (Snakes & Ladders, Tic Tac Toe, Connect 4 + AI) | ✅ Built in CI. The site runs the TypeScript engine (authoritative); the Wasm port mirrors three games and is not wired in |
+
+See [`docs/dev/game-contract.md`](docs/dev/game-contract.md) for how a game plugs into the engine/board contract.
 
 ## Architecture
 
