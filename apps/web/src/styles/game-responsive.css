@@ -17,10 +17,58 @@
   -webkit-user-select: none;
 }
 
+/* Fullscreen: used both as the Fullscreen API target and as the CSS fallback
+   for browsers without the API (iOS Safari). */
 .game-fullscreen {
   position: fixed;
   inset: 0;
   z-index: 50;
+  overflow: auto;
+  background: var(--color-ink-950);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgb(139 92 246 / 0.25), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgb(56 189 248 / 0.12), transparent);
+}
+.game-wrapper:fullscreen {
+  overflow: auto;
+  background: var(--color-ink-950);
+}
+
+/* Turn clock */
+.turn-bar {
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #8b5cf6, #d946ef);
+  transition: width 0.25s linear, background-color 0.3s;
+}
+.turn-bar.urgent {
+  background: linear-gradient(90deg, #f43f5e, #fb923c);
+  animation: urgent-pulse 0.6s ease-in-out infinite alternate;
+}
+@keyframes urgent-pulse {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* Generic board piece transitions used by several games */
+.piece-enter {
+  animation: pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.flip-in {
+  animation: flip-in 0.5s ease both;
+  transform-style: preserve-3d;
+}
+@keyframes flip-in {
+  0% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
 }
 
 .no-scrollbar::-webkit-scrollbar {

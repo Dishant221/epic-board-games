@@ -20,7 +20,8 @@ import { wsUrl } from './api';
 
 /** Everything a board + HUD needs, independent of where the game runs. */
 export interface GameSessionView<S = unknown, M = unknown> {
-  mode: 'ai' | 'local' | 'online';
+  /** `solo` = single-player puzzle/arcade; `local` = pass-and-play on one device. */
+  mode: 'ai' | 'local' | 'online' | 'solo';
   gameId: GameId;
   status: RoomStatus | 'connecting' | 'error';
   state: S | null;
@@ -31,6 +32,8 @@ export interface GameSessionView<S = unknown, M = unknown> {
   canMove: boolean;
   thinkingSeat: number | null;
   winner: number | null;
+  /** Server-side deadline for the current turn (online only). */
+  turnDeadline: number | null;
   chat: ChatMessage[];
   typingUserIds: string[];
   error: string | null;
@@ -63,7 +66,8 @@ export interface LocalSetup {
 
 /**
  * Runs the engine in the browser: vs-AI games (spec: client-side AI for simple
- * games) and same-device pass-and-play. Nothing here is trusted by the server.
+ * games), single-player puzzles and same-device pass-and-play. Nothing here is
+ * trusted by the server.
  */
 export function useLocalSession<S, M>(setup: LocalSetup): GameSessionView<S, M> {
   const engine = getEngine(setup.gameId);
@@ -99,11 +103,11 @@ export function useLocalSession<S, M>(setup: LocalSetup): GameSessionView<S, M> 
   const humanSeats = useMemo(() => players.filter((p) => !p.isAI).map((p) => p.seat), [players]);
 
   const apply = useCallback(
-    (move: M) => {
+    (move: M, seat: number) => {
       setState((s) => {
         if (engine.isTerminal(s)) return s;
         const legal = engine.legalMoves(s).some((m: M) => engine.sameMove(m, move));
-        return legal ? engine.applyMove(s, move, rng) : s;
+        return legal ? engine.applyMove(s, move, rng, seat) : s;
       });
       setMoveKey((k) => k + 1);
     },
@@ -114,10 +118,11 @@ export function useLocalSession<S, M>(setup: LocalSetup): GameSessionView<S, M> 
   useEffect(() => {
     if (!current?.isAI || !current.aiDifficulty) return;
     const difficulty = current.aiDifficulty;
-    setThinkingSeat(current.seat);
+    const seat = current.seat;
+    setThinkingSeat(seat);
     const timer = window.setTimeout(() => {
       setThinkingSeat(null);
-      apply(chooseMove(engine, state, difficulty, rng) as M);
+      apply(chooseMove(engine, state, difficulty, rng) as M, seat);
     }, AI_PERSONAS[difficulty].thinkDelayMs);
     return () => window.clearTimeout(timer);
     // Re-run on every state change so consecutive AI turns (extra rolls) work.
@@ -135,23 +140,31 @@ export function useLocalSession<S, M>(setup: LocalSetup): GameSessionView<S, M> 
     postAs(ai, 'emote', winner === ai.seat ? '😎 Good game!' : '🏆 Good game!');
   }, [winner, players, postAs]);
 
+  const mode: GameSessionView['mode'] = setup.ai.length > 0 ? 'ai' : players.length === 1 ? 'solo' : 'local';
+  // Co-operative games let any human move; otherwise only the seat to play.
+  const canMove =
+    thinkingSeat === null && winner === null && (engine.simultaneous ? humanSeats.length > 0 : currentSeat !== null && humanSeats.includes(currentSeat));
+
   return {
-    mode: setup.ai.length > 0 ? 'ai' : 'local',
+    mode,
     gameId: setup.gameId,
     status: winner === null ? 'playing' : 'finished',
     state,
     players,
     mySeats: humanSeats,
     currentSeat,
-    canMove: currentSeat !== null && humanSeats.includes(currentSeat) && thinkingSeat === null,
+    canMove,
     thinkingSeat,
     winner,
+    turnDeadline: null,
     chat,
     typingUserIds: [],
     error: null,
     moveKey,
     submitMove: (move) => {
-      if (currentSeat !== null && humanSeats.includes(currentSeat)) apply(move);
+      if (!canMove) return;
+      const seat = engine.simultaneous ? humanSeats[0] ?? 0 : currentSeat!;
+      apply(move, seat);
     },
     sendChat: (text) => {
       const res = validateChatMessage(text, limiter.current);
@@ -167,7 +180,7 @@ export function useLocalSession<S, M>(setup: LocalSetup): GameSessionView<S, M> 
     rematch: () => {
       setState(engine.init(players.length, rng));
       setMoveKey((k) => k + 1);
-      setChat((c) => [...c, systemMessage('Rematch! New game started.')]);
+      setChat((c) => [...c, systemMessage(players.length === 1 ? 'New puzzle started.' : 'Rematch! New game started.')]);
     },
     socket: null,
     localUserId: 'local-0',
@@ -236,7 +249,7 @@ export function useOnlineSession<S, M>(roomId: string, gameId: GameId, localUser
             break;
           case 'GAME_OVER':
             setStatus('finished');
-            setSnapshot((s) => (s ? { ...s, status: 'finished', winner: msg.payload.winner } : s));
+            setSnapshot((s) => (s ? { ...s, status: 'finished', winner: msg.payload.winner, turnDeadline: null } : s));
             break;
           case 'ERROR':
             setError(msg.payload.message);
@@ -276,6 +289,8 @@ export function useOnlineSession<S, M>(roomId: string, gameId: GameId, localUser
   const currentSeat = state && engine && winner === null ? engine.currentPlayer(state) : null;
   const yourSeat = snapshot?.yourSeat ?? null;
   const now = Date.now();
+  const canMove =
+    status === 'playing' && yourSeat !== null && winner === null && (engine?.simultaneous ? true : currentSeat !== null && currentSeat === yourSeat);
 
   return {
     mode: 'online',
@@ -285,9 +300,10 @@ export function useOnlineSession<S, M>(roomId: string, gameId: GameId, localUser
     players: snapshot?.players ?? [],
     mySeats: yourSeat === null ? [] : [yourSeat],
     currentSeat,
-    canMove: status === 'playing' && currentSeat !== null && currentSeat === yourSeat,
+    canMove,
     thinkingSeat,
     winner,
+    turnDeadline: status === 'playing' ? snapshot?.turnDeadline ?? null : null,
     chat: snapshot?.chat ?? [],
     typingUserIds: Object.entries(typing).filter(([id, t]) => now - t < 3000 && id !== localUserId).map(([id]) => id),
     error,

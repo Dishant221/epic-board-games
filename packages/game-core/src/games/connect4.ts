@@ -91,6 +91,13 @@ export const connect4: GameEngine<Connect4State, Connect4Move> = {
     return typeof col === 'number' && Number.isInteger(col) && col >= 0 && col < C4_COLS ? { col } : null;
   },
   sameMove: (a, b) => a.col === b.col,
+  ai: {
+    depth: { easy: 1, medium: 3, hard: 6, impossible: 8 },
+    timeBudgetMs: 1500,
+    evaluate: (s, seat) => evaluateConnect4(s, seat),
+    // Centre-first ordering prunes far more of the tree.
+    orderMoves: (_s, moves) => moves.slice().sort((a, b) => Math.abs(a.col - 3) - Math.abs(b.col - 3)),
+  },
 };
 
 /** Heuristic score from `seat`'s perspective, used by the alpha-beta AI. */

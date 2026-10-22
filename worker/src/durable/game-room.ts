@@ -283,9 +283,13 @@ export class GameRoom extends DurableObject<Env> {
     if (!seat) return this.sendError(ws, 'Spectators cannot move', 'not_player');
     if (room.status !== 'playing') return this.sendError(ws, 'The game is not running', 'not_playing');
     const engine = this.engine();
-    if (engine.currentPlayer(room.state) !== seat.seat) return this.sendError(ws, 'Not your turn', 'not_your_turn');
+    // Co-operative games accept moves from any seated player at any time.
+    if (!engine.simultaneous && engine.currentPlayer(room.state) !== seat.seat) {
+      return this.sendError(ws, 'Not your turn', 'not_your_turn');
+    }
     // A stale turn number means the client acted on an old state (double click, lag).
-    if (payload?.turn !== room.turn) return this.sendError(ws, 'Out of date — resyncing', 'stale_turn');
+    // Simultaneous games tolerate it: two players may legitimately race.
+    if (!engine.simultaneous && payload?.turn !== room.turn) return this.sendError(ws, 'Out of date — resyncing', 'stale_turn');
     const move = engine.parseMove(payload.move);
     if (move === null || !engine.legalMoves(room.state).some((m) => engine.sameMove(m, move))) {
       return this.sendError(ws, 'Illegal move', 'illegal_move');
@@ -298,7 +302,7 @@ export class GameRoom extends DurableObject<Env> {
   private async applyMove(seatIndex: number, move: unknown, rng: Rng): Promise<void> {
     const room = this.room!;
     const engine = this.engine();
-    room.state = engine.applyMove(room.state, move, rng);
+    room.state = engine.applyMove(room.state, move, rng, seatIndex);
     room.rngState = rng.state();
     room.turn += 1;
     room.moveLog.push([seatIndex, move]);
@@ -318,10 +322,15 @@ export class GameRoom extends DurableObject<Env> {
   /** Arms the alarm for the next turn. Returns the AI seat that is now thinking, if any. */
   private scheduleTurn(): number | null {
     const room = this.room!;
-    const current = room.seats[this.engine().currentPlayer(room.state)]!;
+    const engine = this.engine();
+    const current = room.seats[engine.currentPlayer(room.state)]!;
     const now = Date.now();
     let thinking: number | null = null;
-    if (current.isAI) {
+    if (engine.simultaneous) {
+      // No turn clock in co-operative games; the room TTL handles abandonment.
+      room.aiMoveAt = null;
+      room.turnDeadline = null;
+    } else if (current.isAI) {
       room.aiMoveAt = now + AI_PERSONAS[current.aiDifficulty ?? 'easy'].thinkDelayMs;
       room.turnDeadline = null;
       thinking = current.seat;
