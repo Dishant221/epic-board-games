@@ -23,6 +23,7 @@ const BOARDS: Record<string, BoardComponent> = {
   word_puzzle: lazy(() => import('../boards/WordPuzzleBoard')) as BoardComponent,
   crossword: lazy(() => import('../boards/CrosswordBoard')) as BoardComponent,
   mahjong: lazy(() => import('../boards/MahjongBoard')) as BoardComponent,
+  epic_puzzle: lazy(() => import('../boards/EpicPuzzleBoard')) as BoardComponent,
 };
 
 /** Games where bare letter keys are input, so single-key shortcuts (F) are disabled. */
@@ -30,7 +31,7 @@ const TYPING_GAMES = new Set(['word_puzzle', 'crossword']);
 
 /** How long to let the winning move animate before the game-over dialog appears. */
 const GAME_OVER_DELAY: Record<string, number> = {
-  snakes_ladders: 2200, chess: 1200, checkers: 1000, epic_business: 1500, word_puzzle: 1800, sudoku: 1200, crossword: 900, mahjong: 900, epic_puzzle: 1500,
+  snakes_ladders: 2200, chess: 1200, checkers: 1000, epic_business: 1500, word_puzzle: 1800, sudoku: 1200, crossword: 900, mahjong: 900, epic_puzzle: 1800,
 };
 
 function useViewport() {

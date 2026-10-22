@@ -4,6 +4,7 @@ import { chess } from './chess';
 import { connect4 } from './connect4';
 import { crossword } from './crossword';
 import { epicBusiness } from './epic-business';
+import { epicPuzzle } from './epic-puzzle';
 import { mahjong } from './mahjong';
 import { snakesLadders } from './snakes-ladders';
 import { sudoku } from './sudoku';
@@ -24,6 +25,7 @@ export { sudoku, type SudokuState, type SudokuMove } from './sudoku';
 export { wordPuzzle, type WordPuzzleState, type WordPuzzleMove } from './word-puzzle';
 export { crossword, type CrosswordState, type CrosswordMove } from './crossword';
 export { mahjong, type MahjongState, type MahjongMove } from './mahjong';
+export { epicPuzzle, type EpicPuzzleState, type EpicPuzzleMove } from './epic-puzzle';
 
 // Engines with complete rules. Games missing here are "coming soon" and the
 // server refuses to open rooms for them.
@@ -39,6 +41,7 @@ export const ENGINES: Partial<Record<GameId, GameEngine<any, any>>> = {
   word_puzzle: wordPuzzle,
   crossword,
   mahjong,
+  epic_puzzle: epicPuzzle,
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
