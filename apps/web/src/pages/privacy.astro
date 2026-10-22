@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+// NOTE: starting template that reflects what the code actually does. Have it
+// reviewed by counsel for your jurisdictions (GDPR, UK GDPR, CCPA, COPPA) before launch.
+const updated = '2026-10-21';
+---
+
+<BaseLayout title="Privacy Policy — Epic Board Games" description="How Epic Board Games collects, uses and protects your data.">
+  <article class="mx-auto max-w-3xl space-y-4 px-4 py-12 text-slate-300 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white">
+    <h1 class="text-4xl font-bold text-white">Privacy Policy</h1>
+    <p class="text-sm text-slate-500">Last updated {updated}</p>
+
+    <h2>What we collect</h2>
+    <ul class="list-disc space-y-1 pl-6">
+      <li><strong>Account data:</strong> username, display name, avatar emoji, email address and a salted, hashed password (we never store your password itself).</li>
+      <li><strong>Social data:</strong> your friends and family list, friend requests and game invitations.</li>
+      <li><strong>Gameplay data:</strong> games played, moves needed to run a game, results, and in-game chat messages for the duration of a game.</li>
+      <li><strong>Security data:</strong> sign-in attempts and IP-derived rate-limit counters, kept to protect accounts from abuse.</li>
+    </ul>
+
+    <h2>What we don’t do</h2>
+    <ul class="list-disc space-y-1 pl-6">
+      <li>We don’t sell your personal data or use third-party advertising trackers.</li>
+      <li>We don’t record voice chat. Voice travels peer-to-peer (or through an encrypted relay when a direct connection isn’t possible) and is never stored.</li>
+      <li>We self-host our fonts, so loading a page doesn’t share your IP address with font providers.</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>We use a single strictly necessary cookie (<code>__Host-ebg_session</code>) to keep you signed in. It is HttpOnly, Secure and expires after 30 days or when you sign out. We store your sound preference in your browser’s local storage. We don’t use analytics or marketing cookies.</p>
+
+    <h2>Where your data lives</h2>
+    <p>The service runs on Cloudflare’s global network (Workers, Durable Objects, D1). Data is encrypted in transit (TLS) and at rest.</p>
+
+    <h2>Retention</h2>
+    <p>Account data is kept while your account is active. Chat messages are kept only with the game room and discarded when it closes. Security logs are kept for up to 90 days.</p>
+
+    <h2>Your rights</h2>
+    <p>You can access, correct, export or delete your data. Edit your profile at any time; to export or delete your account, contact us at the address below and we’ll respond within 30 days.</p>
+
+    <h2>Children</h2>
+    <p>Accounts are for people aged 13 and over. Online chat and voice chat are moderated and can be turned off.</p>
+
+    <h2>Contact</h2>
+    <p>privacy@epic-board-games.example.com</p>
+  </article>
+</BaseLayout>

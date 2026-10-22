@@ -1,0 +1,22 @@
+{
+  "name": "epic-board-games",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*", "apps/*", "worker"],
+  "scripts": {
+    "dev": "npm run build -w @ebg/web && wrangler dev",
+    "dev:web": "npm run dev -w @ebg/web",
+    "build": "npm run build -w @ebg/web",
+    "test": "vitest run",
+    "typecheck": "tsc -p packages/game-core && tsc -p worker && npm run check -w @ebg/web",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "deploy:testing": "npm run build && wrangler deploy --env testing",
+    "deploy:production": "npm run build && wrangler deploy --env=\"\""
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261021.1",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.3"
+  }
+}

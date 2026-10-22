@@ -1,0 +1,43 @@
+---
+import type { GameInfo } from '@ebg/game-core';
+
+interface Props {
+  game: GameInfo;
+  index: number;
+}
+const { game, index } = Astro.props;
+const playable = game.status === 'playable';
+// Literal class names (not inline styles) so the strict CSP needs no style-attribute exceptions.
+const delay = ['[animation-delay:0s]', '[animation-delay:0.7s]', '[animation-delay:1.4s]', '[animation-delay:2.1s]'][index % 4];
+---
+
+<li>
+  <a
+    href={`/games/${game.slug}`}
+    class="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-ink-800/70 ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:ring-white/30 hover:shadow-2xl hover:shadow-violet-900/40"
+  >
+    <div class:list={['relative grid h-36 place-items-center overflow-hidden bg-gradient-to-br', game.gradient]}>
+      <span
+        class:list={['text-7xl drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)] transition duration-500 group-hover:scale-125 group-hover:rotate-6 motion-safe:animate-float', delay]}
+        aria-hidden="true">{game.emoji}</span
+      >
+      <span class="absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,0.25)_50%,transparent_70%)] bg-[length:200%_100%] opacity-0 transition group-hover:animate-shimmer group-hover:opacity-100"></span>
+      {
+        !playable && (
+          <span class="absolute top-3 right-3 rounded-full bg-black/40 px-2 py-0.5 text-[11px] font-semibold tracking-wide uppercase">Coming soon</span>
+        )
+      }
+    </div>
+    <div class="flex flex-1 flex-col gap-1.5 p-4">
+      <h3 class="text-lg font-semibold">{game.name}</h3>
+      <p class="text-sm text-slate-400">{game.tagline}</p>
+      <p class="mt-auto flex flex-wrap gap-1.5 pt-2 text-[11px] text-slate-300">
+        <span class="rounded-full bg-white/5 px-2 py-0.5">{game.category}</span>
+        <span class="rounded-full bg-white/5 px-2 py-0.5">
+          {game.minPlayers === game.maxPlayers ? game.maxPlayers : `${game.minPlayers}–${game.maxPlayers}`} players
+        </span>
+        {game.ai === 'opponent' && <span class="rounded-full bg-violet-500/20 px-2 py-0.5 text-violet-200">vs AI</span>}
+      </p>
+    </div>
+  </a>
+</li>

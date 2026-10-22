@@ -1,0 +1,94 @@
+# main    -> production (Cloudflare, default wrangler env)
+# testing -> testing    (wrangler --env testing)
+#
+# Required repository secrets: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID.
+# Add required reviewers to the "production" environment in
+# Settings -> Environments to gate production deploys.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main, testing]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust-game-engine
+      - name: Rust tests
+        working-directory: rust-game-engine
+        run: cargo test
+
+  deploy:
+    name: Deploy to ${{ github.ref_name == 'main' && 'production' || 'testing' }}
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: ${{ github.ref_name == 'main' && 'production' || 'testing' }}
+    env:
+      WRANGLER_ENV_FLAG: ${{ github.ref_name == 'main' && '' || '--env testing' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rust-game-engine
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: wasm-pack
+      - name: Build Wasm engine
+        working-directory: rust-game-engine
+        run: wasm-pack build --target web --release --out-dir ../apps/web/public/wasm/engine
+
+      - name: Build site
+        run: npm run build
+        env:
+          # Canonical origin for SEO tags + sitemap. Set per GitHub environment
+          # (Settings → Environments → production/testing → Variables).
+          SITE_URL: ${{ vars.SITE_URL }}
+
+      - name: Apply D1 migrations
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 migrations apply DB --remote ${{ env.WRANGLER_ENV_FLAG }}
+
+      - name: Deploy Worker + static assets
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy ${{ env.WRANGLER_ENV_FLAG }}

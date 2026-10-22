@@ -1,0 +1,35 @@
+# Cloudflare static asset headers (Workers Static Assets).
+# API responses set their own headers in worker/src/http.ts.
+
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'; upgrade-insecure-requests
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: microphone=(self), camera=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+# Fingerprinted build output: cache forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# WebAssembly engine (wasm-pack output, built in CI).
+/wasm/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/wasm/*.js
+  Content-Type: text/javascript; charset=utf-8
+/wasm/*.wasm
+  Content-Type: application/wasm
+
+/*.svg
+  Cache-Control: public, max-age=86400
+/*.png
+  Cache-Control: public, max-age=86400
+
+# HTML: always revalidate so deploys show up immediately.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/
+  Cache-Control: public, max-age=0, must-revalidate

@@ -1,0 +1,64 @@
+i want to make a website , for board games  where  you connect accross the internet , like multiplayer games and randomly , for playing the board gmaes , so the website will be having login logout for user , and so once user logged in they will see the landing page where thier will be multiple  board games ,  so user can select whihc game they want to play , once the click the game they will get inside the game , and  get matched with other people that want to paly the  same game, , most ly every game will have 4 play , but the match time will me 60s  if any 2 or more joined in this they can start the games,, so the all the game  play will be in browser and server side  some part whihc need to be ,
+
+so have user managed ment, user can send request to  user which he /she playing with  and can have  ping  feature to ask his friend to play with , also people can make profile  on this board game webiste and can add family and friends  , so that they can  play it online , 
+
+
+have this games  
+monolpoly game , all the features of monopoly but rename it as epic business game, to avoid any copyright issue 
+
+have snake and animals and ladder  game with animated feature of animal snake and dragon be more creative animation, so turn by turn people all the player will play ,and the dice will be in the corner of the screen and will be give chance by chance to every player to click on it and shuffle it , so the player pawn will move accordingly as the dice shuffles , have all the rules of the game
+
+games i want to keep ., like snake and ladder,    graphic visual puzzle  game  drag and drop puzzle pieces ,   monopoly game,  
+
+
+have epic puzzle board , this is the also one or 2 player where , their would be at least 20 painting form , cartoons,  images of  creatures , etc
+and divide those images in to puzzle pieces and can be scrollable on the bottom of the screen from left to right so that the player can choose which puzzle they want to play in the puzzle canvas , the canvas will  be the entire screen and and player can place that puzzle one by one to complete the image puzzle . with sound effects 
+
+have crossword games also , with animation feature , and unique colour combination 
+
+
+all this  game will have very good  animation andgrapic , so  that the user would be engaging more
+
+connect4, tik tac to, sudoku,  falppy bird, chess , checker, mahjong,  word puzzle , 
+
+have all this above game , make it perfertly that a explain above that
+
+tech stack and i want to use
+
+all cloudflare resources
+github main branch will be production and testing branch will be for testing worker in cloudflare 
+
+complete website will be seo friendly for every browser on the internet 
+
+and maintain all the security and compliance as per user and infrastructure , keep this on priority 
+
+and for animation use below prompt 
+
+Act as a Principal Software Engineer and Technical SEO Expert. Build a complete, production-ready boilerplate for a 3D Snakes and Ladders game hosted on Cloudflare Pages. The architecture must split performance responsibilities: a high-performance WebAssembly module handles game rules/math, and Three.js handles the 3D rendering layer.
+
+Apply these exact specifications across the project files:
+
+1. INDEX.HTML (SEO-Optimized Entry Point):
+- Include complete meta tags for SEO: Title ("Play 3D Snakes and Ladders Online - Free Multiplayer Board Game"), semantic Meta Description, OpenGraph tags, and responsive viewport configurations for mobile and desktop screens.
+- Implement an explicit JSON-LD Schema block for a 'VideoGame' or 'SoftwareApplication' containing game name, category, and playing rules.
+- Structure accessible semantic HTML body tags (header, main, section, footer) containing readable gameplay instructions, ensuring the 3D canvas container is wrapper-isolated.
+
+2. MAIN.JS (3D WebGL & Wasm Integration):
+- Initialize a baseline Three.js scene (PerspectiveCamera, WebGLRenderer, AmbientLight, and a directional light casting shadows).
+- Create an asynchronous WebAssembly loader using explicit initialization. Handle errors gracefully: if WebGL or WebAssembly initialization fails, append a clear, user-friendly HTML error banner.
+- Write a 60 FPS requestAnimationFrame rendering loop that queries the WebAssembly module for pawn positions and updates the 3D Three.js mesh positions using smooth vector interpolation (lerping).
+
+3. RUST / CARGO.TOML (WebAssembly Game Logic Engine):
+- Set up a standard wasm-pack compatible Rust library snippet.
+- Implement a `GameBoard` struct exposed to JavaScript via `#[wasm_bindgen]`.
+- Write the core logic: a 100-tile array structure, a random dice roller (1-6), tracking coordinates for 4 distinct player tokens (gotis), and a lookup dictionary mapping the exact start-to-end positions of snakes and ladders.
+
+4. _HEADERS (Cloudflare Edge Optimization):
+- Provide a clean Cloudflare configuration file mapping correct content-type declarations for .wasm files, paired with aggressive cache-control rules for assets to ensure max performance scores on search engine site audits.
+
+
+give production level architecture for this so that i can start working on it 
+
+suggest best coding language for it 
+
+and give a complete prompt for it 

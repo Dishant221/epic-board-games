@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfilePage from '../components/social/ProfilePage';
+---
+
+<BaseLayout title="Your profile — Epic Board Games" description="Edit your Epic Board Games profile." noindex>
+  <div class="mx-auto max-w-xl px-4 py-10">
+    <ProfilePage client:load />
+  </div>
+</BaseLayout>

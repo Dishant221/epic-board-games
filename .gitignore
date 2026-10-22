@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+target/
+pkg/
+*.log
+.DS_Store
+coverage/
+
+# wasm-pack output (built in CI)
+apps/web/public/wasm/
