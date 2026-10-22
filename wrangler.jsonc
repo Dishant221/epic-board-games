@@ -38,14 +38,12 @@
     {
       "binding": "DB",
       "database_name": "epic-board-games",
-      // Placeholder — replace with the id printed by `wrangler d1 create epic-board-games`.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "a76b84ee-39fe-4897-9884-cbaa29d4cac4",
       "migrations_dir": "migrations"
     }
   ],
   "kv_namespaces": [
-    // Placeholder — replace with the id printed by `wrangler kv namespace create KV`.
-    { "binding": "KV", "id": "00000000000000000000000000000000" }
+    { "binding": "KV", "id": "6092f1a144ac4d4ebf73c2fee726bfd6" }
   ],
   // Login/signup brute-force protection (per IP + username key).
   "ratelimits": [
@@ -67,14 +65,12 @@
         {
           "binding": "DB",
           "database_name": "epic-board-games-testing",
-          // Placeholder — replace with the id from `wrangler d1 create epic-board-games-testing`.
-          "database_id": "00000000-0000-0000-0000-000000000001",
+          "database_id": "e0f51a44-cc6c-4164-9819-3313ffbf14f4",
           "migrations_dir": "migrations"
         }
       ],
       "kv_namespaces": [
-        // Placeholder — replace with the id from `wrangler kv namespace create KV --env testing`.
-        { "binding": "KV", "id": "00000000000000000000000000000001" }
+        { "binding": "KV", "id": "f12b2ea5f7a54484856a59df950e70b3" }
       ],
       "ratelimits": [
         { "name": "AUTH_LIMITER", "namespace_id": "2001", "simple": { "limit": 10, "period": 60 } },
