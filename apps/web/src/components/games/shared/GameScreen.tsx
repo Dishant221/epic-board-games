@@ -115,6 +115,26 @@ export function GameScreen({ game, session, roomId, onExit }: Props) {
   const [dismissedRotate, setDismissedRotate] = useState(false);
   const [unread, setUnread] = useState(0);
   const [seenCount, setSeenCount] = useState(session.chat.length);
+  // One-time onboarding tip (per device) about the fullscreen shortcut.
+  const [tip, setTip] = useState(() => {
+    try {
+      return localStorage.getItem('ebg:tip:fullscreen') !== '1';
+    } catch {
+      return false;
+    }
+  });
+  useEffect(() => {
+    if (!tip) return;
+    const t = window.setTimeout(() => {
+      setTip(false);
+      try {
+        localStorage.setItem('ebg:tip:fullscreen', '1');
+      } catch {
+        /* storage unavailable */
+      }
+    }, 7000);
+    return () => window.clearTimeout(t);
+  }, [tip]);
   const Board = BOARDS[game.id];
   const solo = session.mode === 'solo';
 
@@ -294,6 +314,14 @@ export function GameScreen({ game, session, roomId, onExit }: Props) {
       )}
 
       {content}
+
+      {tip && (
+        <div className="pointer-events-none fixed inset-x-0 bottom-24 z-40 flex justify-center px-4 md:bottom-6" aria-live="polite">
+          <p className="animate-pop rounded-full bg-black/70 px-4 py-2 text-sm shadow-lg ring-1 ring-white/10">
+            Tip: tap ⛶ or press <kbd className="rounded bg-white/10 px-1">F</kbd> for fullscreen{game.id === 'snakes_ladders' ? ' · Space rolls the dice' : ''}
+          </p>
+        </div>
+      )}
 
       {showGameOver && session.winner !== null && (
         <GameOverModal winner={session.winner} players={session.players} mySeats={session.mySeats} summary={summary} onRematch={session.rematch} onExit={onExit} />
