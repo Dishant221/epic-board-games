@@ -1,0 +1,167 @@
+/* Word Puzzle: tile flips, key colours and colour-blind indicators. */
+
+.wp-board {
+  --wp-g: #4ade80;
+  --wp-y: #facc15;
+  --wp-x: #475569;
+  --wp-empty: rgb(255 255 255 / 0.04);
+}
+
+.wp-tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 2px solid rgb(255 255 255 / 0.18);
+  background: var(--wp-empty);
+  color: #f8fafc;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+.wp-tile.wp-filled {
+  border-color: rgb(255 255 255 / 0.5);
+  animation: wp-pop 0.12s ease-out;
+}
+.wp-tile.wp-revealed,
+.wp-tile.wp-flip {
+  border-color: transparent;
+}
+.wp-tile.wp-revealed {
+  background: var(--wp-mark);
+  color: #0f172a;
+}
+/* The mark colour is set on the element (--wp-mark) and appears at the flip midpoint. */
+.wp-tile.wp-flip {
+  animation: wp-flip 0.5s ease both;
+}
+@keyframes wp-flip {
+  0% {
+    transform: rotateX(0);
+    background: var(--wp-empty);
+    color: #f8fafc;
+  }
+  49.9% {
+    background: var(--wp-empty);
+    color: #f8fafc;
+  }
+  50% {
+    transform: rotateX(90deg);
+    background: var(--wp-mark);
+    color: #0f172a;
+  }
+  100% {
+    transform: rotateX(0);
+    background: var(--wp-mark);
+    color: #0f172a;
+  }
+}
+@keyframes wp-pop {
+  0% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Colour-blind friendly: a small shape in the corner echoes the mark. */
+.wp-tile::after {
+  content: '';
+  position: absolute;
+  right: 8%;
+  bottom: 6%;
+  font-size: 0.3em;
+  line-height: 1;
+  color: rgb(15 23 42 / 0.75);
+  opacity: 0;
+}
+.wp-tile[data-mark='g']::after {
+  content: '●';
+}
+.wp-tile[data-mark='y']::after {
+  content: '▲';
+}
+.wp-tile[data-mark='x']::after {
+  content: '—';
+}
+.wp-tile.wp-revealed::after {
+  opacity: 1;
+}
+.wp-tile.wp-flip::after {
+  animation: wp-fade 0.5s ease both;
+  animation-delay: inherit;
+}
+@keyframes wp-fade {
+  0%,
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.wp-row.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* On-screen keyboard */
+.wp-key {
+  min-height: 48px;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 0.14);
+  color: #f1f5f9;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.wp-key:active {
+  transform: scale(0.94);
+}
+.wp-key[data-mark='g'] {
+  background: var(--wp-g);
+  color: #052e16;
+}
+.wp-key[data-mark='y'] {
+  background: var(--wp-y);
+  color: #422006;
+}
+.wp-key[data-mark='x'] {
+  background: var(--wp-x);
+  color: #cbd5e1;
+}
+.wp-key[data-mark]::after {
+  margin-left: 2px;
+  font-size: 0.55em;
+  vertical-align: top;
+}
+.wp-key[data-mark='g']::after {
+  content: '●';
+}
+.wp-key[data-mark='y']::after {
+  content: '▲';
+}
+
+.wp-toast {
+  animation: wp-toast 1.6s ease both;
+}
+@keyframes wp-toast {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  10%,
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+  }
+}

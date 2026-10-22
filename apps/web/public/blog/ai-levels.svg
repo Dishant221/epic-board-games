@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">The four AI difficulty levels</title>
+  <desc id="d">Four cards in a row: Buddy (easy, plays a random move 70% of the time), Nova (medium, 40%), Titan (hard, 10%) and Oracle (impossible, never makes a mistake). An arrow beneath runs from relaxed to perfect play.</desc>
+  <rect width="800" height="300" rx="20" fill="#17173f"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">Pick your opponent</text>
+  <g>
+    <rect x="30" y="70" width="170" height="150" rx="16" fill="#0e0e2c" stroke="#4ade80" stroke-width="3"/>
+    <text x="115" y="108" text-anchor="middle" font-size="22" font-weight="700" fill="#4ade80">Buddy</text>
+    <text x="115" y="134" text-anchor="middle" font-size="14" fill="#cbd5e1">Easy</text>
+    <text x="115" y="166" text-anchor="middle" font-size="13" fill="#94a3b8">Random move 70%</text>
+    <text x="115" y="186" text-anchor="middle" font-size="13" fill="#94a3b8">of the time</text>
+    <text x="115" y="210" text-anchor="middle" font-size="12" fill="#64748b">Thinks 0.5 s</text>
+  </g>
+  <g>
+    <rect x="220" y="70" width="170" height="150" rx="16" fill="#0e0e2c" stroke="#38bdf8" stroke-width="3"/>
+    <text x="305" y="108" text-anchor="middle" font-size="22" font-weight="700" fill="#38bdf8">Nova</text>
+    <text x="305" y="134" text-anchor="middle" font-size="14" fill="#cbd5e1">Medium</text>
+    <text x="305" y="166" text-anchor="middle" font-size="13" fill="#94a3b8">Random move 40%</text>
+    <text x="305" y="186" text-anchor="middle" font-size="13" fill="#94a3b8">of the time</text>
+    <text x="305" y="210" text-anchor="middle" font-size="12" fill="#64748b">Thinks 1 s</text>
+  </g>
+  <g>
+    <rect x="410" y="70" width="170" height="150" rx="16" fill="#0e0e2c" stroke="#fbbf24" stroke-width="3"/>
+    <text x="495" y="108" text-anchor="middle" font-size="22" font-weight="700" fill="#fbbf24">Titan</text>
+    <text x="495" y="134" text-anchor="middle" font-size="14" fill="#cbd5e1">Hard</text>
+    <text x="495" y="166" text-anchor="middle" font-size="13" fill="#94a3b8">Random move 10%</text>
+    <text x="495" y="186" text-anchor="middle" font-size="13" fill="#94a3b8">of the time</text>
+    <text x="495" y="210" text-anchor="middle" font-size="12" fill="#64748b">Thinks 1.5 s</text>
+  </g>
+  <g>
+    <rect x="600" y="70" width="170" height="150" rx="16" fill="#0e0e2c" stroke="#d946ef" stroke-width="3"/>
+    <text x="685" y="108" text-anchor="middle" font-size="22" font-weight="700" fill="#d946ef">Oracle</text>
+    <text x="685" y="134" text-anchor="middle" font-size="14" fill="#cbd5e1">Impossible</text>
+    <text x="685" y="166" text-anchor="middle" font-size="13" fill="#94a3b8">Never makes</text>
+    <text x="685" y="186" text-anchor="middle" font-size="13" fill="#94a3b8">a mistake</text>
+    <text x="685" y="210" text-anchor="middle" font-size="12" fill="#64748b">Thinks 2 s</text>
+  </g>
+  <defs>
+    <linearGradient id="bar" x1="0" x2="1"><stop offset="0" stop-color="#4ade80"/><stop offset="0.5" stop-color="#fbbf24"/><stop offset="1" stop-color="#d946ef"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#d946ef"/></marker>
+  </defs>
+  <line x1="40" y1="250" x2="750" y2="250" stroke="url(#bar)" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <text x="40" y="282" font-size="14" fill="#cbd5e1">Relaxed, forgiving</text>
+  <text x="760" y="282" text-anchor="end" font-size="14" fill="#cbd5e1">Perfect play</text>
+</svg>

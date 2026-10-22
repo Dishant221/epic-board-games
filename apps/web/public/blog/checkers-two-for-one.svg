@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">The two-for-one shot</title>
+  <desc id="d">Three small checkers boards. First, Red moves a piece from c3 to d4 where it can be taken. Second, the dark piece on e5 is forced to capture it and lands on c3. Third, the red piece on b2 jumps the piece on c3 and then the piece on c5, taking two pieces for one.</desc>
+  <defs>
+    <pattern id="cb50" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#cbd5e1"/><rect x="50" width="50" height="50" fill="#475569"/><rect y="50" width="50" height="50" fill="#475569"/></pattern>
+    <pattern id="cb28" width="56" height="56" patternUnits="userSpaceOnUse"><rect width="56" height="56" fill="#cbd5e1"/><rect x="28" width="28" height="28" fill="#475569"/><rect y="28" width="28" height="28" fill="#475569"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/></marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker>
+  </defs>
+  <rect width="800" height="400" rx="20" fill="#17173f"/>
+  <g transform="translate(40 50)">
+    <rect width="224" height="224" fill="url(#cb28)"/>
+    <rect x="86" y="114" width="24" height="24" rx="4" fill="#fbbf24" opacity="0.55"/>
+    <circle cx="126" cy="98" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="70" cy="98" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="42" cy="14" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="154" cy="14" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="182" cy="42" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="42" cy="182" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="126" cy="154" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="14" cy="210" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="182" cy="210" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="210" cy="182" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="70" cy="154" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <line x1="70" y1="154" x2="98" y2="126" stroke="#fbbf24" stroke-width="2.52" stroke-linecap="round" marker-end="url(#arrow)" opacity="0.95"/>
+    <rect x="0" y="0" width="224" height="224" fill="none" stroke="#0e0e2c" stroke-width="3"/>
+    <text x="112" y="-10" text-anchor="middle" font-size="14" font-weight="700" fill="#e2e8f0">1. The offer: c3–d4</text>
+  </g>
+  <g transform="translate(300 50)">
+    <rect width="224" height="224" fill="url(#cb28)"/>
+    <rect x="58" y="142" width="24" height="24" rx="4" fill="#f43f5e" opacity="0.55"/>
+    <circle cx="70" cy="98" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="42" cy="14" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="154" cy="14" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="182" cy="42" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="42" cy="182" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="126" cy="154" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="14" cy="210" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="182" cy="210" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="210" cy="182" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="98" cy="126" r="10.08" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <circle cx="70" cy="154" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <line x1="126" y1="98" x2="70" y2="154" stroke="#f43f5e" stroke-width="2.52" stroke-linecap="round" marker-end="url(#arrow)" opacity="0.95"/>
+    <rect x="0" y="0" width="224" height="224" fill="none" stroke="#0e0e2c" stroke-width="3"/>
+    <text x="112" y="-10" text-anchor="middle" font-size="14" font-weight="700" fill="#e2e8f0">2. Forced: e5 × d4 lands on c3</text>
+  </g>
+  <g transform="translate(560 50)">
+    <rect width="224" height="224" fill="url(#cb28)"/>
+    <rect x="86" y="114" width="24" height="24" rx="4" fill="#4ade80" opacity="0.55"/>
+    <rect x="30" y="58" width="24" height="24" rx="4" fill="#4ade80" opacity="0.55"/>
+    <circle cx="42" cy="14" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="154" cy="14" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="182" cy="42" r="10.08" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="126" cy="154" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="14" cy="210" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="182" cy="210" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="210" cy="182" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="70" cy="154" r="10.08" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <circle cx="70" cy="98" r="10.08" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4 3"/>
+    <circle cx="42" cy="70" r="10.08" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <line x1="42" y1="182" x2="98" y2="126" stroke="#4ade80" stroke-width="2.52" stroke-linecap="round" marker-end="url(#arrowg)" opacity="0.95"/>
+    <line x1="98" y1="126" x2="42" y2="70" stroke="#4ade80" stroke-width="2.52" stroke-linecap="round" marker-end="url(#arrowg)" opacity="0.95"/>
+    <rect x="0" y="0" width="224" height="224" fill="none" stroke="#0e0e2c" stroke-width="3"/>
+    <text x="112" y="-10" text-anchor="middle" font-size="14" font-weight="700" fill="#e2e8f0">3. Red replies b2 × c3 × c5</text>
+  </g>
+  <text x="40" y="310" font-size="13" fill="#cbd5e1" >Red gives up one piece on purpose. Dark has to capture it (captures are mandatory) and the</text>
+  <text x="40" y="330" font-size="13" fill="#cbd5e1" >capturing piece lands on c3, right where Red can jump it and continue over the piece on c5.</text>
+  <text x="40" y="362" font-size="13" fill="#fbbf24" >Net result: Red loses one piece and takes two. Before offering a piece, check that the</text>
+  <text x="40" y="382" font-size="13" fill="#fbbf24" >opponent has only one legal capture, so the reply you planned is the one that happens.</text>
+
+</svg>

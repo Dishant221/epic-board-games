@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Holding the back rank</title>
+  <desc id="d">A checkers board in the middlegame. Red has advanced several pieces into the centre but still keeps four pieces on its back rank at b1, d1, f1 and h1, with b1 and f1 highlighted green as the bridge. Dark pieces wait on the upper rows unable to reach a crowning square.</desc>
+  <defs>
+    <pattern id="cb50" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#cbd5e1"/><rect x="50" width="50" height="50" fill="#475569"/><rect y="50" width="50" height="50" fill="#475569"/></pattern>
+    <pattern id="cb28" width="56" height="56" patternUnits="userSpaceOnUse"><rect width="56" height="56" fill="#cbd5e1"/><rect x="28" width="28" height="28" fill="#475569"/><rect y="28" width="28" height="28" fill="#475569"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/></marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="#17173f"/>
+  <g transform="translate(60 50)">
+    <rect width="400" height="400" fill="url(#cb50)"/>
+    <rect x="52" y="352" width="46" height="46" rx="4" fill="#4ade80" opacity="0.55"/>
+    <rect x="252" y="352" width="46" height="46" rx="4" fill="#4ade80" opacity="0.55"/>
+    <rect x="152" y="352" width="46" height="46" rx="4" fill="#38bdf8" opacity="0.55"/>
+    <rect x="352" y="352" width="46" height="46" rx="4" fill="#38bdf8" opacity="0.55"/>
+    <circle cx="75" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="175" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="275" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="375" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="125" cy="275" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="225" cy="175" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="275" cy="225" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="175" cy="225" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="325" cy="175" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="75" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="175" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="275" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="375" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="25" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="125" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="225" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="325" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="75" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="175" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="275" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="375" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <text x="25" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">a</text>
+    <text x="75" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">b</text>
+    <text x="125" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">c</text>
+    <text x="175" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">d</text>
+    <text x="225" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">e</text>
+    <text x="275" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">f</text>
+    <text x="325" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">g</text>
+    <text x="375" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">h</text>
+    <text x="-10" y="29" text-anchor="middle" font-size="12" fill="#94a3b8">8</text>
+    <text x="-10" y="79" text-anchor="middle" font-size="12" fill="#94a3b8">7</text>
+    <text x="-10" y="129" text-anchor="middle" font-size="12" fill="#94a3b8">6</text>
+    <text x="-10" y="179" text-anchor="middle" font-size="12" fill="#94a3b8">5</text>
+    <text x="-10" y="229" text-anchor="middle" font-size="12" fill="#94a3b8">4</text>
+    <text x="-10" y="279" text-anchor="middle" font-size="12" fill="#94a3b8">3</text>
+    <text x="-10" y="329" text-anchor="middle" font-size="12" fill="#94a3b8">2</text>
+    <text x="-10" y="379" text-anchor="middle" font-size="12" fill="#94a3b8">1</text>
+    <rect x="0" y="0" width="400" height="400" fill="none" stroke="#0e0e2c" stroke-width="3"/>
+    <text x="200" y="-10" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0">Red keeps the back rank while advancing</text>
+  </g>
+  <rect x="520" y="79" width="14" height="14" rx="3" fill="#4ade80"/>
+  <text x="542" y="90" font-size="13" fill="#cbd5e1" >The "bridge": b1 and f1</text>
+  <rect x="520" y="107" width="14" height="14" rx="3" fill="#38bdf8"/>
+  <text x="542" y="118" font-size="13" fill="#cbd5e1" >d1 and h1 complete the wall</text>
+  <text x="520" y="170" font-size="13" fill="#cbd5e1" >A dark piece can only be crowned</text>
+  <text x="520" y="190" font-size="13" fill="#cbd5e1" >by landing on an empty square of</text>
+  <text x="520" y="210" font-size="13" fill="#cbd5e1" >rank 1. Four pieces there means</text>
+  <text x="520" y="230" font-size="13" fill="#cbd5e1" >there is nowhere to land.</text>
+  <text x="520" y="274" font-size="13" fill="#94a3b8" >Even just b1 and f1 (the bridge)</text>
+  <text x="520" y="294" font-size="13" fill="#94a3b8" >cover the squares an attacker</text>
+  <text x="520" y="314" font-size="13" fill="#94a3b8" >most easily reaches.</text>
+  <text x="520" y="358" font-size="13" fill="#fbbf24" >Advance the middle pieces first;</text>
+  <text x="520" y="378" font-size="13" fill="#fbbf24" >release the back rank only when</text>
+  <text x="520" y="398" font-size="13" fill="#fbbf24" >you are already ahead.</text>
+
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Ranked Tic Tac Toe move priorities from win to empty side</title>
+  <desc id="d">A numbered list of eight rules in priority order: 1 win, 2 block, 3 fork, 4 block a fork, 5 centre, 6 opposite corner, 7 empty corner, 8 empty side. Each row has a short explanation. Following the first applicable rule each move guarantees you never lose.</desc>
+  <rect width="800" height="520" rx="20" fill="#17173f"/>
+  <text x="400" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">The perfect-play checklist, in order</text>
+  <rect x="40" y="70" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="90" r="15" fill="#4ade80"/>
+  <text x="68" y="95" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">1</text>
+  <text x="96" y="95" font-size="16" font-weight="700" fill="#e2e8f0">Win</text>
+  <text x="280" y="95" font-size="13" fill="#cbd5e1">Complete your own three in a row</text>
+  <rect x="40" y="120" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="140" r="15" fill="#f43f5e"/>
+  <text x="68" y="145" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">2</text>
+  <text x="96" y="145" font-size="16" font-weight="700" fill="#e2e8f0">Block</text>
+  <text x="280" y="145" font-size="13" fill="#cbd5e1">Stop a line the opponent will complete next turn</text>
+  <rect x="40" y="170" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="190" r="15" fill="#fbbf24"/>
+  <text x="68" y="195" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">3</text>
+  <text x="96" y="195" font-size="16" font-weight="700" fill="#e2e8f0">Fork</text>
+  <text x="280" y="195" font-size="13" fill="#cbd5e1">Create two winning threats at once</text>
+  <rect x="40" y="220" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="240" r="15" fill="#fbbf24"/>
+  <text x="68" y="245" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">4</text>
+  <text x="96" y="245" font-size="16" font-weight="700" fill="#e2e8f0">Block a fork</text>
+  <text x="280" y="245" font-size="13" fill="#cbd5e1">Force a block elsewhere, or occupy the fork square</text>
+  <rect x="40" y="270" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="290" r="15" fill="#d946ef"/>
+  <text x="68" y="295" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">5</text>
+  <text x="96" y="295" font-size="16" font-weight="700" fill="#e2e8f0">Centre</text>
+  <text x="280" y="295" font-size="13" fill="#cbd5e1">Take the middle if it is free</text>
+  <rect x="40" y="320" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="340" r="15" fill="#38bdf8"/>
+  <text x="68" y="345" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">6</text>
+  <text x="96" y="345" font-size="16" font-weight="700" fill="#e2e8f0">Opposite corner</text>
+  <text x="280" y="345" font-size="13" fill="#cbd5e1">If the opponent holds a corner, take the one diagonally opposite</text>
+  <rect x="40" y="370" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="390" r="15" fill="#38bdf8"/>
+  <text x="68" y="395" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">7</text>
+  <text x="96" y="395" font-size="16" font-weight="700" fill="#e2e8f0">Empty corner</text>
+  <text x="280" y="395" font-size="13" fill="#cbd5e1">Any free corner</text>
+  <rect x="40" y="420" width="720" height="40" rx="10" fill="#0e0e2c"/>
+  <circle cx="68" cy="440" r="15" fill="#94a3b8"/>
+  <text x="68" y="445" text-anchor="middle" font-size="15" font-weight="700" fill="#0e0e2c">8</text>
+  <text x="96" y="445" font-size="16" font-weight="700" fill="#e2e8f0">Empty side</text>
+  <text x="280" y="445" font-size="13" fill="#cbd5e1">Any free edge square: the last resort</text>
+  <text x="400" y="494" text-anchor="middle" font-size="13" fill="#94a3b8">Do the first thing on the list that applies. Follow it every move and you can never lose.</text>
+</svg>

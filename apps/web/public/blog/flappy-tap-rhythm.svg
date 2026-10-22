@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Flappy Flyer flight path showing an even tap rhythm versus tap spamming</title>
+  <desc id="d">A yellow wave-like flight path with six evenly spaced arcs. Beneath each dip a pink marker reads TAP, showing one flap per dip keeps the bird level. A red path below shows what happens when taps are spammed: the bird climbs steadily upward into danger.</desc>
+  <rect width="800" height="400" rx="20" fill="#17173f"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">Tap on a steady rhythm, not in a panic</text>
+  <line x1="40" y1="230" x2="760" y2="230" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 6"/>
+  <text x="760" y="248" text-anchor="end" font-size="12" fill="#94a3b8">target height</text>
+  <path d="M60 230 Q 100 120 122 175 Q 150 240 170 230 Q 210 120 232 175 Q 260 240 280 230 Q 320 120 342 175 Q 370 240 390 230 Q 430 120 452 175 Q 480 240 500 230 Q 540 120 562 175 Q 590 240 610 230 Q 650 120 672 175 Q 700 240 720 230" fill="none" stroke="#facc15" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="60" cy="230" r="9" fill="#d946ef"/>
+  <text x="60" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#d946ef">TAP</text>
+  <circle cx="170" cy="230" r="9" fill="#d946ef"/>
+  <text x="170" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#d946ef">TAP</text>
+  <circle cx="280" cy="230" r="9" fill="#d946ef"/>
+  <text x="280" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#d946ef">TAP</text>
+  <circle cx="390" cy="230" r="9" fill="#d946ef"/>
+  <text x="390" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#d946ef">TAP</text>
+  <circle cx="500" cy="230" r="9" fill="#d946ef"/>
+  <text x="500" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#d946ef">TAP</text>
+  <circle cx="610" cy="230" r="9" fill="#d946ef"/>
+  <text x="610" y="280" text-anchor="middle" font-size="13" font-weight="700" fill="#d946ef">TAP</text>
+  <path d="M60 330 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12 q 20 -40 55 -12" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <text x="60" y="372" font-size="13" fill="#f43f5e">Spamming taps: the Flyer climbs into the top pipe</text>
+  <text x="60" y="110" font-size="13" fill="#cbd5e1">One flap near the bottom of each dip</text>
+  <text x="60" y="128" font-size="13" fill="#cbd5e1">keeps you level; gravity shapes every arc</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 490" width="800" height="490" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Two Connect 4 threats, one on an odd row and one on an even row</title>
+  <desc id="d">A Connect 4 board with rows numbered 1 to 6 from the bottom. Red has three in a row on row 3 and its winning cell in column 5 is marked R: an odd-row threat. Yellow has a diagonal whose winning cell in column 7 row 4 is marked Y: an even-row threat. Both cells float above empty space.</desc>
+  <rect width="800" height="490" rx="20" fill="#17173f"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">Threats: the cells that would complete four</text>
+  <rect x="190" y="70" width="440" height="380" rx="14" fill="#1d4ed8"/>
+  <circle cx="230" cy="410" r="24" fill="#facc15"/>
+  <circle cx="290" cy="410" r="24" fill="#f43f5e"/>
+  <circle cx="350" cy="410" r="24" fill="#facc15"/>
+  <circle cx="410" cy="410" r="24" fill="#facc15"/>
+  <circle cx="470" cy="410" r="24" fill="#facc15"/>
+  <circle cx="530" cy="410" r="24" fill="#f43f5e"/>
+  <circle cx="590" cy="410" r="24" fill="#f43f5e"/>
+  <circle cx="230" cy="350" r="24" fill="#f43f5e"/>
+  <circle cx="290" cy="350" r="24" fill="#facc15"/>
+  <circle cx="350" cy="350" r="24" fill="#facc15"/>
+  <circle cx="410" cy="350" r="24" fill="#f43f5e"/>
+  <circle cx="470" cy="350" r="24" fill="#facc15"/>
+  <circle cx="530" cy="350" r="24" fill="#f43f5e"/>
+  <circle cx="590" cy="350" r="24" fill="#facc15"/>
+  <circle cx="230" cy="290" r="24" fill="#facc15"/>
+  <circle cx="290" cy="290" r="24" fill="#f43f5e"/>
+  <circle cx="350" cy="290" r="24" fill="#f43f5e"/>
+  <circle cx="410" cy="290" r="24" fill="#f43f5e"/>
+  <circle cx="470" cy="290" r="24" fill="#0e0e2c"/>
+  <circle cx="530" cy="290" r="24" fill="#facc15"/>
+  <circle cx="590" cy="290" r="24" fill="#f43f5e"/>
+  <circle cx="230" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="290" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="350" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="410" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="470" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="530" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="590" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="230" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="290" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="350" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="410" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="470" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="530" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="590" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="230" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="290" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="350" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="410" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="470" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="530" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="590" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="470" cy="290" r="27" fill="none" stroke="#f43f5e" stroke-width="4"/>
+  <circle cx="590" cy="230" r="27" fill="none" stroke="#facc15" stroke-width="4"/>
+  <text x="176" y="415" text-anchor="end" font-size="15" font-weight="700" fill="#fbbf24">1</text>
+  <text x="176" y="355" text-anchor="end" font-size="15" font-weight="700" fill="#38bdf8">2</text>
+  <text x="176" y="295" text-anchor="end" font-size="15" font-weight="700" fill="#fbbf24">3</text>
+  <text x="176" y="235" text-anchor="end" font-size="15" font-weight="700" fill="#38bdf8">4</text>
+  <text x="176" y="175" text-anchor="end" font-size="15" font-weight="700" fill="#fbbf24">5</text>
+  <text x="176" y="115" text-anchor="end" font-size="15" font-weight="700" fill="#38bdf8">6</text>
+  <text x="470" y="296" text-anchor="middle" font-size="20" font-weight="700" fill="#f43f5e">R</text>
+  <text x="590" y="236" text-anchor="middle" font-size="20" font-weight="700" fill="#facc15">Y</text>
+  <text x="30" y="130" font-size="14" font-weight="700" fill="#f43f5e">Red threat</text>
+  <text x="30" y="150" font-size="13" fill="#cbd5e1">Column 5, row 3</text>
+  <text x="30" y="168" font-size="13" fill="#fbbf24">Odd row: good</text>
+  <text x="30" y="186" font-size="13" fill="#fbbf24">for the first player</text>
+  <text x="650" y="130" font-size="14" font-weight="700" fill="#facc15">Yellow threat</text>
+  <text x="650" y="150" font-size="13" fill="#cbd5e1">Column 7, row 4</text>
+  <text x="650" y="168" font-size="13" fill="#38bdf8">Even row: good</text>
+  <text x="650" y="186" font-size="13" fill="#38bdf8">for the second player</text>
+  <text x="400" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">Rows are numbered from the bottom. Neither threat can be played yet: the cell below is empty.</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Layers of a mahjong solitaire pyramid</title>
+  <desc id="d">A side-on cross-section of a mahjong solitaire pyramid with five layers: twelve tiles at the bottom narrowing to a single highlighted tile on top. Green marks show that the top tile and the end tiles of each layer are free; a red mark shows a middle tile that is blocked.</desc>
+  <defs>
+    <pattern id="cb50" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#cbd5e1"/><rect x="50" width="50" height="50" fill="#475569"/><rect y="50" width="50" height="50" fill="#475569"/></pattern>
+    <pattern id="cb28" width="56" height="56" patternUnits="userSpaceOnUse"><rect width="56" height="56" fill="#cbd5e1"/><rect x="28" width="28" height="28" fill="#475569"/><rect y="28" width="28" height="28" fill="#475569"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/></marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker>
+  </defs>
+  <rect width="800" height="480" rx="20" fill="#17173f"/>
+  <text x="400" y="42" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="700">Side view of a pyramid layout</text>
+  <rect x="81" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="134.33333333333334" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="187.66666666666669" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="241" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="294.33333333333337" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="347.6666666666667" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="401" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="454.33333333333337" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="507.6666666666667" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="561" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="614.3333333333334" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="667.6666666666667" y="300" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="40" y="324" font-size="13" fill="#94a3b8" >Layer 1</text>
+  <text x="760" y="324" font-size="13" fill="#94a3b8" text-anchor="end">12 tiles</text>
+  <rect x="161" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="214.33333333333334" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="267.6666666666667" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="321" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="374.33333333333337" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="427.6666666666667" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="481" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="534.3333333333334" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="587.6666666666667" y="262" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="40" y="286" font-size="13" fill="#94a3b8" >Layer 2</text>
+  <text x="760" y="286" font-size="13" fill="#94a3b8" text-anchor="end">9 tiles</text>
+  <rect x="241" y="224" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="294.3333333333333" y="224" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="347.6666666666667" y="224" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="401" y="224" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="454.33333333333337" y="224" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="507.6666666666667" y="224" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="40" y="248" font-size="13" fill="#94a3b8" >Layer 3</text>
+  <text x="760" y="248" font-size="13" fill="#94a3b8" text-anchor="end">6 tiles</text>
+  <rect x="321" y="186" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="374.3333333333333" y="186" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="427.6666666666667" y="186" width="51.333333333333336" height="36" rx="4" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="40" y="210" font-size="13" fill="#94a3b8" >Layer 4</text>
+  <text x="760" y="210" font-size="13" fill="#94a3b8" text-anchor="end">3 tiles</text>
+  <rect x="374" y="148" width="52" height="36" rx="4" fill="#fde68a" stroke="#fbbf24" stroke-width="2"/>
+  <text x="40" y="172" font-size="13" fill="#94a3b8" >Layer 5</text>
+  <text x="760" y="172" font-size="13" fill="#94a3b8" text-anchor="end">1 tiles</text>
+  <line x1="60" y1="340" x2="740" y2="340" stroke="#475569" stroke-width="2"/>
+  <circle cx="400" cy="130" r="13" fill="#4ade80"/>
+  <path d="M393 130 l5 5 l9 -10" stroke="#0e0e2c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="70" cy="318" r="11" fill="#4ade80"/>
+  <circle cx="730" cy="318" r="11" fill="#4ade80"/>
+  <circle cx="160" cy="318" r="11" fill="#f43f5e"/>
+  <text x="60" y="380" font-size="13" fill="#cbd5e1" >The single top tile and the two end tiles of every layer are free. A tile in the middle of layer 1</text>
+  <text x="60" y="400" font-size="13" fill="#cbd5e1" >is blocked twice: by neighbours on both sides and by the layer resting on it. Clear the tall</text>
+  <text x="60" y="420" font-size="13" fill="#cbd5e1" >stack first so the tiles underneath come into play.</text>
+  <text x="60" y="456" font-size="13" fill="#fbbf24" >Rule of thumb: height before width. A tile on layer 5 unlocks far more than a tile on layer 1.</text>
+
+</svg>

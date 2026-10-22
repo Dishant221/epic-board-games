@@ -1,0 +1,98 @@
+/* Mahjong Solitaire tiles. Each tile sets --mj-shadow (its 3D thickness) inline. */
+.mj-field {
+  position: relative;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(255 255 255 / 0.08), transparent 60%),
+    linear-gradient(160deg, #134e4a, #042f2e);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1), 0 20px 40px -20px rgb(0 0 0 / 0.7);
+}
+
+.mj-tile {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #c9b48a;
+  border-radius: 14%;
+  background: linear-gradient(160deg, #fffdf5 0%, #f7ead0 70%, #eadcbb 100%);
+  color: #1f2937;
+  box-shadow: var(--mj-shadow);
+  cursor: pointer;
+  transition: transform 0.15s, filter 0.2s, box-shadow 0.15s;
+}
+.mj-tile:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 1px;
+}
+.mj-tile.mj-blocked {
+  filter: brightness(0.72) saturate(0.7);
+  cursor: default;
+}
+.mj-tile.mj-selected {
+  transform: translate(-2px, -3px);
+  box-shadow: 0 0 0 3px #fbbf24, 0 0 18px 4px rgb(251 191 36 / 0.8), var(--mj-shadow);
+}
+.mj-tile.mj-hint {
+  animation: mj-pulse 0.7s ease-in-out infinite alternate;
+}
+.mj-tile.mj-leaving {
+  animation: mj-fly 0.45s ease-in forwards;
+  pointer-events: none;
+}
+.mj-tile.mj-shake {
+  animation: shake 0.35s ease-in-out;
+}
+.mj-tile.mj-back {
+  animation: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes mj-pulse {
+  from {
+    box-shadow: 0 0 0 2px #22d3ee, var(--mj-shadow);
+  }
+  to {
+    box-shadow: 0 0 0 5px #22d3ee, 0 0 22px 6px rgb(34 211 238 / 0.75), var(--mj-shadow);
+  }
+}
+@keyframes mj-fly {
+  to {
+    transform: scale(1.7) translateY(-25%);
+    opacity: 0;
+  }
+}
+
+.mj-glyph {
+  line-height: 1;
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols2', 'Apple Symbols', 'Noto Color Emoji', sans-serif;
+}
+.mj-label {
+  font-size: 0.5em;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Suit colours */
+.mj-c { color: #b91c1c; }
+.mj-b { color: #15803d; }
+.mj-d { color: #1d4ed8; }
+.mj-w { color: #1f2937; }
+.mj-dR { color: #dc2626; }
+.mj-dG { color: #16a34a; }
+.mj-dW { color: #4b5563; }
+.mj-s { color: #7e22ce; }
+.mj-f { color: #be185d; }
+
+.mj-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 4.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.75rem;
+  background: rgb(255 255 255 / 0.06);
+  font-variant-numeric: tabular-nums;
+}

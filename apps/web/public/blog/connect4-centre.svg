@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 490" width="800" height="490" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">How many winning lines pass through each Connect 4 cell</title>
+  <desc id="d">A Connect 4 grid where every cell shows the number of possible four-in-a-row lines passing through it. Centre column cells score 7, 10, 13, 13, 10 and 7 from bottom to top; edge column cells score 3, 4, 5, 5, 4 and 3. Cells are shaded brighter the higher the number.</desc>
+  <rect width="800" height="490" rx="20" fill="#17173f"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">Winning lines through each cell</text>
+  <rect x="170" y="70" width="440" height="380" rx="14" fill="#1d4ed8"/>
+  <circle cx="210" cy="410" r="24" fill="rgb(43,32,91)"/>
+  <text x="210" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">3</text>
+  <circle cx="270" cy="410" r="24" fill="rgb(52,38,106)"/>
+  <text x="270" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="330" cy="410" r="24" fill="rgb(62,44,122)"/>
+  <text x="330" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="390" cy="410" r="24" fill="rgb(81,56,153)"/>
+  <text x="390" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">7</text>
+  <circle cx="450" cy="410" r="24" fill="rgb(62,44,122)"/>
+  <text x="450" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="510" cy="410" r="24" fill="rgb(52,38,106)"/>
+  <text x="510" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="570" cy="410" r="24" fill="rgb(43,32,91)"/>
+  <text x="570" y="416.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">3</text>
+  <circle cx="210" cy="350" r="24" fill="rgb(52,38,106)"/>
+  <text x="210" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="270" cy="350" r="24" fill="rgb(72,50,137)"/>
+  <text x="270" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">6</text>
+  <circle cx="330" cy="350" r="24" fill="rgb(91,62,168)"/>
+  <text x="330" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="390" cy="350" r="24" fill="rgb(110,74,199)"/>
+  <text x="390" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">10</text>
+  <circle cx="450" cy="350" r="24" fill="rgb(91,62,168)"/>
+  <text x="450" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="510" cy="350" r="24" fill="rgb(72,50,137)"/>
+  <text x="510" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">6</text>
+  <circle cx="570" cy="350" r="24" fill="rgb(52,38,106)"/>
+  <text x="570" y="356.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="210" cy="290" r="24" fill="rgb(62,44,122)"/>
+  <text x="210" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="270" cy="290" r="24" fill="rgb(91,62,168)"/>
+  <text x="270" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="330" cy="290" r="24" fill="rgb(120,80,215)"/>
+  <text x="330" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">11</text>
+  <circle cx="390" cy="290" r="24" fill="rgb(139,92,246)"/>
+  <text x="390" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">13</text>
+  <circle cx="450" cy="290" r="24" fill="rgb(120,80,215)"/>
+  <text x="450" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">11</text>
+  <circle cx="510" cy="290" r="24" fill="rgb(91,62,168)"/>
+  <text x="510" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="570" cy="290" r="24" fill="rgb(62,44,122)"/>
+  <text x="570" y="296.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="210" cy="230" r="24" fill="rgb(62,44,122)"/>
+  <text x="210" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="270" cy="230" r="24" fill="rgb(91,62,168)"/>
+  <text x="270" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="330" cy="230" r="24" fill="rgb(120,80,215)"/>
+  <text x="330" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">11</text>
+  <circle cx="390" cy="230" r="24" fill="rgb(139,92,246)"/>
+  <text x="390" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">13</text>
+  <circle cx="450" cy="230" r="24" fill="rgb(120,80,215)"/>
+  <text x="450" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">11</text>
+  <circle cx="510" cy="230" r="24" fill="rgb(91,62,168)"/>
+  <text x="510" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="570" cy="230" r="24" fill="rgb(62,44,122)"/>
+  <text x="570" y="236.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="210" cy="170" r="24" fill="rgb(52,38,106)"/>
+  <text x="210" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="270" cy="170" r="24" fill="rgb(72,50,137)"/>
+  <text x="270" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">6</text>
+  <circle cx="330" cy="170" r="24" fill="rgb(91,62,168)"/>
+  <text x="330" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="390" cy="170" r="24" fill="rgb(110,74,199)"/>
+  <text x="390" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">10</text>
+  <circle cx="450" cy="170" r="24" fill="rgb(91,62,168)"/>
+  <text x="450" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">8</text>
+  <circle cx="510" cy="170" r="24" fill="rgb(72,50,137)"/>
+  <text x="510" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">6</text>
+  <circle cx="570" cy="170" r="24" fill="rgb(52,38,106)"/>
+  <text x="570" y="176.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="210" cy="110" r="24" fill="rgb(43,32,91)"/>
+  <text x="210" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">3</text>
+  <circle cx="270" cy="110" r="24" fill="rgb(52,38,106)"/>
+  <text x="270" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="330" cy="110" r="24" fill="rgb(62,44,122)"/>
+  <text x="330" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="390" cy="110" r="24" fill="rgb(81,56,153)"/>
+  <text x="390" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">7</text>
+  <circle cx="450" cy="110" r="24" fill="rgb(62,44,122)"/>
+  <text x="450" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">5</text>
+  <circle cx="510" cy="110" r="24" fill="rgb(52,38,106)"/>
+  <text x="510" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">4</text>
+  <circle cx="570" cy="110" r="24" fill="rgb(43,32,91)"/>
+  <text x="570" y="116.3" text-anchor="middle" font-size="18" font-weight="700" fill="#cbd5e1">3</text>
+  <text x="60" y="150" font-size="14" fill="#cbd5e1">Darker = fewer</text>
+  <text x="60" y="170" font-size="14" fill="#cbd5e1">ways to win</text>
+  <text x="60" y="210" font-size="14" fill="#cbd5e1">Brighter = more</text>
+  <text x="60" y="230" font-size="14" fill="#cbd5e1">ways to win</text>
+  <text x="640" y="150" font-size="14" fill="#cbd5e1">Centre column:</text>
+  <text x="640" y="170" font-size="14" fill="#cbd5e1">7 + 10 + 13 + 13</text>
+  <text x="640" y="190" font-size="14" fill="#cbd5e1">+ 10 + 7 = 60 lines</text>
+  <text x="640" y="230" font-size="14" fill="#cbd5e1">Edge column:</text>
+  <text x="640" y="250" font-size="14" fill="#cbd5e1">only 24 lines</text>
+  <text x="400" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">Numbers show how many four-in-a-row lines pass through each cell</text>
+</svg>

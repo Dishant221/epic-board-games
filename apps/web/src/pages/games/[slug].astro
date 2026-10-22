@@ -3,6 +3,8 @@ import { GAMES, type GameInfo } from '@ebg/game-core';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameLauncher from '../../components/lobby/GameLauncher';
 import Leaderboard from '../../components/social/Leaderboard';
+import PostCard from '../../components/blog/PostCard.astro';
+import { getPostsForGame } from '../../lib/blog';
 
 export function getStaticPaths() {
   return GAMES.map((game) => ({ params: { slug: game.slug }, props: { game } }));
@@ -12,6 +14,7 @@ interface Props {
   game: GameInfo;
 }
 const { game } = Astro.props;
+const guides = await getPostsForGame(game.id);
 const site = Astro.site!.toString().replace(/\/$/, '');
 const url = `${site}/games/${game.slug}`;
 const players = game.minPlayers === game.maxPlayers ? `${game.maxPlayers}` : `${game.minPlayers}–${game.maxPlayers}`;
@@ -76,6 +79,19 @@ const schema = [
     <ol class="mt-4 list-decimal space-y-2 pl-6 text-slate-300">
       {game.rules.map((rule) => <li>{rule}</li>)}
     </ol>
+    {
+      guides.length > 0 && (
+        <section class="mt-10" aria-labelledby="guides-title">
+          <div class="mb-4 flex items-end justify-between">
+            <h2 id="guides-title" class="text-2xl font-bold">Guides &amp; strategy</h2>
+            <a href="/blog" class="text-sm text-violet-300 hover:underline">All guides →</a>
+          </div>
+          <ul class="grid gap-4 sm:grid-cols-2">
+            {guides.map((post) => <PostCard post={post} />)}
+          </ul>
+        </section>
+      )
+    }
     {
       game.multiplayer && (
         <div class="mt-10">

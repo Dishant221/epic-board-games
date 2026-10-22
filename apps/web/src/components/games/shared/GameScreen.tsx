@@ -16,10 +16,22 @@ const BOARDS: Record<string, BoardComponent> = {
   tic_tac_toe: lazy(() => import('../boards/TicTacToeBoard')) as BoardComponent,
   connect4: lazy(() => import('../boards/Connect4Board')) as BoardComponent,
   snakes_ladders: lazy(() => import('../boards/SnakesLaddersBoard')) as BoardComponent,
+  chess: lazy(() => import('../boards/ChessBoard')) as BoardComponent,
+  checkers: lazy(() => import('../boards/CheckersBoard')) as BoardComponent,
+  epic_business: lazy(() => import('../boards/EpicBusinessBoard')) as BoardComponent,
+  sudoku: lazy(() => import('../boards/SudokuBoard')) as BoardComponent,
+  word_puzzle: lazy(() => import('../boards/WordPuzzleBoard')) as BoardComponent,
+  crossword: lazy(() => import('../boards/CrosswordBoard')) as BoardComponent,
+  mahjong: lazy(() => import('../boards/MahjongBoard')) as BoardComponent,
 };
 
+/** Games where bare letter keys are input, so single-key shortcuts (F) are disabled. */
+const TYPING_GAMES = new Set(['word_puzzle', 'crossword']);
+
 /** How long to let the winning move animate before the game-over dialog appears. */
-const GAME_OVER_DELAY: Record<string, number> = { snakes_ladders: 2200, chess: 1200, checkers: 1000, epic_business: 1500, word_puzzle: 1800 };
+const GAME_OVER_DELAY: Record<string, number> = {
+  snakes_ladders: 2200, chess: 1200, checkers: 1000, epic_business: 1500, word_puzzle: 1800, sudoku: 1200, crossword: 900, mahjong: 900, epic_puzzle: 1500,
+};
 
 function useViewport() {
   const read = () => ({ width: window.innerWidth, height: window.innerHeight });
@@ -160,7 +172,7 @@ export function GameScreen({ game, session, roomId, onExit }: Props) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement)?.closest('input, textarea, select, [contenteditable]')) return;
-      if (e.key === 'f' || e.key === 'F') {
+      if ((e.key === 'f' || e.key === 'F') && !TYPING_GAMES.has(game.id) && !e.ctrlKey && !e.metaKey && !e.altKey) {
         e.preventDefault();
         toggleFullscreen();
         return;

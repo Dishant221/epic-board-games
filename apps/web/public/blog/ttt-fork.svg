@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">A Tic Tac Toe fork where X threatens two lines at once</title>
+  <desc id="d">A Tic Tac Toe board with X in the top-left, bottom-left and bottom-right corners and O in the centre and top-right. Two green bands highlight the left column and the bottom row, each one X away from completion. O can block only one line, so X wins.</desc>
+  <rect width="800" height="340" rx="20" fill="#17173f"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">A fork: two ways to win at once</text>
+  <rect x="280" y="70" width="240" height="240" rx="12" fill="#0e0e2c"/>
+  <line x1="360" y1="78" x2="360" y2="302" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="288" y1="150" x2="512" y2="150" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="440" y1="78" x2="440" y2="302" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="288" y1="230" x2="512" y2="230" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="320" y1="110" x2="320" y2="270" stroke="#4ade80" stroke-width="44" stroke-linecap="round" opacity="0.28"/>
+  <line x1="320" y1="270" x2="480" y2="270" stroke="#4ade80" stroke-width="44" stroke-linecap="round" opacity="0.28"/>
+  <text x="320" y="127.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#f43f5e" opacity="1">X</text>
+  <text x="480" y="127.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#38bdf8" opacity="1">O</text>
+  <text x="320" y="207.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#f43f5e" opacity="0.45">X</text>
+  <text x="400" y="207.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#38bdf8" opacity="1">O</text>
+  <text x="320" y="287.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#f43f5e" opacity="1">X</text>
+  <text x="400" y="287.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#f43f5e" opacity="0.45">X</text>
+  <text x="480" y="287.856" text-anchor="middle" font-size="49.6" font-weight="700" fill="#f43f5e" opacity="1">X</text>
+  <text x="40" y="110" font-size="14" fill="#cbd5e1">Move order:</text>
+  <text x="40" y="134" font-size="14" fill="#f43f5e">1. X top-left</text>
+  <text x="40" y="156" font-size="14" fill="#38bdf8">2. O centre</text>
+  <text x="40" y="178" font-size="14" fill="#f43f5e">3. X bottom-right</text>
+  <text x="40" y="200" font-size="14" fill="#38bdf8">4. O top-right (error)</text>
+  <text x="40" y="222" font-size="14" fill="#f43f5e">5. X bottom-left: fork</text>
+  <text x="560" y="110" font-size="14" fill="#cbd5e1">X now threatens the</text>
+  <text x="560" y="132" font-size="14" fill="#cbd5e1">left column and the</text>
+  <text x="560" y="154" font-size="14" fill="#cbd5e1">bottom row (faded X).</text>
+  <text x="560" y="194" font-size="14" fill="#cbd5e1">O can block only one,</text>
+  <text x="560" y="216" font-size="14" fill="#cbd5e1">so X wins next move.</text>
+</svg>

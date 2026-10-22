@@ -87,12 +87,12 @@ export const GAMES: readonly GameInfo[] = [
     gradient: 'from-amber-500 to-orange-500',
     rules: [
       'Everyone starts with 1,500 credits. Roll two dice and move clockwise around the 40-space board.',
-      'Land on an unowned district, station or utility to buy it, or pass and let it go to auction.',
+      'Land on an unowned district, transit hub or utility to buy it, or pass and let it go to auction.',
       'Pay rent when you land on a rival’s property. Rent rises when they own the whole colour group and when they build.',
       'Own every district in a colour group to build offices (up to 4) and then a tower.',
       'Fortune and Market cards move you, pay you or charge you. Three doubles in a row sends you to the Lock-up.',
       'Collect 200 credits every time you pass Payday. Mortgage properties to raise cash.',
-      'The last player who has not gone bankrupt wins.',
+      'The last player who has not gone bankrupt wins. If the game reaches 120 rounds, the richest player by net worth wins.',
     ],
   },
   {
@@ -285,6 +285,7 @@ export const GAMES: readonly GameInfo[] = [
       'If a capture is available you must take it, and you keep jumping while you can.',
       'A piece that reaches the far row is crowned a king and can move and capture backwards too.',
       'Win by capturing all enemy pieces or leaving your opponent with no legal move.',
+      'Forty moves without a capture or a man moving, or the same position three times, is a draw.',
     ],
   },
   {

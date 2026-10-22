@@ -1,0 +1,43 @@
+---
+import { formatDate, gameFor, isoDate, postUrl, readingTime, type BlogPost } from '../../lib/blog';
+
+interface Props {
+  post: BlogPost;
+  /** Eager-load the hero (above the fold). */
+  priority?: boolean;
+  /** Smaller card for "Related guides" strips. */
+  compact?: boolean;
+}
+const { post, priority = false, compact = false } = Astro.props;
+const game = gameFor(post);
+const { minutes } = readingTime(post.body);
+---
+
+<li class="h-full">
+  <a
+    href={postUrl(post)}
+    class="group flex h-full flex-col overflow-hidden rounded-3xl bg-ink-800/70 ring-1 ring-white/10 transition duration-300 hover:-translate-y-1 hover:ring-white/30 hover:shadow-2xl hover:shadow-violet-900/40"
+  >
+    <img
+      src={post.data.hero}
+      alt=""
+      width="1200"
+      height="630"
+      loading={priority ? 'eager' : 'lazy'}
+      decoding="async"
+      fetchpriority={priority ? 'high' : 'auto'}
+      class="aspect-[1200/630] w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+    />
+    <div class:list={['flex flex-1 flex-col gap-2', compact ? 'p-4' : 'p-5']}>
+      <p class="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+        <span class="rounded-full bg-white/5 px-2 py-0.5 text-slate-300"><span aria-hidden="true">{game.emoji}</span> {game.name}</span>
+        <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{minutes} min read</span>
+      </p>
+      <h3 class:list={['font-semibold text-slate-50 group-hover:text-white', compact ? 'text-base' : 'text-lg leading-snug']}>{post.data.title}</h3>
+      {!compact && <p class="text-sm text-slate-400">{post.data.description}</p>}
+      <span class="mt-auto pt-2 text-sm font-semibold text-violet-300 group-hover:text-violet-200">Read the guide →</span>
+    </div>
+  </a>
+</li>

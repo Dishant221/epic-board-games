@@ -1,0 +1,199 @@
+/* Epic Business board: ring grid, pawn hops, card flip, mortgage stripes. */
+
+.eb-ring {
+  display: grid;
+  position: relative;
+  border-radius: 1.25rem;
+  background: linear-gradient(160deg, #0f172a, #1e1b4b 60%, #0f172a);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.6);
+  outline: 1px solid rgb(255 255 255 / 0.1);
+  overflow: hidden;
+}
+
+.eb-space {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 0.08);
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-sans);
+  line-height: 1.05;
+  text-align: center;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.15s;
+}
+.eb-space:hover,
+.eb-space:focus-visible {
+  filter: brightness(1.06);
+  z-index: 2;
+}
+.eb-space[data-side='bottom'] { flex-direction: column; }
+.eb-space[data-side='left'] { flex-direction: row-reverse; }
+.eb-space[data-side='top'] { flex-direction: column-reverse; }
+.eb-space[data-side='right'] { flex-direction: row; }
+.eb-space[data-corner='true'] {
+  flex-direction: column;
+  background: linear-gradient(145deg, #e2e8f0, #cbd5e1);
+}
+.eb-space[data-landed='true'] {
+  box-shadow: inset 0 0 0 3px var(--color-glow);
+}
+
+/* Colour band on the inner edge of a district. */
+.eb-band {
+  flex: 0 0 22%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  flex-wrap: wrap;
+  padding: 1px;
+}
+.eb-space[data-side='left'] .eb-band,
+.eb-space[data-side='right'] .eb-band {
+  flex-direction: column;
+}
+.eb-office {
+  width: 22%;
+  aspect-ratio: 1;
+  max-width: 10px;
+  border-radius: 2px;
+  background: #f8fafc;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35);
+}
+.eb-space[data-side='left'] .eb-office,
+.eb-space[data-side='right'] .eb-office {
+  width: auto;
+  height: 22%;
+  max-height: 10px;
+}
+.eb-tower {
+  width: 55%;
+  aspect-ratio: 1;
+  max-width: 14px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #fde68a, #f59e0b);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.4);
+}
+
+.eb-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  min-width: 0;
+  min-height: 0;
+  padding: 2px;
+  overflow: hidden;
+}
+.eb-name {
+  font-weight: 700;
+  font-size: 8.5px;
+  letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.eb-price {
+  font-size: 8px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* Owner stripe on the outer edge. */
+.eb-owner {
+  position: absolute;
+  background: var(--owner);
+}
+.eb-space[data-side='bottom'] .eb-owner { left: 0; right: 0; bottom: 0; height: 12%; }
+.eb-space[data-side='top'] .eb-owner { left: 0; right: 0; top: 0; height: 12%; }
+.eb-space[data-side='left'] .eb-owner { top: 0; bottom: 0; left: 0; width: 12%; }
+.eb-space[data-side='right'] .eb-owner { top: 0; bottom: 0; right: 0; width: 12%; }
+
+.eb-mortgaged::after {
+  content: 'M';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  font-size: 11px;
+  color: #7f1d1d;
+  background: repeating-linear-gradient(135deg, rgb(127 29 29 / 0.18) 0 4px, transparent 4px 9px);
+}
+
+/* Pawns slide square by square. */
+.eb-pawn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background: var(--seat);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.45), 0 0 0 2px rgb(255 255 255 / 0.85);
+  transition: left 0.22s ease-in-out, top 0.22s ease-in-out, transform 0.22s;
+  pointer-events: none;
+  z-index: 5;
+}
+.eb-pawn[data-hopping='true'] {
+  animation: eb-hop 0.22s ease-in-out;
+}
+@keyframes eb-hop {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-35%) scale(1.15); }
+}
+.eb-pawn[data-current='true'] {
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.45), 0 0 0 2px #fff, 0 0 0 5px var(--seat);
+}
+
+/* Centre */
+.eb-centre {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  padding: 3%;
+  text-align: center;
+  color: #e2e8f0;
+}
+.eb-card {
+  width: 100%;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.6rem;
+  color: #0f172a;
+  background: linear-gradient(160deg, #fff7ed, #fed7aa);
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.35);
+  transform-style: preserve-3d;
+  animation: eb-flip 0.6s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+.eb-card[data-deck='market'] {
+  background: linear-gradient(160deg, #ecfeff, #a5f3fc);
+}
+@keyframes eb-flip {
+  0% { transform: rotateY(90deg) scale(0.8); opacity: 0; }
+  60% { transform: rotateY(-12deg) scale(1.03); opacity: 1; }
+  100% { transform: rotateY(0) scale(1); }
+}
+
+/* Deed card used in the property sheet */
+.eb-deed-head {
+  border-radius: 0.75rem 0.75rem 0 0;
+  padding: 0.6rem 0.75rem;
+  color: #0f172a;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.eb-log {
+  scrollbar-width: thin;
+}
+.eb-log li + li {
+  border-top: 1px solid rgb(255 255 255 / 0.06);
+}

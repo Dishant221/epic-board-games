@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import { satteri } from '@astrojs/markdown-satteri';
+import blogImagesPlugin from './src/lib/satteri-blog-images.mjs';
 
 // Canonical origin used for SEO tags and the sitemap. Set SITE_URL in CI.
 const site = process.env.SITE_URL || 'https://epic-board-games.example.com';
@@ -31,6 +33,10 @@ export default defineConfig({
     },
   },
   integrations: [react(), sitemap({ filter: (page) => !/\/(profile|friends)$/.test(page) })],
+  // Blog posts: figure/figcaption, lazy loading and intrinsic sizes for the SVG image guides.
+  // (`@astrojs/markdown-satteri` is Astro's own default processor, hoisted by the workspace.)
+  // Shiki would inject inline styles that the strict CSP blocks; posts have no code blocks.
+  markdown: { processor: satteri({ hastPlugins: [blogImagesPlugin()] }), syntaxHighlight: false },
   vite: {
     plugins: [tailwindcss()],
     server: {

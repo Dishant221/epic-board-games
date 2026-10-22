@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Free and blocked mahjong tiles</title>
+  <desc id="d">A row of six mahjong tiles with a seventh tile resting on top of the middle two, plus a separate pair of tiles with a gap before them. Green ticks mark the tiles at each end of the rows and the tile on top as free; red crosses mark the tiles in the middle of the row and the two beneath the stacked tile as blocked.</desc>
+  <defs>
+    <pattern id="cb50" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#cbd5e1"/><rect x="50" width="50" height="50" fill="#475569"/><rect y="50" width="50" height="50" fill="#475569"/></pattern>
+    <pattern id="cb28" width="56" height="56" patternUnits="userSpaceOnUse"><rect width="56" height="56" fill="#cbd5e1"/><rect x="28" width="28" height="28" fill="#475569"/><rect y="28" width="28" height="28" fill="#475569"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/></marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker>
+  </defs>
+  <rect width="800" height="400" rx="20" fill="#17173f"/>
+  <text x="400" y="42" font-size="22" fill="#e2e8f0" text-anchor="middle" font-weight="700">Which tiles are free?</text>
+  <rect x="60" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="122" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="95" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#dc2626">一</text>
+  <rect x="130" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="192" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="165" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#1d4ed8">二</text>
+  <rect x="200" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="262" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="235" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#15803d">三</text>
+  <rect x="270" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="332" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="305" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#dc2626">四</text>
+  <rect x="340" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="402" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="375" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#1d4ed8">五</text>
+  <rect x="410" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="472" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="445" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#15803d">六</text>
+  <rect x="235" y="130" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="297" y="136" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="270" y="190" text-anchor="middle" font-size="34" font-weight="700" fill="#1e1b4b">東</text>
+  <rect x="560" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="622" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="595" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#dc2626">中</text>
+  <rect x="630" y="150" width="70" height="96" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="692" y="156" width="8" height="96" fill="#cbd5e1" opacity="0.6"/>
+  <text x="665" y="210" text-anchor="middle" font-size="34" font-weight="700" fill="#15803d">發</text>
+  <circle cx="95" cy="125" r="14" fill="#4ade80"/>
+  <path d="M88 125 l5 5 l9 -10" stroke="#0e0e2c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="165" cy="125" r="14" fill="#f43f5e"/>
+  <path d="M159 119 l12 12 M171 119 l-12 12" stroke="#0e0e2c" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="270" cy="112" r="14" fill="#4ade80"/>
+  <path d="M263 112 l5 5 l9 -10" stroke="#0e0e2c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="305" cy="268" r="14" fill="#f43f5e"/>
+  <path d="M299 262 l12 12 M311 262 l-12 12" stroke="#0e0e2c" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="375" cy="125" r="14" fill="#f43f5e"/>
+  <path d="M369 119 l12 12 M381 119 l-12 12" stroke="#0e0e2c" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="445" cy="125" r="14" fill="#4ade80"/>
+  <path d="M438 125 l5 5 l9 -10" stroke="#0e0e2c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="595" cy="125" r="14" fill="#4ade80"/>
+  <path d="M588 125 l5 5 l9 -10" stroke="#0e0e2c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="665" cy="125" r="14" fill="#4ade80"/>
+  <path d="M658 125 l5 5 l9 -10" stroke="#0e0e2c" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="300" font-size="14" fill="#4ade80" >Free (tick): nothing on top AND the left or right side is open.</text>
+  <text x="60" y="324" font-size="14" fill="#f43f5e" >Blocked (cross): a tile sits on top, or there are tiles touching both long sides.</text>
+  <text x="60" y="356" font-size="13" fill="#94a3b8" >The two tiles under 東 are also blocked because something is resting on them, even</text>
+  <text x="60" y="376" font-size="13" fill="#94a3b8" >though 三 and 四 would otherwise look like they are in the middle of the row.</text>
+
+</svg>

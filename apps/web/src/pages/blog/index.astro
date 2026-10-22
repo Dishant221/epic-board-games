@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import { BLOG_DESCRIPTION, BLOG_TITLE, getPostsByGame, getPublishedPosts, getTagCounts, postUrl, tagUrl } from '../../lib/blog';
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const posts = await getPublishedPosts();
+const byGame = await getPostsByGame();
+const tags = await getTagCounts();
+const latest = posts.slice(0, 3);
+const howTo = posts.filter((p) => p.id.startsWith('how-to-play-')).length;
+const strategy = posts.length - howTo;
+
+const title = `${BLOG_TITLE} — Rules & Strategy for Every Game | Epic Board Games`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: `Epic Board Games ${BLOG_TITLE}`,
+    url: `${site}/blog`,
+    description: BLOG_DESCRIPTION,
+    publisher: { '@type': 'Organization', name: 'Epic Board Games', url: site },
+    blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.data.title, url: `${site}${postUrl(p)}`, datePublished: p.data.pubDate.toISOString(), image: `${site}${p.data.hero}` })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: `${site}/blog` },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={BLOG_DESCRIPTION} schema={schema}>
+  <section class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 pt-12 pb-6 md:pt-20">
+      <nav aria-label="Breadcrumb" class="mb-4 text-sm text-slate-400">
+        <a href="/" class="hover:text-white">Home</a> <span aria-hidden="true">›</span> <span>Guides</span>
+      </nav>
+      <p class="mb-4 inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-semibold text-violet-200 ring-1 ring-white/10">
+        📚 {posts.length} guides · {howTo} rulebooks · {strategy} strategy articles
+      </p>
+      <h1 class="text-4xl leading-tight font-bold tracking-tight sm:text-5xl">
+        Learn the rules,{' '}
+        <span class="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-amber-200 bg-clip-text text-transparent">then win the night.</span>
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg text-slate-300">
+        Every game on Epic Board Games explained for players: complete rules, strategy that actually works, illustrated image guides and tips for hosting friends and family online.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-2" aria-label="Jump to a game">
+        {byGame.map(({ game, posts: gp }) => (
+          <a href={`#game-${game.slug}`} class="btn-ghost px-3 py-1.5 text-sm">
+            <span aria-hidden="true">{game.emoji}</span> {game.name} <span class="text-slate-400">({gp.length})</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-8" aria-labelledby="latest-title">
+    <h2 id="latest-title" class="mb-5 text-2xl font-bold">Latest guides</h2>
+    <ul class="grid grid-cols-1 gap-5 md:grid-cols-3">
+      {latest.map((post, i) => <PostCard post={post} priority={i === 0} />)}
+    </ul>
+  </section>
+
+  <div class="mx-auto grid max-w-7xl gap-10 px-4 py-8 lg:grid-cols-[1fr_280px]">
+    <div>
+      {byGame.map(({ game, posts: gp }) => (
+        <section id={`game-${game.slug}`} class="scroll-mt-20 py-6" aria-labelledby={`title-${game.slug}`}>
+          <div class="mb-4 flex flex-wrap items-end justify-between gap-2">
+            <h2 id={`title-${game.slug}`} class="text-2xl font-bold">
+              <span aria-hidden="true">{game.emoji}</span> {game.name}
+            </h2>
+            <a href={`/games/${game.slug}`} class="text-sm font-semibold text-violet-300 hover:text-violet-200">Play {game.name} →</a>
+          </div>
+          <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {gp.map((post) => <PostCard post={post} />)}
+          </ul>
+        </section>
+      ))}
+    </div>
+
+    <aside class="lg:sticky lg:top-20 lg:self-start">
+      <section class="card p-5" aria-labelledby="tags-title">
+        <h2 id="tags-title" class="text-lg font-bold">Browse by topic</h2>
+        <ul class="mt-3 flex flex-wrap gap-2">
+          {tags.map(({ tag, count }) => (
+            <li>
+              <a
+                href={tagUrl(tag)}
+                class:list={['inline-block rounded-full bg-white/5 px-3 py-1 text-slate-200 ring-1 ring-white/10 hover:bg-white/10', count >= 4 ? 'text-base font-semibold' : count >= 2 ? 'text-sm' : 'text-xs']}
+              >
+                #{tag} <span class="text-slate-500">{count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section class="card mt-5 p-5" aria-labelledby="rss-title">
+        <h2 id="rss-title" class="text-lg font-bold">Follow new guides</h2>
+        <p class="mt-2 text-sm text-slate-400">New rulebooks and strategy articles land every couple of weeks.</p>
+        <a href="/rss.xml" class="btn-ghost mt-3 w-full text-sm">📡 RSS feed</a>
+      </section>
+    </aside>
+  </div>
+</BaseLayout>
