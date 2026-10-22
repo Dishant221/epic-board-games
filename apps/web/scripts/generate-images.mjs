@@ -28,4 +28,6 @@ const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" v
 
 await sharp(Buffer.from(og)).png({ compressionLevel: 9 }).toFile(out('og-image.png'));
 await sharp(Buffer.from(icon)).png({ compressionLevel: 9 }).toFile(out('icon-512.png'));
-console.log('wrote og-image.png and icon-512.png');
+await sharp(Buffer.from(icon)).resize(192, 192).png({ compressionLevel: 9 }).toFile(out('icon-192.png'));
+await sharp(Buffer.from(icon)).resize(180, 180).png({ compressionLevel: 9 }).toFile(out('apple-touch-icon.png'));
+console.log('wrote og-image.png, icon-512.png, icon-192.png and apple-touch-icon.png');

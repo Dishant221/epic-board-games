@@ -118,12 +118,18 @@ export async function handleSignup(request: Request, env: Env): Promise<Response
   const id = crypto.randomUUID();
   const now = Date.now();
   const avatar = AVATARS[Math.floor(Math.random() * AVATARS.length)]!;
-  await env.DB.prepare(
-    `INSERT INTO users (id, username, email, display_name, avatar, password_hash, password_salt, password_iterations, created_at, updated_at, last_login_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-  )
-    .bind(id, username, email, displayName, avatar, pw.hash, pw.salt, pw.iterations, now, now, now)
-    .run();
+  try {
+    await env.DB.prepare(
+      `INSERT INTO users (id, username, email, display_name, avatar, password_hash, password_salt, password_iterations, created_at, updated_at, last_login_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    )
+      .bind(id, username, email, displayName, avatar, pw.hash, pw.salt, pw.iterations, now, now, now)
+      .run();
+  } catch (err) {
+    // Two signups raced for the same name: the UNIQUE constraint wins the tie.
+    if (/UNIQUE/i.test(String(err))) throw new HttpError(409, 'That username or email is already registered', 'taken');
+    throw err;
+  }
   await audit(env, request, 'signup', id);
 
   const token = await createSession(env, request, id);

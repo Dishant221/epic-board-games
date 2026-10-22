@@ -59,6 +59,10 @@ export default function FriendsPage() {
   const incoming = friends.filter((f) => f.status === 'pending_incoming');
   const outgoing = friends.filter((f) => f.status === 'pending_outgoing');
   const accepted = friends.filter((f) => f.status === 'accepted');
+  const blocked = friends.filter((f) => f.status === 'blocked');
+  const block = (u: PublicUser) =>
+    confirm(`Block ${u.displayName}? They won't be able to find you or send requests.`) &&
+    void run(() => api('/api/friends/block', { body: { userId: u.id } }), `Blocked ${u.displayName}`);
 
   return (
     <div className="space-y-6">
@@ -82,6 +86,7 @@ export default function FriendsPage() {
                 <span className="text-xl" aria-hidden="true">{u.avatar}</span>
                 <span className="flex-1"><span className="font-semibold">{u.displayName}</span> <span className="text-sm text-slate-400">@{u.username}</span></span>
                 <button type="button" className="btn-ghost px-3 py-1 text-sm" onClick={() => void run(() => api('/api/friends/request', { body: { username: u.username, relation } }), 'Request sent')}>Add</button>
+                <button type="button" className="btn-ghost px-2 py-1 text-sm text-slate-400" aria-label={`Block ${u.displayName}`} title="Block" onClick={() => block(u)}>🚫</button>
               </li>
             ))}
           </ul>
@@ -98,6 +103,7 @@ export default function FriendsPage() {
                 <span className="flex-1 font-semibold">{f.user.displayName} <span className="text-xs font-normal text-slate-400">wants to be your {f.relation}</span></span>
                 <button type="button" className="btn-primary px-3 py-1 text-sm" onClick={() => void run(() => api('/api/friends/respond', { body: { userId: f.user.id, accept: true } }), 'Accepted')}>Accept</button>
                 <button type="button" className="btn-ghost px-3 py-1 text-sm" onClick={() => void run(() => api('/api/friends/respond', { body: { userId: f.user.id, accept: false } }), 'Declined')}>Decline</button>
+                <button type="button" className="btn-ghost px-2 py-1 text-sm text-slate-400" aria-label={`Block ${f.user.displayName}`} title="Block" onClick={() => block(f.user)}>🚫</button>
               </li>
             ))}
           </ul>
@@ -128,11 +134,28 @@ export default function FriendsPage() {
               </span>
               <button type="button" className="btn-primary px-3 py-1 text-sm" onClick={() => void ping(f.user.id)}>🔔 Ping</button>
               <button type="button" className="btn-ghost px-2 py-1 text-sm" aria-label={`Remove ${f.user.displayName}`} onClick={() => confirm(`Remove ${f.user.displayName}?`) && void run(() => api(`/api/friends/${encodeURIComponent(f.user.id)}`, { method: 'DELETE' }), 'Removed')}>✕</button>
+              <button type="button" className="btn-ghost px-2 py-1 text-sm text-slate-400" aria-label={`Block ${f.user.displayName}`} title="Block" onClick={() => block(f.user)}>🚫</button>
             </li>
           ))}
         </ul>
         {outgoing.length > 0 && <p className="mt-3 text-xs text-slate-500">Pending: {outgoing.map((f) => f.user.displayName).join(', ')}</p>}
       </section>
+
+      {blocked.length > 0 && (
+        <section className="card p-5">
+          <h2 className="font-display text-xl font-semibold">Blocked</h2>
+          <p className="mt-1 text-xs text-slate-500">Blocked people can't find you in search or send you requests or pings.</p>
+          <ul className="mt-2 divide-y divide-white/5">
+            {blocked.map((f) => (
+              <li key={f.user.id} className="flex items-center gap-3 py-2">
+                <span className="text-xl opacity-60" aria-hidden="true">{f.user.avatar}</span>
+                <span className="flex-1 text-slate-300">{f.user.displayName} <span className="text-xs text-slate-500">@{f.user.username}</span></span>
+                <button type="button" className="btn-ghost px-3 py-1 text-sm" onClick={() => void run(() => api(`/api/friends/block/${encodeURIComponent(f.user.id)}`, { method: 'DELETE' }), 'Unblocked')}>Unblock</button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
   );
 }

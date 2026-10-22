@@ -37,9 +37,35 @@ export interface MeResponse {
 
 export interface FriendEntry {
   user: PublicUser;
-  status: 'pending_incoming' | 'pending_outgoing' | 'accepted';
+  /** `blocked` entries are only ever shown to the person who blocked. */
+  status: 'pending_incoming' | 'pending_outgoing' | 'accepted' | 'blocked';
   relation: 'friend' | 'family';
   online: boolean;
+}
+
+export interface ProfileStats {
+  played: number;
+  wins: number;
+  games: { gameId: GameId; played: number; wins: number }[];
+  recent: { gameId: GameId; mode: 'matchmaking' | 'ai' | 'private'; endedAt: number; result: 'win' | 'loss' | 'draw' | 'forfeit'; opponents: string }[];
+}
+
+export interface ProfileResponse {
+  user: PublicUser;
+  stats: ProfileStats;
+}
+
+export interface LeaderboardEntry {
+  rank: number;
+  user: PublicUser;
+  wins: number;
+  played: number;
+}
+
+export interface LeaderboardResponse {
+  game: GameId | null;
+  period: 'month' | 'all';
+  entries: LeaderboardEntry[];
 }
 
 export interface Notification {

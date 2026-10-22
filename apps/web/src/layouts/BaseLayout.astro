@@ -22,9 +22,13 @@ const siteName = 'Epic Board Games';
 const nav = [
   { href: '/', label: 'Home', icon: '🏠' },
   { href: '/#games', label: 'Games', icon: '🎮' },
+  { href: '/blog', label: 'Guides', icon: '📖' },
   { href: '/friends', label: 'Friends', icon: '👥' },
   { href: '/profile', label: 'Profile', icon: '👤' },
 ];
+
+// `<` could otherwise close the script tag if it ever appeared in content.
+const jsonLd = (s: Record<string, unknown>) => JSON.stringify(s).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
@@ -35,12 +39,15 @@ const nav = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
+    <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#07071a" />
     <meta name="color-scheme" content="dark" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Epic Board Games guides" href="/rss.xml" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={siteName} />
@@ -53,7 +60,7 @@ const nav = [
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+    {schema.map((s) => <script type="application/ld+json" set:html={jsonLd(s)} />)}
   </head>
   <body class:list={['min-h-dvh', immersive && 'overflow-x-hidden']}>
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] btn-primary">Skip to content</a>
@@ -85,6 +92,7 @@ const nav = [
         <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Epic Board Games. Free multiplayer board games in your browser.</p>
           <ul class="flex flex-wrap gap-4">
+            <li><a class="hover:text-white" href="/blog">Guides</a></li>
             <li><a class="hover:text-white" href="/privacy">Privacy</a></li>
             <li><a class="hover:text-white" href="/terms">Terms</a></li>
             <li><a class="hover:text-white" href="/#faq">FAQ</a></li>
@@ -95,7 +103,7 @@ const nav = [
 
     {!immersive && (
       <nav class="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink-950/90 pb-[env(safe-area-inset-bottom)] backdrop-blur-lg md:hidden" aria-label="Bottom">
-        <ul class="grid grid-cols-4">
+        <ul class="grid grid-cols-5">
           {nav.map((item) => (
             <li>
               <a href={item.href} class="flex flex-col items-center gap-0.5 py-2 text-[11px] text-slate-300">

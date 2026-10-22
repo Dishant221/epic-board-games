@@ -12,7 +12,8 @@ const faq = [
   { q: 'How does online matchmaking work?', a: 'Pick a game and choose Online Multiplayer. We match you with other players looking for the same game. The game starts as soon as the room is full, or after 60 seconds if at least two players have joined.' },
   { q: 'Can I play against the computer?', a: 'Yes. Most games have AI opponents with four difficulty levels: Buddy (easy), Nova (medium), Titan (hard) and the Oracle, who never makes a mistake.' },
   { q: 'Can I play with my family and friends?', a: 'Add friends and family to your profile, then create a private room and ping them to join. You can chat and use voice chat while you play.' },
-  { q: 'Does it work on phones and tablets?', a: 'Yes. Every game adapts to phones, tablets, laptops and large desktop screens, with touch controls on mobile.' },
+  { q: 'Does it work on phones and tablets?', a: 'Yes. Every game adapts to phones, tablets, laptops and large desktop screens, with touch controls on mobile. Tap the fullscreen button (or press F) for a distraction-free board.' },
+  { q: 'Is my data safe, and can I delete my account?', a: 'Yes. Passwords are hashed, the only cookie is your session, there are no ad trackers, and you can export or delete your account at any time from your profile.' },
 ];
 
 const schema = [
@@ -53,7 +54,7 @@ const schema = [
           <span class="bg-gradient-to-r from-violet-300 via-fuchsia-300 to-amber-200 bg-clip-text text-transparent">anywhere.</span>
         </h1>
         <p class="mt-5 max-w-xl text-lg text-slate-300">
-          Roll the dice with friends, family or players around the world. Twelve beautifully animated games, instant matchmaking and AI rivals that range from friendly to flawless.
+          Roll the dice with friends, family or players around the world. Twelve beautifully animated games — from a living 3D Snakes &amp; Ladders board to full-rules Chess — with instant matchmaking, AI rivals from friendly to flawless, and guides to help you win.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="/games/snakes-and-ladders" class="btn-primary px-6 py-3 text-base">🎲 Play Snakes &amp; Ladders</a>
@@ -82,7 +83,7 @@ const schema = [
   <section id="games" class="mx-auto max-w-7xl scroll-mt-20 px-4 py-10" aria-labelledby="games-title">
     <div class="mb-6 flex items-end justify-between">
       <h2 id="games-title" class="text-3xl font-bold">Choose your game</h2>
-      <p class="text-sm text-slate-400">{playable.length} playable now · more coming</p>
+      <p class="text-sm text-slate-400">{playable.length} games · all free · no download</p>
     </div>
     <ul class="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {sorted.map((game, i) => <GameCard game={game} index={i} />)}
@@ -98,6 +99,10 @@ const schema = [
           ['🤖', 'Four AI personas', 'Buddy, Nova, Titan and the Oracle — from casual to perfect play.'],
           ['🎙️', 'Voice & text chat', 'Talk while you play, or fire off quick emotes. Safe chat filters built in.'],
           ['👪', 'Friends & family', 'Add the people you play with, see who is online and ping them to join.'],
+          ['📖', 'Guides & strategy', 'Learn every game with illustrated how-to-play guides and strategy articles.'],
+          ['🏆', 'Leaderboards & stats', 'Track wins per game and climb the monthly leaderboard against real players.'],
+          ['⛶', 'Fullscreen & mobile', 'Every board fits your screen — phone, tablet or 4K — with a one-tap fullscreen mode.'],
+          ['🔒', 'Private by design', 'No ad trackers, hashed passwords, export or delete your data whenever you like.'],
         ].map(([icon, title, text]) => (
           <li class="card p-5">
             <span class="text-3xl" aria-hidden="true">{icon}</span>
