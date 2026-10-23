@@ -31,6 +31,7 @@ can edit one area without touching the rest.
 | 6 | [analytics-seo.md](./analytics-seo.md) | Google Search Console + Google Analytics 4 setup, sitemaps, and SEO that's already built in. |
 | 7 | [backup-recovery.md](./backup-recovery.md) | Back up the database, restore it, roll back a bad deploy, and a step-by-step "the site is down" runbook. |
 | 8 | [security.md](./security.md) | Every security control already implemented, why, and a prioritised list of how to harden further. |
+| 9 | [contactus.md](./contactus.md) | How the Contact us form works, where messages are stored, how to read/manage them, and every setting to configure. |
 
 ## Related docs already in the repo
 
