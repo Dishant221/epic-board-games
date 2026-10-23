@@ -23,6 +23,16 @@
 /wasm/*.wasm
   Content-Type: application/wasm
 
+# Puzzle artwork and blog diagrams change rarely.
+/puzzles/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+/blog/*.svg
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+/blog/heroes/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+/.well-known/*
+  Cache-Control: public, max-age=86400
+
 /*.svg
   Cache-Control: public, max-age=86400
 /*.png

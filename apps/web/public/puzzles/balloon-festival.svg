@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Balloon festival: colourful hot-air balloons drifting over a patchwork valley with a river, a village and a warm morning sun">
+<defs>
+<linearGradient id="bf-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fd6"/><stop offset="0.5" stop-color="#60a5fa"/><stop offset="0.85" stop-color="#bfe0ff"/><stop offset="1" stop-color="#fde68a"/></linearGradient>
+<radialGradient id="bf-sun" cx="0.4" cy="0.4" r="0.7"><stop offset="0" stop-color="#fef9c3"/><stop offset="0.6" stop-color="#fde047"/><stop offset="1" stop-color="#facc15"/></radialGradient>
+<radialGradient id="bf-glow"><stop offset="0" stop-color="#fde68a" stop-opacity="0.75"/><stop offset="1" stop-color="#fde68a" stop-opacity="0"/></radialGradient>
+<linearGradient id="bf-shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0.38"/><stop offset="0.4" stop-color="#fff" stop-opacity="0"/><stop offset="0.68" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="0.32"/></linearGradient>
+<linearGradient id="bf-river" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#93c5fd"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+<linearGradient id="bf-farhill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b7e4b0"/><stop offset="1" stop-color="#7fcc86"/></linearGradient>
+<linearGradient id="bf-midhill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fd98a"/><stop offset="1" stop-color="#34c468"/></linearGradient>
+<pattern id="bf-wicker" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#d97706"/><path d="M0,4 H8 M4,0 V8" stroke="#b45309" stroke-width="1.5"/></pattern>
+<pattern id="bf-furrow" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(-20)"><rect width="16" height="16" fill="#a3e635"/><rect width="16" height="5" fill="#65a30d"/></pattern>
+<path id="bf-env" d="M0,-100 C60,-100 100,-55 100,0 C100,60 40,110 15,150 L-15,150 C-40,110 -100,60 -100,0 C-100,-55 -60,-100 0,-100 Z"/>
+<clipPath id="bf-clip"><use href="#bf-env"/></clipPath>
+<g id="bf-basket">
+<path d="M-15,150 L-23,190 M-5,150 L-8,190 M5,150 L8,190 M15,150 L23,190" stroke="#7c3f12" stroke-width="2.5" fill="none"/>
+<path d="M-17,188 L-28,172" stroke="#f8c9a0" stroke-width="3.5" stroke-linecap="round"/><circle cx="-28" cy="171" r="3" fill="#f8c9a0"/>
+<path d="M17,188 L28,174" stroke="#a0613a" stroke-width="3.5" stroke-linecap="round"/><circle cx="28" cy="173" r="3" fill="#a0613a"/>
+<circle cx="-11" cy="183" r="8" fill="#f8c9a0" stroke="#3b1d2e" stroke-width="2"/>
+<circle cx="11" cy="184" r="8" fill="#a0613a" stroke="#3b1d2e" stroke-width="2"/>
+<path d="M-19,179 Q-11,171 -3,179" fill="#7c2d12"/><path d="M3,180 Q11,172 19,180" fill="#1f1f1f"/>
+<circle cx="-14" cy="183" r="1.3" fill="#3b1d2e"/><circle cx="-8" cy="183" r="1.3" fill="#3b1d2e"/><circle cx="8" cy="184" r="1.3" fill="#3b1d2e"/><circle cx="14" cy="184" r="1.3" fill="#3b1d2e"/>
+<path d="M-14,186 Q-11,189 -8,186 M8,187 Q11,190 14,187" stroke="#3b1d2e" stroke-width="1.2" fill="none"/>
+<rect x="-26" y="188" width="52" height="38" rx="6" fill="url(#bf-wicker)" stroke="#4a2511" stroke-width="3"/>
+<rect x="-28" y="186" width="56" height="8" rx="3" fill="#92400e" stroke="#4a2511" stroke-width="2"/>
+</g>
+<g id="bf-top">
+<use href="#bf-env" fill="url(#bf-shade)"/>
+<ellipse cx="-50" cy="-35" rx="12" ry="32" transform="rotate(18 -50 -35)" fill="#fff" opacity="0.55"/>
+<use href="#bf-env" fill="none" stroke="#3b1d2e" stroke-width="6" stroke-linejoin="round"/>
+</g>
+<g id="bf-cloud">
+<ellipse cx="2" cy="16" rx="74" ry="22" fill="#c7dcf7"/>
+<circle cx="-38" cy="-6" r="30" fill="#fff"/><circle cx="4" cy="-22" r="40" fill="#fff"/><circle cx="48" cy="-4" r="30" fill="#fff"/>
+<ellipse cx="0" cy="4" rx="76" ry="24" fill="#fff"/>
+</g>
+<g id="bf-tree">
+<rect x="-5" y="-32" width="10" height="34" rx="2" fill="#92400e" stroke="#3b1d2e" stroke-width="2.5"/>
+<circle cx="0" cy="-52" r="28" fill="#15803d" stroke="#14532d" stroke-width="3"/>
+<circle cx="-9" cy="-60" r="15" fill="#22c55e"/>
+<circle cx="8" cy="-48" r="8" fill="#4ade80" opacity="0.7"/>
+</g>
+<g id="bf-houseA" stroke="#3f2a1a" stroke-width="3" stroke-linejoin="round">
+<rect x="-28" y="-52" width="56" height="52"/>
+<polygon points="-36,-52 0,-86 36,-52" fill="#dc2626"/>
+<rect x="12" y="-80" width="9" height="16" fill="#78350f"/>
+<rect x="-9" y="-26" width="18" height="26" fill="#92400e"/>
+<rect x="-22" y="-44" width="13" height="12" fill="#fef3c7"/><rect x="9" y="-44" width="13" height="12" fill="#fef3c7"/>
+</g>
+<g id="bf-houseB" stroke="#3f2a1a" stroke-width="3" stroke-linejoin="round">
+<rect x="-28" y="-52" width="56" height="52"/>
+<polygon points="-36,-52 0,-86 36,-52" fill="#2563eb"/>
+<rect x="-20" y="-80" width="9" height="16" fill="#78350f"/>
+<rect x="-9" y="-26" width="18" height="26" fill="#78350f"/>
+<circle cx="0" cy="-40" r="7" fill="#fef3c7"/>
+</g>
+<g id="bf-tent" stroke="#3b1d2e" stroke-width="3" stroke-linejoin="round">
+<polygon points="-34,0 0,-44 34,0"/>
+<polygon points="-11,0 0,-44 11,0" fill="#fff"/>
+<polygon points="-7,0 0,-14 7,0" fill="#3b1d2e"/>
+<line x1="0" y1="-44" x2="0" y2="-56"/><polygon points="0,-56 13,-52 0,-47" fill="#f43f5e"/>
+</g>
+<g id="bf-person" stroke="#3b1d2e" stroke-width="2">
+<rect x="-4" y="-14" width="8" height="14" rx="3"/>
+<circle cx="0" cy="-19" r="5" fill="#f8c9a0"/>
+</g>
+<polygon id="bf-ray" points="-9,-66 9,-66 0,-108" fill="#fde047" opacity="0.85"/>
+</defs>
+<rect width="1200" height="800" fill="url(#bf-sky)"/>
+<g transform="translate(1060,110)">
+<circle r="150" fill="url(#bf-glow)"/>
+<use href="#bf-ray"/><use href="#bf-ray" transform="rotate(30)"/><use href="#bf-ray" transform="rotate(60)"/><use href="#bf-ray" transform="rotate(90)"/><use href="#bf-ray" transform="rotate(120)"/><use href="#bf-ray" transform="rotate(150)"/><use href="#bf-ray" transform="rotate(180)"/><use href="#bf-ray" transform="rotate(210)"/><use href="#bf-ray" transform="rotate(240)"/><use href="#bf-ray" transform="rotate(270)"/><use href="#bf-ray" transform="rotate(300)"/><use href="#bf-ray" transform="rotate(330)"/>
+<circle r="58" fill="url(#bf-sun)" stroke="#f59e0b" stroke-width="4"/>
+<path d="M-30,-30 A42,42 0 0 1 10,-42" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity="0.8"/>
+</g>
+<use href="#bf-cloud" transform="translate(130,170) scale(1.1)"/>
+<use href="#bf-cloud" transform="translate(560,70) scale(0.8)"/>
+<use href="#bf-cloud" transform="translate(830,195) scale(0.9)"/>
+<use href="#bf-cloud" transform="translate(330,340) scale(0.9)"/>
+<use href="#bf-cloud" transform="translate(960,420) scale(0.6)"/>
+<use href="#bf-cloud" transform="translate(660,470) scale(0.7)"/>
+<use href="#bf-cloud" transform="translate(70,290) scale(0.65)"/>
+<use href="#bf-cloud" transform="translate(1130,470) scale(0.5)"/>
+<path d="M150,95 q8,-10 16,0 q8,-10 16,0 M190,78 q7,-9 14,0 q7,-9 14,0 M640,45 q8,-10 16,0 q8,-10 16,0 M1000,242 q7,-9 14,0 q7,-9 14,0" fill="none" stroke="#1e3a5f" stroke-width="3" stroke-linecap="round"/>
+<path d="M0,530 C150,470 250,500 380,505 C520,510 600,470 720,500 C840,530 950,480 1060,505 C1130,520 1170,500 1200,495 L1200,600 L0,600Z" fill="#9dc4f5"/>
+<path d="M0,548 C100,505 220,495 330,530 C430,560 520,505 640,520 C760,535 860,495 980,525 C1080,548 1150,515 1200,510 L1200,640 L0,640Z" fill="url(#bf-farhill)"/>
+<path d="M0,590 C150,555 300,575 450,590 C600,605 750,560 900,575 C1050,590 1150,570 1200,580 L1200,800 L0,800Z" fill="url(#bf-midhill)"/>
+<g stroke="#15803d" stroke-width="2.5" stroke-linejoin="round">
+<polygon points="0,625 215,608 255,705 0,722" fill="#facc15"/>
+<polygon points="0,722 255,705 290,800 0,800" fill="url(#bf-furrow)"/>
+<polygon points="215,608 470,598 500,700 255,705" fill="#86efac"/>
+<polygon points="255,705 500,700 480,800 290,800" fill="#22c55e"/>
+<polygon points="720,605 920,598 960,690 760,700" fill="#a3e635"/>
+<polygon points="920,598 1200,606 1200,698 960,690" fill="#fde047"/>
+<polygon points="760,700 960,690 990,800 740,800" fill="url(#bf-furrow)"/>
+<polygon points="960,690 1200,698 1200,800 990,800" fill="#bef264"/>
+</g>
+<path d="M30,640 q10,-14 20,0 M70,660 q10,-14 20,0 M120,635 q10,-14 20,0 M160,672 q10,-14 20,0 M60,700 q10,-14 20,0 M1000,640 q10,-14 20,0 M1060,665 q10,-14 20,0 M1120,635 q10,-14 20,0 M1160,680 q10,-14 20,0" fill="none" stroke="#ca8a04" stroke-width="3" stroke-linecap="round"/>
+<path d="M612,600 C590,630 690,650 665,690 C640,730 545,745 560,800 L640,800 C635,750 725,735 735,690 C745,640 655,625 665,600 Z" fill="url(#bf-river)" stroke="#1d4ed8" stroke-width="3"/>
+<path d="M640,625 q10,8 20,0 M690,688 q10,8 20,0 M632,745 q10,8 20,0 M612,776 q10,8 20,0 M655,660 q8,6 16,0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+<path d="M500,690 C560,712 600,720 628,718 M738,718 C800,712 880,700 960,695" fill="none" stroke="#e9d5a1" stroke-width="10" stroke-linecap="round"/>
+<path d="M628,726 L628,710 Q682,678 738,710 L738,726 Z" fill="#b45309" stroke="#4a2511" stroke-width="3" stroke-linejoin="round"/>
+<path d="M632,708 L632,694 M652,698 L652,684 M682,692 L682,678 M712,698 L712,684 M734,708 L734,694 M628,694 Q682,664 738,694" fill="none" stroke="#4a2511" stroke-width="3" stroke-linecap="round"/>
+<g transform="translate(280,668)" stroke="#3f2a1a" stroke-width="3" stroke-linejoin="round">
+<rect x="-30" y="-50" width="60" height="50" fill="#fef3c7"/>
+<polygon points="-36,-50 0,-74 36,-50" fill="#dc2626"/>
+<rect x="-52" y="-92" width="26" height="92" fill="#fde68a"/>
+<polygon points="-56,-92 -39,-134 -22,-92" fill="#dc2626"/>
+<path d="M-39,-134 L-39,-146 M-45,-141 L-33,-141" stroke-width="3"/>
+<rect x="-44" y="-82" width="10" height="16" rx="5" fill="#60a5fa"/>
+<path d="M-9,0 L-9,-24 A9,9 0 0 1 9,-24 L9,0 Z" fill="#92400e"/>
+<circle cx="8" cy="-36" r="7" fill="#60a5fa"/>
+</g>
+<use href="#bf-houseA" transform="translate(345,675) scale(0.9)" fill="#fde68a"/>
+<use href="#bf-houseB" transform="translate(405,668) scale(0.85)" fill="#fecdd3"/>
+<use href="#bf-houseA" transform="translate(458,686) scale(0.95)" fill="#bfdbfe"/>
+<use href="#bf-houseB" transform="translate(195,640) scale(0.7)" fill="#fff7ed"/>
+<use href="#bf-tree" transform="translate(40,640) scale(0.8)"/>
+<use href="#bf-tree" transform="translate(570,635) scale(0.6)"/>
+<use href="#bf-tree" transform="translate(800,620) scale(0.6)"/>
+<use href="#bf-tree" transform="translate(1040,615) scale(0.55)"/>
+<use href="#bf-tree" transform="translate(160,700) scale(1.05)"/>
+<use href="#bf-tree" transform="translate(520,715) scale(0.9)"/>
+<use href="#bf-tree" transform="translate(1140,675) scale(0.8)"/>
+<use href="#bf-tree" transform="translate(860,735) scale(0.95)"/>
+<use href="#bf-tree" transform="translate(380,765) scale(1)"/>
+<use href="#bf-tree" transform="translate(100,775) scale(1.2)"/>
+<use href="#bf-tree" transform="translate(690,775) scale(1.1)"/>
+<use href="#bf-tree" transform="translate(935,765) scale(0.9)"/>
+<use href="#bf-tree" transform="translate(1175,760) scale(1)"/>
+<use href="#bf-tent" transform="translate(1060,775)" fill="#f43f5e"/>
+<use href="#bf-tent" transform="translate(1120,765) scale(0.85)" fill="#60a5fa"/>
+<use href="#bf-tent" transform="translate(1165,792) scale(0.7)" fill="#facc15"/>
+<use href="#bf-tent" transform="translate(1020,792) scale(0.6)" fill="#22c55e"/>
+<use href="#bf-person" transform="translate(1092,798)" fill="#f43f5e"/>
+<use href="#bf-person" transform="translate(1104,797)" fill="#60a5fa"/>
+<use href="#bf-person" transform="translate(1140,796)" fill="#facc15"/>
+<use href="#bf-person" transform="translate(1000,796)" fill="#a855f7"/>
+<g transform="translate(340,470) scale(0.18)"><use href="#bf-basket"/><use href="#bf-env" fill="#f43f5e"/><use href="#bf-top"/></g>
+<g transform="translate(820,430) scale(0.15)"><use href="#bf-basket"/><use href="#bf-env" fill="#facc15"/><use href="#bf-top"/></g>
+<g transform="translate(700,470) scale(0.25)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#8b5cf6"/>
+<g clip-path="url(#bf-clip)"><circle cx="-40" cy="-40" r="14" fill="#fff"/><circle cx="30" cy="-55" r="14" fill="#fff"/><circle cx="0" cy="10" r="14" fill="#fff"/><circle cx="-55" cy="30" r="14" fill="#fff"/><circle cx="55" cy="25" r="14" fill="#fff"/><circle cx="0" cy="90" r="14" fill="#fff"/></g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(520,425) scale(0.3)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#14b8a6"/>
+<g clip-path="url(#bf-clip)"><rect x="-110" y="-30" width="220" height="40" fill="#fff"/><rect x="-110" y="40" width="220" height="40" fill="#facc15"/></g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(990,470) scale(0.45)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#f43f5e"/>
+<g clip-path="url(#bf-clip)"><rect x="-110" y="-60" width="220" height="40" fill="#fb923c"/><rect x="-110" y="-20" width="220" height="40" fill="#facc15"/><rect x="-110" y="20" width="220" height="40" fill="#22c55e"/><rect x="-110" y="60" width="220" height="40" fill="#60a5fa"/><rect x="-110" y="100" width="220" height="60" fill="#8b5cf6"/></g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(110,430) scale(0.42)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#fb923c"/>
+<g clip-path="url(#bf-clip)"><path d="M0,-100 Q-200,20 0,150 Q-130,20 0,-100Z M0,-100 Q-65,20 0,150 Q0,20 0,-100Z M0,-100 Q65,20 0,150 Q130,20 0,-100Z" fill="#fff"/></g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(1100,330) scale(0.65)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#22c55e"/>
+<g clip-path="url(#bf-clip)">
+<polygon points="-110,-30 -80,-60 -50,-30 -20,-60 10,-30 40,-60 70,-30 100,-60 130,-30 130,10 100,-20 70,10 40,-20 10,10 -20,-20 -50,10 -80,-20 -110,10" fill="#fff"/>
+<polygon points="-110,50 -80,20 -50,50 -20,20 10,50 40,20 70,50 100,20 130,50 130,90 100,60 70,90 40,60 10,90 -20,60 -50,90 -80,60 -110,90" fill="#facc15"/>
+</g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(760,95) scale(0.45)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#f472b6"/>
+<g clip-path="url(#bf-clip)"><rect x="-110" y="-70" width="220" height="30" fill="#fff"/><rect x="-110" y="-10" width="220" height="30" fill="#a855f7"/><rect x="-110" y="50" width="220" height="30" fill="#fff"/><rect x="-110" y="110" width="220" height="30" fill="#a855f7"/></g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(430,125) scale(0.6)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#fde047"/>
+<ellipse cx="-34" cy="-25" rx="13" ry="19" fill="#3b1d2e"/><ellipse cx="34" cy="-25" rx="13" ry="19" fill="#3b1d2e"/>
+<circle cx="-29" cy="-32" r="5" fill="#fff"/><circle cx="39" cy="-32" r="5" fill="#fff"/>
+<path d="M-48,15 Q0,78 48,15" stroke="#3b1d2e" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path d="M-26,38 Q0,60 26,38 Q0,48 -26,38Z" fill="#f43f5e"/>
+<circle cx="-62" cy="5" r="13" fill="#fb7185" opacity="0.7"/><circle cx="62" cy="5" r="13" fill="#fb7185" opacity="0.7"/>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(880,265) scale(0.95)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#60a5fa"/>
+<g clip-path="url(#bf-clip)">
+<circle cx="-60" cy="-50" r="13" fill="#fff"/><circle cx="0" cy="-75" r="13" fill="#facc15"/><circle cx="60" cy="-50" r="13" fill="#fff"/>
+<circle cx="-85" cy="5" r="13" fill="#facc15"/><circle cx="-30" cy="-10" r="13" fill="#fff"/><circle cx="30" cy="-10" r="13" fill="#facc15"/><circle cx="85" cy="5" r="13" fill="#fff"/>
+<circle cx="-60" cy="50" r="13" fill="#fff"/><circle cx="0" cy="40" r="13" fill="#facc15"/><circle cx="60" cy="50" r="13" fill="#fff"/>
+<circle cx="-30" cy="100" r="13" fill="#facc15"/><circle cx="30" cy="100" r="13" fill="#fff"/><circle cx="0" cy="140" r="11" fill="#facc15"/>
+</g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(600,210)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#facc15"/>
+<g clip-path="url(#bf-clip)" fill="none" stroke="#3b82f6" stroke-width="20" stroke-linejoin="round">
+<path d="M-120,-75 L0,-35 L120,-75"/><path d="M-120,-15 L0,25 L120,-15"/><path d="M-120,45 L0,85 L120,45"/><path d="M-120,105 L0,145 L120,105"/>
+</g>
+<use href="#bf-top"/>
+</g>
+<g transform="translate(240,250) scale(1.1)">
+<use href="#bf-basket"/><use href="#bf-env" fill="#f43f5e"/>
+<g clip-path="url(#bf-clip)"><path d="M0,-100 Q-200,20 0,150 Q-130,20 0,-100Z M0,-100 Q-65,20 0,150 Q0,20 0,-100Z M0,-100 Q65,20 0,150 Q130,20 0,-100Z" fill="#fff"/><circle cx="0" cy="20" r="26" fill="#facc15" stroke="#3b1d2e" stroke-width="4"/><polygon points="0,2 5,14 18,15 8,23 11,36 0,29 -11,36 -8,23 -18,15 -5,14" fill="#f43f5e"/></g>
+<use href="#bf-top"/>
+</g>
+</svg>

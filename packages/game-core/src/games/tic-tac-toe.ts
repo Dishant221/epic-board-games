@@ -58,4 +58,13 @@ export const ticTacToe: GameEngine<TicTacToeState, TicTacToeMove> = {
     return typeof cell === 'number' && Number.isInteger(cell) && cell >= 0 && cell < 9 ? { cell } : null;
   },
   sameMove: (a, b) => a.cell === b.cell,
+  ai: {
+    // Full-depth search is perfect play; shallow depths make the lower levels beatable.
+    depth: { easy: 1, medium: 2, hard: 9, impossible: 9 },
+    evaluate(s, seat) {
+      if (s.winner === null || s.winner === DRAW) return 0;
+      // Prefer faster wins and slower losses.
+      return s.winner === seat ? 10 - s.moves : s.moves - 10;
+    },
+  },
 };

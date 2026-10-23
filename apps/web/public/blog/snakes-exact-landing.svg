@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">You must land exactly on 100</title>
+  <desc id="d">Two examples of a pawn on square 97. Rolling a 5 would overshoot 100, so the pawn stays on 97. Rolling a 3 lands exactly on 100 and wins the game.</desc>
+  <rect width="800" height="380" rx="20" fill="#17173f"/>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">Overshooting the finish does nothing: only an exact roll wins</text>
+
+  <!-- Top row: roll 5 overshoots -->
+  <g font-size="14" fill="#94a3b8" text-anchor="middle">
+    <rect x="60" y="120" width="60" height="60" fill="#0e0e2c" stroke="#34347a"/><text x="90" y="156">96</text>
+    <rect x="120" y="120" width="60" height="60" fill="#23235a" stroke="#34347a"/><text x="150" y="156" fill="#e2e8f0" font-weight="700">97</text>
+    <rect x="180" y="120" width="60" height="60" fill="#0e0e2c" stroke="#34347a"/><text x="210" y="156">98</text>
+    <rect x="240" y="120" width="60" height="60" fill="#23235a" stroke="#34347a"/><text x="270" y="156">99</text>
+    <rect x="300" y="120" width="60" height="60" fill="#4ade80" stroke="#34347a"/><text x="330" y="156" fill="#07071a" font-weight="700">100</text>
+    <rect x="360" y="120" width="60" height="60" fill="none" stroke="#f43f5e" stroke-dasharray="5 4"/><text x="390" y="156" fill="#f43f5e">101?</text>
+    <rect x="420" y="120" width="60" height="60" fill="none" stroke="#f43f5e" stroke-dasharray="5 4"/><text x="450" y="156" fill="#f43f5e">102?</text>
+  </g>
+  <circle cx="150" cy="136" r="12" fill="#f43f5e"/>
+  <path d="M150 116 Q 300 60 450 116" fill="none" stroke="#f43f5e" stroke-width="3" stroke-dasharray="6 5"/>
+  <text x="300" y="78" text-anchor="middle" font-size="13" fill="#f43f5e">needs 5 squares, only 3 remain</text>
+  <rect x="520" y="126" width="48" height="48" rx="8" fill="#e2e8f0"/>
+  <g fill="#17173f"><circle cx="532" cy="138" r="4"/><circle cx="556" cy="138" r="4"/><circle cx="544" cy="150" r="4"/><circle cx="532" cy="162" r="4"/><circle cx="556" cy="162" r="4"/></g>
+  <text x="590" y="144" font-size="16" font-weight="700" fill="#f43f5e">Roll 5: too many</text>
+  <text x="590" y="166" font-size="13" fill="#cbd5e1">Pawn stays on 97. Turn over.</text>
+
+  <!-- Bottom row: roll 3 wins -->
+  <g font-size="14" fill="#94a3b8" text-anchor="middle">
+    <rect x="60" y="250" width="60" height="60" fill="#0e0e2c" stroke="#34347a"/><text x="90" y="286">96</text>
+    <rect x="120" y="250" width="60" height="60" fill="#23235a" stroke="#34347a"/><text x="150" y="286" fill="#e2e8f0" font-weight="700">97</text>
+    <rect x="180" y="250" width="60" height="60" fill="#0e0e2c" stroke="#34347a"/><text x="210" y="286">98</text>
+    <rect x="240" y="250" width="60" height="60" fill="#23235a" stroke="#34347a"/><text x="270" y="286">99</text>
+    <rect x="300" y="250" width="60" height="60" fill="#4ade80" stroke="#34347a"/><text x="330" y="286" fill="#07071a" font-weight="700">100</text>
+  </g>
+  <circle cx="150" cy="266" r="12" fill="#f43f5e" opacity="0.4"/>
+  <circle cx="330" cy="266" r="12" fill="#f43f5e"/>
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker></defs>
+  <path d="M150 248 Q 240 200 318 246" fill="none" stroke="#4ade80" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="235" y="214" text-anchor="middle" font-size="13" fill="#4ade80">1, 2, 3</text>
+  <rect x="520" y="256" width="48" height="48" rx="8" fill="#e2e8f0"/>
+  <g fill="#17173f"><circle cx="532" cy="268" r="4"/><circle cx="544" cy="280" r="4"/><circle cx="556" cy="292" r="4"/></g>
+  <text x="590" y="274" font-size="16" font-weight="700" fill="#4ade80">Roll 3: exactly 100</text>
+  <text x="590" y="296" font-size="13" fill="#cbd5e1">You win the game.</text>
+
+  <text x="400" y="350" text-anchor="middle" font-size="13" fill="#94a3b8">From 97 only a 3 wins; a 1 or 2 moves you closer, and 4, 5 or 6 leave you where you are.</text>
+</svg>

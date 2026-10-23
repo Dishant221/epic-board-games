@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Checkers starting position</title>
+  <desc id="d">An 8 by 8 checkers board. Twelve red pieces sit on the dark squares of the bottom three rows and twelve dark pieces on the dark squares of the top three rows. The two middle rows are empty. A side panel explains which way each side moves.</desc>
+  <defs>
+    <pattern id="cb50" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="#cbd5e1"/><rect x="50" width="50" height="50" fill="#475569"/><rect y="50" width="50" height="50" fill="#475569"/></pattern>
+    <pattern id="cb28" width="56" height="56" patternUnits="userSpaceOnUse"><rect width="56" height="56" fill="#cbd5e1"/><rect x="28" width="28" height="28" fill="#475569"/><rect y="28" width="28" height="28" fill="#475569"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/></marker>
+    <marker id="arrowg" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4ade80"/></marker>
+  </defs>
+  <rect width="800" height="500" rx="20" fill="#17173f"/>
+  <g transform="translate(60 50)">
+    <rect width="400" height="400" fill="url(#cb50)"/>
+    <circle cx="25" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="125" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="225" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="325" cy="375" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="75" cy="325" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="175" cy="325" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="275" cy="325" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="375" cy="325" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="25" cy="275" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="125" cy="275" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="225" cy="275" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="325" cy="275" r="18" fill="#f43f5e" stroke="#fecdd3" stroke-width="2.5"/>
+    <circle cx="75" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="175" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="275" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="375" cy="125" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="25" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="125" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="225" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="325" cy="75" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="75" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="175" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="275" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <circle cx="375" cy="25" r="18" fill="#1e1b4b" stroke="#a5b4fc" stroke-width="2.5"/>
+    <text x="25" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">a</text>
+    <text x="75" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">b</text>
+    <text x="125" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">c</text>
+    <text x="175" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">d</text>
+    <text x="225" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">e</text>
+    <text x="275" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">f</text>
+    <text x="325" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">g</text>
+    <text x="375" y="416" text-anchor="middle" font-size="12" fill="#94a3b8">h</text>
+    <text x="-10" y="29" text-anchor="middle" font-size="12" fill="#94a3b8">8</text>
+    <text x="-10" y="79" text-anchor="middle" font-size="12" fill="#94a3b8">7</text>
+    <text x="-10" y="129" text-anchor="middle" font-size="12" fill="#94a3b8">6</text>
+    <text x="-10" y="179" text-anchor="middle" font-size="12" fill="#94a3b8">5</text>
+    <text x="-10" y="229" text-anchor="middle" font-size="12" fill="#94a3b8">4</text>
+    <text x="-10" y="279" text-anchor="middle" font-size="12" fill="#94a3b8">3</text>
+    <text x="-10" y="329" text-anchor="middle" font-size="12" fill="#94a3b8">2</text>
+    <text x="-10" y="379" text-anchor="middle" font-size="12" fill="#94a3b8">1</text>
+    <rect x="0" y="0" width="400" height="400" fill="none" stroke="#0e0e2c" stroke-width="3"/>
+    <text x="200" y="-10" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0">Starting position: 12 pieces each</text>
+  </g>
+  <rect x="520" y="79" width="14" height="14" rx="3" fill="#f43f5e"/>
+  <text x="542" y="90" font-size="13" fill="#cbd5e1" >Red: moves first, towards rank 8</text>
+  <rect x="520" y="107" width="14" height="14" rx="3" fill="#1e1b4b"/>
+  <text x="542" y="118" font-size="13" fill="#cbd5e1" >Dark: moves towards rank 1</text>
+  <text x="520" y="170" font-size="13" fill="#cbd5e1" >Only the 32 dark squares are used.</text>
+  <text x="520" y="190" font-size="13" fill="#cbd5e1" >Each side fills its three nearest</text>
+  <text x="520" y="210" font-size="13" fill="#cbd5e1" >rows, leaving two empty rows</text>
+  <text x="520" y="230" font-size="13" fill="#cbd5e1" >in the middle of the board.</text>
+  <text x="520" y="280" font-size="13" fill="#94a3b8" >Each player should have a dark</text>
+  <text x="520" y="300" font-size="13" fill="#94a3b8" >square in their bottom-left corner.</text>
+  <text x="520" y="340" font-size="13" fill="#94a3b8" >Rows 1 and 8 are the back ranks,</text>
+  <text x="520" y="360" font-size="13" fill="#94a3b8" >where enemy pieces are crowned.</text>
+
+</svg>

@@ -25,6 +25,8 @@
     "html_handling": "auto-trailing-slash"
   },
   "observability": { "enabled": true },
+  // Nightly retention clean-up (worker/src/index.ts `scheduled`).
+  "triggers": { "crons": ["17 3 * * *"] },
   "vars": { "APP_ENV": "production" },
   "durable_objects": {
     "bindings": [
@@ -53,6 +55,7 @@
   "env": {
     "testing": {
       "name": "epic-board-games-testing",
+      "triggers": { "crons": ["47 3 * * *"] },
       "vars": { "APP_ENV": "testing" },
       "durable_objects": {
         "bindings": [

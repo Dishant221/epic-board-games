@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Two ways to start a game with other people</title>
+  <desc id="d">Flowchart. Both paths start with Sign up for free. The private-room path goes Add friends, Create a private room, Ping them to join, Play with voice chat. The matchmaking path goes Pick a game, Choose Online Multiplayer, Room starts when full or after 60 seconds, Play.</desc>
+  <rect width="800" height="420" rx="20" fill="#17173f"/>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">From sign-up to first roll</text>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/></marker>
+  </defs>
+
+  <!-- start -->
+  <rect x="320" y="64" width="160" height="48" rx="24" fill="#8b5cf6"/>
+  <text x="400" y="93" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Sign up (free)</text>
+
+  <!-- branches -->
+  <path d="M360 112 L 160 150" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M440 112 L 640 150" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+  <text x="230" y="124" text-anchor="middle" font-size="13" fill="#4ade80" font-weight="700">Family &amp; friends</text>
+  <text x="570" y="124" text-anchor="middle" font-size="13" fill="#38bdf8" font-weight="700">Anyone online</text>
+
+  <!-- left column -->
+  <g text-anchor="middle" font-size="14" fill="#e2e8f0">
+    <rect x="50" y="154" width="220" height="44" rx="10" fill="#0e0e2c" stroke="#4ade80" stroke-width="2"/>
+    <text x="160" y="181">Add friends on the Friends page</text>
+    <rect x="50" y="218" width="220" height="44" rx="10" fill="#0e0e2c" stroke="#4ade80" stroke-width="2"/>
+    <text x="160" y="245">Create a private room</text>
+    <rect x="50" y="282" width="220" height="44" rx="10" fill="#0e0e2c" stroke="#4ade80" stroke-width="2"/>
+    <text x="160" y="309">Ping them to join</text>
+  </g>
+  <line x1="160" y1="198" x2="160" y2="216" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="160" y1="262" x2="160" y2="280" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- right column -->
+  <g text-anchor="middle" font-size="14" fill="#e2e8f0">
+    <rect x="530" y="154" width="220" height="44" rx="10" fill="#0e0e2c" stroke="#38bdf8" stroke-width="2"/>
+    <text x="640" y="181">Pick a game</text>
+    <rect x="530" y="218" width="220" height="44" rx="10" fill="#0e0e2c" stroke="#38bdf8" stroke-width="2"/>
+    <text x="640" y="245">Choose Online Multiplayer</text>
+    <rect x="530" y="282" width="220" height="44" rx="10" fill="#0e0e2c" stroke="#38bdf8" stroke-width="2"/>
+    <text x="640" y="303" font-size="13">Room starts when full,</text>
+    <text x="640" y="319" font-size="13">or after 60 s with 2+ players</text>
+  </g>
+  <line x1="640" y1="198" x2="640" y2="216" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="640" y1="262" x2="640" y2="280" stroke="#94a3b8" stroke-width="2" marker-end="url(#a)"/>
+
+  <!-- join -->
+  <path d="M160 326 L 160 360 L 320 360" fill="none" stroke="#94a3b8" stroke-width="2"/>
+  <path d="M640 326 L 640 360 L 480 360" fill="none" stroke="#94a3b8" stroke-width="2"/>
+  <rect x="320" y="340" width="160" height="48" rx="24" fill="#d946ef"/>
+  <text x="400" y="364" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Play</text>
+  <text x="400" y="380" text-anchor="middle" font-size="11" fill="#fdf4ff">voice chat · text chat · emotes</text>
+  <text x="400" y="408" text-anchor="middle" font-size="12" fill="#94a3b8">Private rooms keep strangers out; matchmaking fills seats fast (up to 4 players).</text>
+</svg>

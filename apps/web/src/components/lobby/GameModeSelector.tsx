@@ -5,7 +5,8 @@ export type ModeChoice =
   | { mode: 'online' }
   | { mode: 'ai'; opponents: AIDifficulty[] }
   | { mode: 'friends' }
-  | { mode: 'local'; players: number };
+  | { mode: 'local'; players: number }
+  | { mode: 'solo' };
 
 interface Props {
   game: GameInfo;
@@ -53,6 +54,18 @@ export function GameModeSelector({ game, signedIn, onChoose }: Props) {
       <h2 className="font-display text-2xl font-bold">How do you want to play?</h2>
 
       <div className="mt-5 space-y-3">
+        {game.minPlayers === 1 && (
+          <button type="button" className="flex w-full items-center gap-4 rounded-2xl bg-gradient-to-r from-violet-500/20 to-fuchsia-500/20 p-4 text-left ring-1 ring-violet-400/40 transition hover:from-violet-500/30 hover:to-fuchsia-500/30" onClick={() => onChoose({ mode: 'solo' })} autoFocus>
+            <span className="text-3xl" aria-hidden="true">{game.emoji}</span>
+            <span>
+              <span className="block font-semibold">{game.maxPlayers > 1 ? 'Play solo' : 'Play now'}</span>
+              <span className="text-sm text-slate-400">
+                {game.ai === 'hints' ? 'Single player · smart hints when you’re stuck' : 'Single player · starts instantly'}
+              </span>
+            </span>
+          </button>
+        )}
+
         {game.multiplayer && (
           <button type="button" className="flex w-full items-center gap-4 rounded-2xl bg-white/5 p-4 text-left ring-1 ring-white/10 transition hover:bg-white/10" onClick={() => onChoose({ mode: 'online' })}>
             <span className="text-3xl" aria-hidden="true">🌐</span>

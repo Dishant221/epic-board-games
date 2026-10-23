@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 // NOTE: starting template that reflects what the code actually does. Have it
 // reviewed by counsel for your jurisdictions (GDPR, UK GDPR, CCPA, COPPA) before launch.
-const updated = '2026-10-21';
+const updated = '2026-10-23';
 ---
 
 <BaseLayout title="Privacy Policy — Epic Board Games" description="How Epic Board Games collects, uses and protects your data.">
@@ -15,7 +15,8 @@ const updated = '2026-10-21';
       <li><strong>Account data:</strong> username, display name, avatar emoji, email address and a salted, hashed password (we never store your password itself).</li>
       <li><strong>Social data:</strong> your friends and family list, friend requests and game invitations.</li>
       <li><strong>Gameplay data:</strong> games played, moves needed to run a game, results, and in-game chat messages for the duration of a game.</li>
-      <li><strong>Security data:</strong> sign-in attempts and IP-derived rate-limit counters, kept to protect accounts from abuse.</li>
+      <li><strong>Security data:</strong> an audit log of account events (sign-up, sign-in attempts, password changes, exports, deletion) with the IP address and browser identifier of the request, plus rate-limit counters — kept to protect accounts from abuse.</li>
+      <li><strong>Device preferences:</strong> sound, graphics detail and arcade best scores are stored only in your browser’s local storage and never sent to us.</li>
     </ul>
 
     <h2>What we don’t do</h2>
@@ -32,10 +33,13 @@ const updated = '2026-10-21';
     <p>The service runs on Cloudflare’s global network (Workers, Durable Objects, D1). Data is encrypted in transit (TLS) and at rest.</p>
 
     <h2>Retention</h2>
-    <p>Account data is kept while your account is active. Chat messages are kept only with the game room and discarded when it closes. Security logs are kept for up to 90 days.</p>
+    <p>Account data is kept while your account is active. Chat messages are kept only with the game room and discarded when it closes (at most an hour after the last player leaves). Expired sessions, notifications and security logs older than 90 days are deleted automatically every night.</p>
 
     <h2>Your rights</h2>
-    <p>You can access, correct, export or delete your data. Edit your profile at any time; to export or delete your account, contact us at the address below and we’ll respond within 30 days.</p>
+    <p>You can access, correct, export or delete your data yourself, instantly, from your <a class="underline" href="/profile">profile page</a>: edit your display name and avatar, change your password (which signs out other devices), download a JSON export of everything we hold, or delete your account. Deleting removes your profile, friends, requests and notifications immediately; finished games are kept anonymously (no name attached) so other players keep their statistics. For anything else, contact us at the address below and we’ll respond within 30 days.</p>
+
+    <h2>Blocking and moderation</h2>
+    <p>You can block any player from the Friends page; blocked players can’t find you in search or send you requests or pings. Chat messages are filtered for profanity and rate-limited on our servers.</p>
 
     <h2>Children</h2>
     <p>Accounts are for people aged 13 and over. Online chat and voice chat are moderated and can be turned off.</p>

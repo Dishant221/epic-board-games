@@ -2,6 +2,9 @@
 import { GAMES, type GameInfo } from '@ebg/game-core';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameLauncher from '../../components/lobby/GameLauncher';
+import Leaderboard from '../../components/social/Leaderboard';
+import PostCard from '../../components/blog/PostCard.astro';
+import { getPostsForGame } from '../../lib/blog';
 
 export function getStaticPaths() {
   return GAMES.map((game) => ({ params: { slug: game.slug }, props: { game } }));
@@ -11,6 +14,7 @@ interface Props {
   game: GameInfo;
 }
 const { game } = Astro.props;
+const guides = await getPostsForGame(game.id);
 const site = Astro.site!.toString().replace(/\/$/, '');
 const url = `${site}/games/${game.slug}`;
 const players = game.minPlayers === game.maxPlayers ? `${game.maxPlayers}` : `${game.minPlayers}–${game.maxPlayers}`;
@@ -65,8 +69,9 @@ const schema = [
     </nav>
     <h1 class="text-3xl font-bold sm:text-4xl">{game.emoji} {game.name}</h1>
     <p class="mt-3 text-lg text-slate-300">{game.description}</p>
-    <dl class="mt-6 grid grid-cols-3 gap-3 text-center">
+    <dl class="mt-6 grid grid-cols-2 gap-3 text-center sm:grid-cols-4">
       <div class="card p-3"><dt class="text-xs text-slate-400">Players</dt><dd class="font-display text-xl font-semibold">{players}</dd></div>
+      <div class="card p-3"><dt class="text-xs text-slate-400">Play time</dt><dd class="font-display text-xl font-semibold">~{game.minutes} min</dd></div>
       <div class="card p-3"><dt class="text-xs text-slate-400">Category</dt><dd class="font-display text-xl font-semibold">{game.category}</dd></div>
       <div class="card p-3"><dt class="text-xs text-slate-400">vs AI</dt><dd class="font-display text-xl font-semibold">{game.ai === 'opponent' ? 'Yes' : game.ai === 'hints' ? 'Hints' : '—'}</dd></div>
     </dl>
@@ -74,6 +79,26 @@ const schema = [
     <ol class="mt-4 list-decimal space-y-2 pl-6 text-slate-300">
       {game.rules.map((rule) => <li>{rule}</li>)}
     </ol>
+    {
+      guides.length > 0 && (
+        <section class="mt-10" aria-labelledby="guides-title">
+          <div class="mb-4 flex items-end justify-between">
+            <h2 id="guides-title" class="text-2xl font-bold">Guides &amp; strategy</h2>
+            <a href="/blog" class="text-sm text-violet-300 hover:underline">All guides →</a>
+          </div>
+          <ul class="grid gap-4 sm:grid-cols-2">
+            {guides.map((post) => <PostCard post={post} />)}
+          </ul>
+        </section>
+      )
+    }
+    {
+      game.multiplayer && (
+        <div class="mt-10">
+          <Leaderboard client:visible gameId={game.id} />
+        </div>
+      )
+    }
     <h2 class="mt-10 text-2xl font-bold">More games</h2>
     <ul class="mt-4 flex flex-wrap gap-2">
       {

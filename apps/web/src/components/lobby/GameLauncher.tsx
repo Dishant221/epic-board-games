@@ -1,5 +1,5 @@
 import { getGame, getEngine, type GameId, type GameInfo } from '@ebg/game-core';
-import { useEffect, useMemo, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useState, type ComponentType } from 'react';
 import { api, loginRedirect, useAuth } from '../../lib/api';
 import { useLocalSession, useOnlineSession, type LocalSetup } from '../../lib/session';
 import { GameScreen } from '../games/shared/GameScreen';
@@ -13,6 +13,12 @@ type Phase =
   | { kind: 'room'; roomId: string; invite?: boolean };
 
 const LOCAL_AVATARS = ['🦊', '🐼', '🐸', '🦁'];
+
+/** Realtime (arcade) games own their loop and screen; they bypass the turn engine. */
+type RealtimeProps = { game: GameInfo; onExit(): void };
+const REALTIME: Partial<Record<GameId, ComponentType<RealtimeProps>>> = {
+  flappy_bird: lazy(() => import('../games/arcade/FlappyGame')),
+};
 
 function LocalGame({ game, setup, onExit }: { game: GameInfo; setup: LocalSetup; onExit(): void }) {
   const session = useLocalSession(setup);
@@ -54,7 +60,8 @@ export default function GameLauncher({ gameId }: { gameId: GameId }) {
   const user = auth.status === 'ready' ? auth.user : null;
   const [phase, setPhase] = useState<Phase>({ kind: 'menu' });
   const [error, setError] = useState<string | null>(null);
-  const playable = game.status === 'playable' && !!getEngine(game.id);
+  const Realtime = REALTIME[game.id];
+  const playable = game.status === 'playable' && (game.kind === 'realtime' ? !!Realtime : !!getEngine(game.id));
 
   // Deep link: /games/<slug>?room=<id> joins a friend's room.
   const roomParam = useMemo(() => new URLSearchParams(location.search).get('room'), []);
@@ -71,10 +78,14 @@ export default function GameLauncher({ gameId }: { gameId: GameId }) {
     location.href = loginRedirect();
   };
 
+  const me = { name: user?.displayName ?? 'You', avatar: user?.avatar ?? '🙂' };
+
   const choose = async (choice: ModeChoice) => {
     setError(null);
-    const me = { name: user?.displayName ?? 'You', avatar: user?.avatar ?? '🙂' };
     switch (choice.mode) {
+      case 'solo':
+        setPhase({ kind: 'local', setup: { gameId, ai: [], humans: [me] } });
+        break;
       case 'ai':
         setPhase({ kind: 'local', setup: { gameId, ai: choice.opponents, humans: [me] } });
         break;
@@ -106,9 +117,18 @@ export default function GameLauncher({ gameId }: { gameId: GameId }) {
       <div className="card mx-auto max-w-lg p-6 text-center">
         <div className="text-5xl" aria-hidden="true">{game.emoji}</div>
         <h2 className="mt-2 font-display text-2xl font-bold">Coming soon</h2>
-        <p className="mt-1 text-slate-400">{game.name} is being built. Try Snakes &amp; Ladders, Connect 4 or Tic Tac Toe in the meantime!</p>
+        <p className="mt-1 text-slate-400">{game.name} is being built. Try one of the other games in the meantime!</p>
         <a href="/#games" className="btn-primary mt-5">Browse games</a>
       </div>
+    );
+  }
+
+  // Arcade games have no modes: straight into the action.
+  if (Realtime) {
+    return (
+      <Suspense fallback={<div className="grid min-h-[60dvh] place-items-center text-slate-400">Loading {game.name}…</div>}>
+        <Realtime game={game} onExit={() => (location.href = '/#games')} />
+      </Suspense>
     );
   }
 
@@ -126,7 +146,7 @@ export default function GameLauncher({ gameId }: { gameId: GameId }) {
           <Matchmaking
             game={game}
             onMatched={(roomId) => setPhase({ kind: 'room', roomId })}
-            onNoMatch={() => void choose({ mode: 'ai', opponents: ['medium'] })}
+            onNoMatch={() => void choose(game.ai === 'opponent' ? { mode: 'ai', opponents: ['medium'] } : { mode: 'solo' })}
             onCancel={exit}
           />
         </div>

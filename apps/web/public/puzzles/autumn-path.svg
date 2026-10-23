@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Autumn Forest Path: a leaf-strewn path recedes into a misty forest of tall trunks beneath canopies of red, orange and gold leaves, with warm shafts of light and a weathered wooden fence">
+<defs>
+<linearGradient id="ap-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcd34d"/><stop offset="0.45" stop-color="#fde68a"/><stop offset="0.8" stop-color="#fbe3c4"/><stop offset="1" stop-color="#f3d9bd"/></linearGradient>
+<radialGradient id="ap-glow" cx="0.52" cy="0.52" r="0.5"><stop offset="0" stop-color="#fffbeb" stop-opacity="0.95"/><stop offset="0.4" stop-color="#fde047" stop-opacity="0.4"/><stop offset="1" stop-color="#fde047" stop-opacity="0"/></radialGradient>
+<linearGradient id="ap-shaft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fef9c3" stop-opacity="0.6"/><stop offset="0.55" stop-color="#fde047" stop-opacity="0.22"/><stop offset="1" stop-color="#fde047" stop-opacity="0"/></linearGradient>
+<linearGradient id="ap-ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d08a4a"/><stop offset="0.45" stop-color="#b45309"/><stop offset="1" stop-color="#5e2d0c"/></linearGradient>
+<linearGradient id="ap-path" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0c080"/><stop offset="0.35" stop-color="#e09040"/><stop offset="0.7" stop-color="#c2651a"/><stop offset="1" stop-color="#8a4510"/></linearGradient>
+<linearGradient id="ap-mist" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fdf2d8" stop-opacity="0"/><stop offset="0.5" stop-color="#fdf2d8" stop-opacity="0.75"/><stop offset="1" stop-color="#fdf2d8" stop-opacity="0"/></linearGradient>
+<linearGradient id="ap-trunk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b1709"/><stop offset="0.4" stop-color="#6b4323"/><stop offset="0.7" stop-color="#8a5a33"/><stop offset="1" stop-color="#2b1709"/></linearGradient>
+<linearGradient id="ap-trunk2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a2c15"/><stop offset="0.55" stop-color="#8a5f3c"/><stop offset="1" stop-color="#3a2110"/></linearGradient>
+<filter id="ap-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+<g id="ap-d">
+<ellipse cx="0" cy="0" rx="34" ry="22"/>
+<ellipse cx="-24" cy="-12" rx="18" ry="12" opacity="0.8"/>
+<ellipse cx="22" cy="-14" rx="16" ry="11" opacity="0.85"/>
+<ellipse cx="10" cy="14" rx="16" ry="9" opacity="0.7"/>
+<circle cx="-10" cy="-24" r="7" opacity="0.9"/>
+<circle cx="34" cy="6" r="6" opacity="0.75"/>
+</g>
+<path id="ap-lf" d="M0 -16C9 -12 14 -2 8 10C4 15 -4 15 -8 10C-14 -2 -9 -12 0 -16Z"/>
+<path id="ap-gd" d="M0 0C3 -6 5 -12 4 -18" fill="none" stroke-width="3" stroke-linecap="round"/>
+</defs>
+<rect width="1200" height="800" fill="url(#ap-sky)"/>
+<rect width="1200" height="800" fill="url(#ap-glow)"/>
+<g stroke="#b08a6a" stroke-linecap="round" opacity="0.35">
+<line x1="250" y1="440" x2="262" y2="150" stroke-width="9"/><line x1="322" y1="440" x2="318" y2="120" stroke-width="7"/><line x1="392" y1="436" x2="400" y2="170" stroke-width="10"/><line x1="452" y1="434" x2="450" y2="200" stroke-width="6"/>
+<line x1="520" y1="432" x2="528" y2="220" stroke-width="5"/><line x1="690" y1="432" x2="684" y2="210" stroke-width="5"/><line x1="748" y1="434" x2="756" y2="160" stroke-width="8"/><line x1="820" y1="436" x2="814" y2="130" stroke-width="10"/>
+<line x1="890" y1="440" x2="900" y2="180" stroke-width="7"/><line x1="960" y1="440" x2="952" y2="140" stroke-width="9"/><line x1="610" y1="432" x2="612" y2="260" stroke-width="4"/>
+</g>
+<g opacity="0.5">
+<use href="#ap-d" fill="#e9a36a" transform="translate(280 150) scale(1.6)"/><use href="#ap-d" fill="#d9a24a" transform="translate(400 120) scale(1.5)"/><use href="#ap-d" fill="#e38a5a" transform="translate(520 190) scale(1.4)"/><use href="#ap-d" fill="#d9a24a" transform="translate(640 160) scale(1.5)"/>
+<use href="#ap-d" fill="#e9a36a" transform="translate(760 110) scale(1.6)"/><use href="#ap-d" fill="#e38a5a" transform="translate(880 150) scale(1.5)"/><use href="#ap-d" fill="#d9a24a" transform="translate(980 110) scale(1.4)"/><use href="#ap-d" fill="#e9a36a" transform="translate(340 240) scale(1.3)"/>
+<use href="#ap-d" fill="#e38a5a" transform="translate(840 240) scale(1.3)"/><use href="#ap-d" fill="#d9a24a" transform="translate(600 250) scale(1.2)"/>
+</g>
+<rect x="0" y="240" width="1200" height="300" fill="url(#ap-mist)"/>
+<rect x="0" y="428" width="1200" height="372" fill="url(#ap-ground)"/>
+<g fill="#7a3a0a" opacity="0.5">
+<ellipse cx="90" cy="520" rx="70" ry="10"/><ellipse cx="300" cy="470" rx="60" ry="8"/><ellipse cx="1000" cy="500" rx="80" ry="10"/><ellipse cx="1120" cy="470" rx="50" ry="8"/>
+<ellipse cx="60" cy="640" rx="60" ry="12"/><ellipse cx="1150" cy="640" rx="70" ry="12"/>
+</g>
+<path d="M565 432L635 432C680 520 760 600 860 680C920 730 980 770 1040 800L160 800C240 740 320 680 380 620C450 550 520 500 565 432Z" fill="url(#ap-path)"/>
+<path d="M590 440C560 500 500 560 420 640C360 700 280 750 220 800" fill="none" stroke="#f4cf8a" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+<path d="M612 440C650 510 720 590 800 670C860 730 920 770 980 800" fill="none" stroke="#f4cf8a" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+<g stroke="#8a4510" stroke-linecap="round" stroke-width="4" opacity="0.5">
+<path d="M560 520C600 526 640 524 680 518"/><path d="M500 600C560 610 640 610 720 600"/><path d="M420 690C520 702 660 704 780 690"/><path d="M330 770C480 784 700 784 860 770"/>
+<path d="M590 470C600 476 620 476 640 470"/>
+</g>
+<g stroke="#fde68a" stroke-linecap="round" stroke-width="3" opacity="0.6">
+<path d="M580 480C610 484 640 484 660 480"/><path d="M540 560C590 566 650 566 700 560"/><path d="M460 650C540 660 660 660 740 650"/><path d="M380 740C500 752 700 752 820 740"/>
+</g>
+<polygon points="180,560 194,0 226,0 212,560" fill="url(#ap-trunk2)"/>
+<polygon points="320,520 332,0 354,0 352,520" fill="url(#ap-trunk2)"/>
+<polygon points="430,480 438,0 452,0 456,480" fill="url(#ap-trunk2)"/>
+<polygon points="748,480 752,0 768,0 776,480" fill="url(#ap-trunk2)"/>
+<polygon points="852,520 854,0 878,0 888,520" fill="url(#ap-trunk2)"/>
+<polygon points="1000,560 992,0 1026,0 1038,560" fill="url(#ap-trunk2)"/>
+<g stroke="#5c3a21" stroke-linecap="round" fill="none">
+<path d="M200 220C170 190 130 170 90 160" stroke-width="7"/><path d="M206 160C240 130 280 120 320 118" stroke-width="6"/><path d="M340 200C380 170 420 160 460 150" stroke-width="6"/><path d="M336 280C300 250 270 240 230 236" stroke-width="5"/>
+<path d="M866 200C900 170 940 160 980 160" stroke-width="6"/><path d="M862 150C820 130 780 126 740 130" stroke-width="5"/><path d="M1010 240C1050 200 1100 190 1140 180" stroke-width="7"/><path d="M1006 170C960 140 930 136 900 140" stroke-width="5"/>
+<path d="M444 170C470 150 500 144 530 140" stroke-width="4"/><path d="M760 180C730 150 700 146 670 150" stroke-width="4"/>
+</g>
+<polygon points="560,0 640,0 490,540 360,540" fill="url(#ap-shaft)"/>
+<polygon points="830,0 890,0 720,520 630,520" fill="url(#ap-shaft)"/>
+<polygon points="1010,0 1056,0 930,500 860,500" fill="url(#ap-shaft)"/>
+<polygon points="300,0 340,0 280,460 220,460" fill="url(#ap-shaft)" opacity="0.7"/>
+<g fill="#ea580c">
+<use href="#ap-d" transform="translate(60 80) scale(1.5)"/><use href="#ap-d" transform="translate(200 60) scale(1.3)"/><use href="#ap-d" transform="translate(360 90) scale(1.2)"/><use href="#ap-d" transform="translate(470 40) scale(1.1)"/>
+<use href="#ap-d" transform="translate(700 70) scale(1.2)"/><use href="#ap-d" transform="translate(820 50) scale(1.3)"/><use href="#ap-d" transform="translate(1040 80) scale(1.5)"/><use href="#ap-d" transform="translate(1150 150) scale(1.3)"/>
+<use href="#ap-d" transform="translate(150 230) scale(1.1)"/><use href="#ap-d" transform="translate(920 220) scale(1)"/><use href="#ap-d" transform="translate(40 300) scale(1)"/><use href="#ap-d" transform="translate(1170 300) scale(1)"/>
+</g>
+<g fill="#dc2626" opacity="0.85">
+<use href="#ap-d" transform="translate(120 150) scale(1.3)"/><use href="#ap-d" transform="translate(280 130) scale(1.1)"/><use href="#ap-d" transform="translate(560 100) scale(0.9)"/><use href="#ap-d" transform="translate(760 160) scale(1)"/>
+<use href="#ap-d" transform="translate(960 130) scale(1.2)"/><use href="#ap-d" transform="translate(1100 220) scale(1.1)"/><use href="#ap-d" transform="translate(240 260) scale(0.9)"/><use href="#ap-d" transform="translate(880 300) scale(0.9)"/>
+</g>
+<g fill="#f59e0b">
+<use href="#ap-d" transform="translate(140 40) scale(1.2)"/><use href="#ap-d" transform="translate(300 40) scale(1)"/><use href="#ap-d" transform="translate(420 150) scale(1)"/><use href="#ap-d" transform="translate(620 60) scale(1)"/>
+<use href="#ap-d" transform="translate(880 100) scale(1.1)"/><use href="#ap-d" transform="translate(1000 180) scale(1.1)"/><use href="#ap-d" transform="translate(1120 60) scale(1.2)"/><use href="#ap-d" transform="translate(80 200) scale(1)"/>
+<use href="#ap-d" transform="translate(350 200) scale(0.9)"/><use href="#ap-d" transform="translate(800 230) scale(0.9)"/><use href="#ap-d" transform="translate(1060 290) scale(0.9)"/><use href="#ap-d" transform="translate(180 330) scale(0.8)"/>
+</g>
+<g fill="#fde047" opacity="0.9">
+<use href="#ap-d" transform="translate(230 110) scale(0.9)"/><use href="#ap-d" transform="translate(400 30) scale(0.8)"/><use href="#ap-d" transform="translate(520 130) scale(0.7)"/><use href="#ap-d" transform="translate(660 120) scale(0.7)"/>
+<use href="#ap-d" transform="translate(780 30) scale(0.8)"/><use href="#ap-d" transform="translate(940 60) scale(0.9)"/><use href="#ap-d" transform="translate(1160 30) scale(0.8)"/><use href="#ap-d" transform="translate(40 150) scale(0.9)"/>
+<use href="#ap-d" transform="translate(300 300) scale(0.7)"/><use href="#ap-d" transform="translate(860 350) scale(0.7)"/><use href="#ap-d" transform="translate(1130 360) scale(0.7)"/><use href="#ap-d" transform="translate(100 380) scale(0.7)"/>
+<use href="#ap-d" transform="translate(600 20) scale(0.7)"/>
+</g>
+<g fill="#b45309" opacity="0.8">
+<use href="#ap-d" transform="translate(200 180) scale(0.9)"/><use href="#ap-d" transform="translate(340 150) scale(0.8)"/><use href="#ap-d" transform="translate(900 180) scale(0.8)"/><use href="#ap-d" transform="translate(1040 140) scale(0.9)"/>
+<use href="#ap-d" transform="translate(60 240) scale(0.8)"/><use href="#ap-d" transform="translate(1180 230) scale(0.8)"/><use href="#ap-d" transform="translate(470 230) scale(0.7)"/><use href="#ap-d" transform="translate(730 250) scale(0.7)"/>
+</g>
+<g fill="#fb923c" opacity="0.85">
+<use href="#ap-d" transform="translate(30 30) scale(1)"/><use href="#ap-d" transform="translate(500 80) scale(0.8)"/><use href="#ap-d" transform="translate(720 20) scale(0.8)"/><use href="#ap-d" transform="translate(1180 110) scale(0.9)"/>
+<use href="#ap-d" transform="translate(140 290) scale(0.7)"/><use href="#ap-d" transform="translate(1000 330) scale(0.7)"/><use href="#ap-d" transform="translate(400 260) scale(0.6)"/><use href="#ap-d" transform="translate(810 310) scale(0.6)"/>
+</g>
+<polygon points="50,800 70,0 150,0 130,800" fill="url(#ap-trunk)"/>
+<polygon points="1070,800 1060,0 1150,0 1160,800" fill="url(#ap-trunk)"/>
+<g stroke="#1f1007" stroke-linecap="round" fill="none" opacity="0.6" stroke-width="3">
+<path d="M80 120C84 180 82 240 86 300"/><path d="M110 60C112 140 108 220 112 290"/><path d="M90 420C94 500 90 580 96 660"/><path d="M118 380C120 460 116 540 120 620"/><path d="M76 700C80 740 78 770 82 800"/>
+<path d="M1090 100C1094 180 1090 260 1096 340"/><path d="M1130 40C1134 120 1130 200 1136 280"/><path d="M1100 420C1104 500 1100 580 1106 660"/><path d="M1138 380C1140 460 1136 540 1142 620"/><path d="M1116 700C1120 740 1118 770 1122 800"/>
+</g>
+<g stroke="#a06a3c" stroke-linecap="round" fill="none" opacity="0.5" stroke-width="2">
+<path d="M98 160C100 220 98 280 102 340"/><path d="M104 480C106 540 104 600 108 660"/><path d="M1108 150C1110 210 1108 270 1112 330"/><path d="M1124 470C1126 530 1124 590 1128 650"/>
+</g>
+<g stroke="#2b1709" stroke-linecap="round" fill="none">
+<path d="M80 120C40 90 10 80 -10 70" stroke-width="12"/><path d="M1140 130C1170 100 1190 90 1210 86" stroke-width="12"/>
+</g>
+<rect x="846" y="546" width="14" height="92" rx="2" fill="#4a2c17"/><rect x="848" y="546" width="4" height="92" fill="#8a5f3c" opacity="0.6"/>
+<rect x="944" y="596" width="18" height="136" rx="2" fill="#3a2110"/><rect x="947" y="596" width="5" height="136" fill="#8a5f3c" opacity="0.6"/>
+<line x1="853" y1="566" x2="953" y2="616" stroke="#5c3a21" stroke-width="7" stroke-linecap="round"/><line x1="853" y1="602" x2="953" y2="668" stroke="#5c3a21" stroke-width="7" stroke-linecap="round"/>
+<line x1="853" y1="563" x2="953" y2="613" stroke="#a06a3c" stroke-width="2" opacity="0.7"/>
+<g stroke="#7a4a1a" opacity="0.8">
+<use href="#ap-gd" transform="translate(380 600) scale(1.2)"/><use href="#ap-gd" transform="translate(300 660) scale(1.4)"/><use href="#ap-gd" transform="translate(220 730) scale(1.6)"/><use href="#ap-gd" transform="translate(870 620) scale(1.3)"/>
+<use href="#ap-gd" transform="translate(960 700) scale(1.5)"/><use href="#ap-gd" transform="translate(1030 770) scale(1.6)"/><use href="#ap-gd" transform="translate(500 480) scale(1)"/><use href="#ap-gd" transform="translate(700 490) scale(1)"/>
+<use href="#ap-gd" transform="translate(160 600) scale(1.3)"/><use href="#ap-gd" transform="translate(1180 580) scale(1.3)"/>
+</g>
+<g stroke="#d9a24a" opacity="0.8">
+<use href="#ap-gd" transform="translate(400 590) scale(1.1)"/><use href="#ap-gd" transform="translate(320 650) scale(1.3)"/><use href="#ap-gd" transform="translate(900 640) scale(1.3)"/><use href="#ap-gd" transform="translate(980 720) scale(1.4)"/>
+<use href="#ap-gd" transform="translate(240 740) scale(1.5)"/><use href="#ap-gd" transform="translate(180 630) scale(1.2)"/><use href="#ap-gd" transform="translate(1160 620) scale(1.2)"/>
+</g>
+<g fill="#ea580c">
+<ellipse cx="560" cy="500" rx="7" ry="4"/><ellipse cx="660" cy="540" rx="8" ry="4"/><ellipse cx="520" cy="590" rx="9" ry="5"/><ellipse cx="720" cy="620" rx="9" ry="5"/>
+<ellipse cx="460" cy="680" rx="10" ry="5"/><ellipse cx="800" cy="700" rx="10" ry="6"/><ellipse cx="620" cy="730" rx="11" ry="6"/><ellipse cx="380" cy="760" rx="12" ry="6"/>
+</g>
+<g fill="#fde047">
+<ellipse cx="600" cy="470" rx="6" ry="3"/><ellipse cx="640" cy="580" rx="8" ry="4"/><ellipse cx="560" cy="640" rx="9" ry="5"/><ellipse cx="700" cy="680" rx="10" ry="5"/>
+<ellipse cx="500" cy="740" rx="11" ry="6"/><ellipse cx="860" cy="760" rx="11" ry="6"/><ellipse cx="420" cy="620" rx="8" ry="4"/><ellipse cx="760" cy="770" rx="10" ry="5"/>
+</g>
+<g fill="#b45309" opacity="0.9">
+<ellipse cx="580" cy="540" rx="8" ry="4"/><ellipse cx="480" cy="620" rx="9" ry="4"/><ellipse cx="740" cy="650" rx="9" ry="5"/><ellipse cx="560" cy="700" rx="10" ry="5"/>
+<ellipse cx="660" cy="760" rx="12" ry="6"/><ellipse cx="300" cy="790" rx="12" ry="6"/><ellipse cx="920" cy="790" rx="12" ry="6"/>
+</g>
+<g fill="#dc2626" opacity="0.9">
+<use href="#ap-lf" transform="translate(240 620) rotate(30) scale(1.1)"/><use href="#ap-lf" transform="translate(360 700) rotate(-50) scale(1.3)"/><use href="#ap-lf" transform="translate(700 740) rotate(70) scale(1.4)"/><use href="#ap-lf" transform="translate(980 650) rotate(-20) scale(1.1)"/>
+<use href="#ap-lf" transform="translate(180 760) rotate(110) scale(1.5)"/><use href="#ap-lf" transform="translate(1100 740) rotate(-80) scale(1.4)"/><use href="#ap-lf" transform="translate(540 770) rotate(20) scale(1.3)"/>
+</g>
+<g fill="#ea580c">
+<use href="#ap-lf" transform="translate(300 580) rotate(-30) scale(1)"/><use href="#ap-lf" transform="translate(440 740) rotate(60) scale(1.4)"/><use href="#ap-lf" transform="translate(820 620) rotate(15) scale(1.1)"/><use href="#ap-lf" transform="translate(1040 720) rotate(-60) scale(1.3)"/>
+<use href="#ap-lf" transform="translate(140 690) rotate(40) scale(1.2)"/><use href="#ap-lf" transform="translate(600 780) rotate(-100) scale(1.5)"/><use href="#ap-lf" transform="translate(900 740) rotate(130) scale(1.4)"/><use href="#ap-lf" transform="translate(40 560) rotate(-40) scale(1)"/>
+</g>
+<g fill="#fde047">
+<use href="#ap-lf" transform="translate(260 700) rotate(80) scale(1.2)"/><use href="#ap-lf" transform="translate(400 660) rotate(-10) scale(1.1)"/><use href="#ap-lf" transform="translate(780 780) rotate(45) scale(1.4)"/><use href="#ap-lf" transform="translate(1000 600) rotate(-70) scale(1)"/>
+<use href="#ap-lf" transform="translate(100 740) rotate(150) scale(1.3)"/><use href="#ap-lf" transform="translate(1160 680) rotate(20) scale(1.2)"/><use href="#ap-lf" transform="translate(320 780) rotate(-130) scale(1.4)"/>
+</g>
+<g fill="#b45309">
+<use href="#ap-lf" transform="translate(200 580) rotate(100) scale(1)"/><use href="#ap-lf" transform="translate(480 790) rotate(-40) scale(1.3)"/><use href="#ap-lf" transform="translate(860 680) rotate(60) scale(1.1)"/><use href="#ap-lf" transform="translate(1120 790) rotate(-150) scale(1.4)"/>
+<use href="#ap-lf" transform="translate(60 650) rotate(30) scale(1.1)"/><use href="#ap-lf" transform="translate(680 790) rotate(90) scale(1.2)"/>
+</g>
+<g fill="#fb923c" opacity="0.9">
+<use href="#ap-lf" transform="translate(330 630) rotate(-90) scale(0.9)"/><use href="#ap-lf" transform="translate(760 700) rotate(35) scale(1.1)"/><use href="#ap-lf" transform="translate(940 710) rotate(-30) scale(1.2)"/><use href="#ap-lf" transform="translate(1180 760) rotate(75) scale(1.3)"/>
+<use href="#ap-lf" transform="translate(20 720) rotate(-110) scale(1.3)"/><use href="#ap-lf" transform="translate(220 790) rotate(50) scale(1.2)"/>
+</g>
+<g fill="#fde047">
+<use href="#ap-lf" transform="translate(400 420) rotate(40) scale(0.6)"/><use href="#ap-lf" transform="translate(520 330) rotate(-60) scale(0.7)"/><use href="#ap-lf" transform="translate(680 370) rotate(20) scale(0.6)"/><use href="#ap-lf" transform="translate(300 400) rotate(110) scale(0.6)"/>
+</g>
+<g fill="#ea580c">
+<use href="#ap-lf" transform="translate(560 390) rotate(-30) scale(0.7)"/><use href="#ap-lf" transform="translate(760 420) rotate(60) scale(0.6)"/><use href="#ap-lf" transform="translate(920 400) rotate(-20) scale(0.7)"/><use href="#ap-lf" transform="translate(620 330) rotate(80) scale(0.6)"/>
+</g>
+<ellipse cx="600" cy="440" rx="130" ry="30" fill="#fef3c7" opacity="0.45" filter="url(#ap-soft)"/>
+</svg>

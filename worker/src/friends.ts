@@ -39,7 +39,7 @@ export async function handleListFriends(request: Request, env: Env): Promise<Res
     `SELECT f.requester_id, f.addressee_id, f.status, f.relation, u.id, u.username, u.display_name, u.avatar
      FROM friendships f
      JOIN users u ON u.id = CASE WHEN f.requester_id = ?1 THEN f.addressee_id ELSE f.requester_id END
-     WHERE (f.requester_id = ?1 OR f.addressee_id = ?1) AND f.status != 'blocked' AND u.disabled = 0
+     WHERE (f.requester_id = ?1 OR f.addressee_id = ?1) AND (f.status != 'blocked' OR f.requester_id = ?1) AND u.disabled = 0
      ORDER BY f.status = 'accepted' DESC, u.display_name
      LIMIT ${MAX_FRIENDS}`,
   )
@@ -50,7 +50,7 @@ export async function handleListFriends(request: Request, env: Env): Promise<Res
   const friends: FriendEntry[] = await Promise.all(
     results.map(async (r) => {
       const status: FriendEntry['status'] =
-        r.status === 'accepted' ? 'accepted' : r.requester_id === me.id ? 'pending_outgoing' : 'pending_incoming';
+        r.status === 'blocked' ? 'blocked' : r.status === 'accepted' ? 'accepted' : r.requester_id === me.id ? 'pending_outgoing' : 'pending_incoming';
       const online =
         status === 'accepted' ? await env.PRESENCE.get(env.PRESENCE.idFromName(r.id)).isOnline() : false;
       return { user: toPublicUser(r), status, relation: r.relation, online };
@@ -159,12 +159,42 @@ export async function handleFriendPing(request: Request, env: Env): Promise<Resp
   return json({ ok: true });
 }
 
+/** Body `{ userId }` — blocks a user: removes any friendship and hides us from their search/requests. */
+export async function handleBlockUser(request: Request, env: Env): Promise<Response> {
+  const me = await requireUser(request, env);
+  const body = await readJson(request);
+  const other = parseUserId(body.userId);
+  if (other === me.id) throw new HttpError(400, 'You cannot block yourself');
+  const exists = await env.DB.prepare('SELECT 1 FROM users WHERE id = ?').bind(other).first();
+  if (!exists) throw new HttpError(404, 'User not found');
+  const now = Date.now();
+  // One row per unordered pair: replace whatever relationship existed.
+  await env.DB.batch([
+    env.DB.prepare('DELETE FROM friendships WHERE (requester_id = ?1 AND addressee_id = ?2) OR (requester_id = ?2 AND addressee_id = ?1)').bind(me.id, other),
+    env.DB.prepare("INSERT INTO friendships (requester_id, addressee_id, status, relation, created_at, updated_at) VALUES (?, ?, 'blocked', 'friend', ?, ?)").bind(me.id, other, now, now),
+  ]);
+  return json({ status: 'blocked' });
+}
+
+/** DELETE /api/friends/block/:userId — lifts a block we placed. */
+export async function handleUnblockUser(request: Request, env: Env, userId: string): Promise<Response> {
+  const me = await requireUser(request, env);
+  const other = parseUserId(userId);
+  await env.DB.prepare("DELETE FROM friendships WHERE requester_id = ? AND addressee_id = ? AND status = 'blocked'").bind(me.id, other).run();
+  return json({ ok: true });
+}
+
 export async function handleUserSearch(request: Request, env: Env): Promise<Response> {
   const me = await requireUser(request, env);
   const q = (new URL(request.url).searchParams.get('q') ?? '').trim().toLowerCase();
   if (!/^[a-z0-9_]{2,20}$/.test(q)) return json({ users: [] as PublicUser[] });
+  // People who blocked us (or whom we blocked) never appear in search results.
   const { results } = await env.DB.prepare(
-    "SELECT id, username, display_name, avatar FROM users WHERE username LIKE ? ESCAPE '\\' AND id != ? AND disabled = 0 ORDER BY username LIMIT 10",
+    `SELECT id, username, display_name, avatar FROM users
+     WHERE username LIKE ?1 ESCAPE '\\' AND id != ?2 AND disabled = 0
+       AND NOT EXISTS (SELECT 1 FROM friendships b WHERE b.status = 'blocked'
+                       AND ((b.requester_id = users.id AND b.addressee_id = ?2) OR (b.requester_id = ?2 AND b.addressee_id = users.id)))
+     ORDER BY username LIMIT 10`,
   )
     .bind(`${q.replace(/_/g, '\\_')}%`, me.id)
     .all<Pick<UserRow, 'id' | 'username' | 'display_name' | 'avatar'>>();

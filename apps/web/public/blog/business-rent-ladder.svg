@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="800" height="460" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">How rent grows as you build</title>
+  <desc id="d">A stepped bar chart of example rent on one district: a bare district charges a little, owning the whole colour group doubles it, each of up to four offices raises it sharply, and a tower on top charges the most. Figures are illustrative.</desc>
+  <rect width="800" height="460" rx="20" fill="#17173f"/>
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">Rent climbs a ladder: bare district, full group, offices, tower</text>
+  <text x="400" y="62" text-anchor="middle" font-size="13" fill="#94a3b8">Example figures for one mid-priced district; your board shows the real numbers</text>
+  <line x1="60" y1="370" x2="760" y2="370" stroke="#34347a" stroke-width="2"/>
+  <g font-size="13" text-anchor="middle">
+    <rect x="70" y="352" width="80" height="18" rx="4" fill="#64748b"/>
+    <text x="110" y="340" fill="#cbd5e1">20</text>
+    <text x="110" y="392" fill="#e2e8f0" font-weight="700">Bare</text>
+    <text x="110" y="410" fill="#94a3b8">district</text>
+
+    <rect x="170" y="334" width="80" height="36" rx="4" fill="#8b5cf6"/>
+    <text x="210" y="322" fill="#cbd5e1">40</text>
+    <text x="210" y="392" fill="#e2e8f0" font-weight="700">Full group</text>
+    <text x="210" y="410" fill="#94a3b8">rent doubles</text>
+
+    <rect x="270" y="280" width="80" height="90" rx="4" fill="#38bdf8"/>
+    <text x="310" y="268" fill="#cbd5e1">100</text>
+    <text x="310" y="392" fill="#e2e8f0" font-weight="700">1 office</text>
+
+    <rect x="370" y="190" width="80" height="180" rx="4" fill="#38bdf8"/>
+    <text x="410" y="178" fill="#cbd5e1">300</text>
+    <text x="410" y="392" fill="#e2e8f0" font-weight="700">2 offices</text>
+
+    <rect x="470" y="130" width="80" height="240" rx="4" fill="#fbbf24"/>
+    <text x="510" y="118" fill="#cbd5e1">750</text>
+    <text x="510" y="392" fill="#e2e8f0" font-weight="700">3 offices</text>
+    <text x="510" y="410" fill="#fbbf24">best value</text>
+
+    <rect x="570" y="104" width="80" height="266" rx="4" fill="#fb923c"/>
+    <text x="610" y="92" fill="#cbd5e1">925</text>
+    <text x="610" y="392" fill="#e2e8f0" font-weight="700">4 offices</text>
+
+    <rect x="670" y="84" width="80" height="286" rx="4" fill="#f43f5e"/>
+    <text x="710" y="72" fill="#cbd5e1">1,100</text>
+    <text x="710" y="392" fill="#e2e8f0" font-weight="700">Tower</text>
+    <text x="710" y="410" fill="#94a3b8">replaces 4 offices</text>
+  </g>
+  <text x="400" y="442" text-anchor="middle" font-size="13" fill="#94a3b8">Building needs the whole colour group. The jump from 2 to 3 offices is usually the biggest step.</text>
+</svg>

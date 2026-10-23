@@ -14,3 +14,7 @@ coverage/
 
 # wasm-pack output (built in CI)
 apps/web/public/wasm/
+
+# Database backups/exports — contain hashed passwords & emails; never commit (see docs/ops/backup-recovery.md)
+backups/
+*.sql.bak

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">The puzzle canvas and the scrolling piece tray</title>
+  <desc id="d">The upper area is the canvas where the picture is assembled, with a few pieces already placed and a faint outline of the finished image. Below it is a horizontal tray of loose pieces with left and right scroll arrows. An arrow shows a piece being dragged from the tray onto the canvas, where it snaps into place.</desc>
+  <rect width="800" height="500" rx="20" fill="#17173f"/>
+  <text x="400" y="36" text-anchor="middle" font-size="20" font-weight="700" fill="#e2e8f0">Drag from the tray, drop near the right spot, and it snaps</text>
+
+  <!-- canvas -->
+  <rect x="60" y="60" width="680" height="280" rx="12" fill="#0e0e2c" stroke="#34347a" stroke-width="2"/>
+  <text x="76" y="84" font-size="13" fill="#94a3b8">Canvas</text>
+  <g stroke="#23235a" stroke-width="1" stroke-dasharray="4 4" fill="none">
+    <rect x="160" y="100" width="480" height="210"/>
+    <line x1="280" y1="100" x2="280" y2="310"/><line x1="400" y1="100" x2="400" y2="310"/><line x1="520" y1="100" x2="520" y2="310"/>
+    <line x1="160" y1="170" x2="640" y2="170"/><line x1="160" y1="240" x2="640" y2="240"/>
+  </g>
+  <!-- placed pieces -->
+  <g>
+    <rect x="162" y="102" width="116" height="66" rx="6" fill="#8b5cf6"/>
+    <rect x="282" y="102" width="116" height="66" rx="6" fill="#a78bfa"/>
+    <rect x="162" y="172" width="116" height="66" rx="6" fill="#38bdf8"/>
+    <rect x="522" y="242" width="116" height="66" rx="6" fill="#4ade80"/>
+  </g>
+  <!-- target outline highlighted -->
+  <rect x="402" y="102" width="116" height="66" rx="6" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="6 4"/>
+  <text x="460" y="140" text-anchor="middle" font-size="12" fill="#fbbf24">snap zone</text>
+  <!-- dragged piece (slightly off) -->
+  <rect x="418" y="186" width="116" height="66" rx="6" fill="#c084fc" opacity="0.95" transform="rotate(-4 476 219)"/>
+  <circle cx="470" cy="214" r="9" fill="#e2e8f0" opacity="0.9"/>
+  <text x="560" y="206" font-size="13" fill="#cbd5e1">close enough: it will</text>
+  <text x="560" y="224" font-size="13" fill="#cbd5e1">jump into the outline</text>
+
+  <!-- tray -->
+  <rect x="60" y="360" width="680" height="90" rx="12" fill="#0e0e2c" stroke="#34347a" stroke-width="2"/>
+  <text x="76" y="382" font-size="13" fill="#94a3b8">Piece tray (scrolls sideways)</text>
+  <g fill="#23235a" stroke="#34347a">
+    <rect x="130" y="392" width="56" height="44" rx="6" fill="#f43f5e"/>
+    <rect x="200" y="392" width="56" height="44" rx="6" fill="#fb923c"/>
+    <rect x="270" y="392" width="56" height="44" rx="6" fill="#fbbf24"/>
+    <rect x="340" y="392" width="56" height="44" rx="6" fill="#4ade80"/>
+    <rect x="410" y="392" width="56" height="44" rx="6" fill="#38bdf8"/>
+    <rect x="480" y="392" width="56" height="44" rx="6" fill="#8b5cf6"/>
+    <rect x="550" y="392" width="56" height="44" rx="6" fill="#d946ef"/>
+    <rect x="620" y="392" width="56" height="44" rx="6" fill="#a78bfa"/>
+  </g>
+  <text x="90" y="420" text-anchor="middle" font-size="24" fill="#e2e8f0">‹</text>
+  <text x="712" y="420" text-anchor="middle" font-size="24" fill="#e2e8f0">›</text>
+
+  <!-- drag arrow from tray to canvas -->
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/></marker></defs>
+  <path d="M508 392 C 520 330, 500 290, 478 256" fill="none" stroke="#fbbf24" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="400" y="480" text-anchor="middle" font-size="13" fill="#94a3b8">Two players share one canvas: either of you can place any piece at any time.</text>
+</svg>

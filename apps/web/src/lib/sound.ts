@@ -1,6 +1,9 @@
 // Tiny synthesized sound effects via WebAudio — no audio assets to download.
 
-type Sfx = 'dice' | 'move' | 'drop' | 'ladder' | 'snake' | 'win' | 'lose' | 'chat' | 'click';
+export type Sfx =
+  | 'dice' | 'move' | 'drop' | 'ladder' | 'snake' | 'win' | 'lose' | 'chat' | 'click'
+  // Added for the strategy / puzzle / arcade games.
+  | 'capture' | 'check' | 'slide' | 'cash' | 'card' | 'flap' | 'score' | 'hint' | 'error' | 'tile' | 'place' | 'solve' | 'roar' | 'hiss' | 'chomp' | 'crash';
 
 let ctx: AudioContext | null = null;
 let muted = false;
@@ -68,6 +71,57 @@ export function play(sfx: Sfx) {
       break;
     case 'chat':
       tone(1200, 0, 0.06, 'sine', 0.06);
+      break;
+    case 'capture':
+      tone(220, 0, 0.12, 'square', 0.12, 110);
+      tone(660, 0.05, 0.1, 'triangle', 0.1);
+      break;
+    case 'check':
+      [880, 1100].forEach((f, i) => tone(f, i * 0.09, 0.14, 'triangle', 0.12));
+      break;
+    case 'slide':
+      tone(600, 0, 0.14, 'sine', 0.1, 300);
+      break;
+    case 'cash':
+      [1320, 1760, 2200].forEach((f, i) => tone(f, i * 0.05, 0.08, 'sine', 0.1));
+      break;
+    case 'card':
+      tone(900, 0, 0.05, 'triangle', 0.08, 1400);
+      break;
+    case 'flap':
+      tone(500, 0, 0.07, 'triangle', 0.1, 900);
+      break;
+    case 'score':
+      [988, 1319].forEach((f, i) => tone(f, i * 0.06, 0.1, 'square', 0.06));
+      break;
+    case 'hint':
+      [660, 880, 1320].forEach((f, i) => tone(f, i * 0.07, 0.12, 'sine', 0.1));
+      break;
+    case 'error':
+      tone(180, 0, 0.18, 'sawtooth', 0.08, 120);
+      break;
+    case 'tile':
+      tone(1400, 0, 0.05, 'triangle', 0.09, 700);
+      break;
+    case 'place':
+      tone(420, 0, 0.1, 'sine', 0.14, 520);
+      break;
+    case 'solve':
+      [523, 659, 784, 1046, 1318].forEach((f, i) => tone(f, i * 0.1, 0.25, 'triangle', 0.13));
+      break;
+    case 'roar':
+      tone(120, 0, 0.7, 'sawtooth', 0.12, 60);
+      tone(90, 0.1, 0.6, 'square', 0.06, 50);
+      break;
+    case 'hiss':
+      for (let i = 0; i < 10; i++) tone(2400 + Math.random() * 1600, i * 0.04, 0.06, 'sawtooth', 0.02);
+      break;
+    case 'chomp':
+      tone(260, 0, 0.08, 'square', 0.14, 90);
+      tone(200, 0.12, 0.08, 'square', 0.14, 70);
+      break;
+    case 'crash':
+      tone(300, 0, 0.3, 'sawtooth', 0.14, 40);
       break;
   }
 }

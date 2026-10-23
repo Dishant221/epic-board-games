@@ -1,16 +1,21 @@
+import { handleChangePassword, handleDeleteAccount, handleExportAccount } from './account';
+import { handleContact } from './contact';
 import { handleLogin, handleLogout, handleMe, handleSignup } from './auth';
 import type { Env } from './env';
 import {
+  handleBlockUser,
   handleFriendPing,
   handleFriendRequest,
   handleFriendRespond,
   handleListFriends,
   handleRemoveFriend,
+  handleUnblockUser,
   handleUserSearch,
 } from './friends';
 import { HttpError, errorResponse, json, withApiHeaders } from './http';
 import { handleListNotifications, handleReadNotifications } from './notifications';
-import { handleGetProfile, handleUpdateProfile } from './profile';
+import { handleUpdateProfile } from './profile';
+import { handleGetProfile, handleLeaderboard } from './stats';
 import {
   handleCreateAiRoom,
   handleCreatePrivateRoom,
@@ -39,6 +44,11 @@ const ROUTES: Route[] = [
   { method: 'POST', pattern: /^\/api\/auth\/login$/, handler: handleLogin },
   { method: 'POST', pattern: /^\/api\/auth\/logout$/, handler: handleLogout },
   { method: 'GET', pattern: /^\/api\/auth\/me$/, handler: handleMe },
+  { method: 'POST', pattern: /^\/api\/auth\/password$/, handler: handleChangePassword },
+  { method: 'GET', pattern: /^\/api\/account\/export$/, handler: handleExportAccount },
+  { method: 'DELETE', pattern: /^\/api\/account$/, handler: handleDeleteAccount },
+  { method: 'GET', pattern: /^\/api\/leaderboard$/, handler: handleLeaderboard },
+  { method: 'POST', pattern: /^\/api\/contact$/, handler: handleContact },
   { method: 'GET', pattern: /^\/api\/profile$/, handler: handleGetProfile },
   { method: 'PATCH', pattern: /^\/api\/profile$/, handler: handleUpdateProfile },
   { method: 'GET', pattern: /^\/api\/users\/search$/, handler: handleUserSearch },
@@ -47,6 +57,8 @@ const ROUTES: Route[] = [
   { method: 'POST', pattern: /^\/api\/friends\/respond$/, handler: handleFriendRespond },
   { method: 'POST', pattern: /^\/api\/friends\/ping$/, handler: handleFriendPing },
   { method: 'DELETE', pattern: /^\/api\/friends\/([0-9a-f-]{36})$/, handler: handleRemoveFriend },
+  { method: 'POST', pattern: /^\/api\/friends\/block$/, handler: handleBlockUser },
+  { method: 'DELETE', pattern: /^\/api\/friends\/block\/([0-9a-f-]{36})$/, handler: handleUnblockUser },
   { method: 'GET', pattern: /^\/api\/notifications$/, handler: handleListNotifications },
   { method: 'POST', pattern: /^\/api\/notifications\/read$/, handler: handleReadNotifications },
   { method: 'GET', pattern: /^\/api\/presence\/ws$/, handler: handlePresenceWs },
@@ -81,7 +93,21 @@ async function handleApi(request: Request, env: Env): Promise<Response> {
   throw pathMatched ? new HttpError(405, 'Method not allowed') : new HttpError(404, 'Not found');
 }
 
+/** Retention (see /privacy): expired sessions, and logs/notifications older than 90 days. */
+const RETENTION_MS = 90 * 24 * 60 * 60 * 1000;
+
 export default {
+  async scheduled(_event, env): Promise<void> {
+    const now = Date.now();
+    await env.DB.batch([
+      env.DB.prepare('DELETE FROM sessions WHERE expires_at < ?').bind(now),
+      env.DB.prepare('DELETE FROM notifications WHERE created_at < ?').bind(now - RETENTION_MS),
+      env.DB.prepare('DELETE FROM audit_log WHERE created_at < ?').bind(now - RETENTION_MS),
+      // Contact messages: keep for 180 days.
+      env.DB.prepare('DELETE FROM contact_messages WHERE created_at < ? AND handled_at IS NULL').bind(now - 2 * RETENTION_MS),
+    ]);
+  },
+
   async fetch(request, env): Promise<Response> {
     const { pathname } = new URL(request.url);
     // run_worker_first only routes /api/* here; everything else is a static asset.

@@ -1,6 +1,6 @@
 import type { SnakesLaddersMove, SnakesLaddersState } from '@ebg/game-core';
 import { useEffect, useRef, useState } from 'react';
-import { detectPerformanceTier, getGraphicsSettings, webglAvailable } from '../../../lib/performance-tier';
+import { detectPerformanceTier, getGraphicsSettings, webglAvailable, type PerformanceTier } from '../../../lib/performance-tier';
 import type { GameSessionView } from '../../../lib/session';
 import { play } from '../../../lib/sound';
 import type { SnakesScene } from '../../../lib/snakes-scene';
@@ -14,6 +14,20 @@ interface Props {
 }
 
 const JUMP_TEXT = { ladder: 'climbed a ladder! 🪜', snake: 'was bitten by a snake! 🐍', croc: 'got chomped by a croc! 🐊', dragon: 'was scorched by the dragon! 🐉' };
+const BITE_SFX = { snake: 'hiss', croc: 'chomp', dragon: 'roar' } as const;
+
+/** Player override for the graphics tier; null = auto-detect. Purely cosmetic, so storage failures are ignored. */
+type Detail = 'low' | 'high';
+const DETAIL_KEY = 'ebg:snakes:detail';
+
+function readDetail(): Detail | null {
+  try {
+    const v = localStorage.getItem(DETAIL_KEY);
+    return v === 'low' || v === 'high' ? v : null;
+  } catch {
+    return null;
+  }
+}
 
 export default function SnakesLaddersBoard({ session, size, dicePosition }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -21,22 +35,30 @@ export default function SnakesLaddersBoard({ session, size, dicePosition }: Prop
   const lastKey = useRef(-1);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [detail, setDetail] = useState<Detail | null>(readDetail);
+  const [tier, setTier] = useState<PerformanceTier | null>(null);
   const s = session.state;
 
   // Lazy-load Three.js so the landing page and other games stay light.
+  // Re-runs (rebuilding the scene) when the player count or detail override changes.
   useEffect(() => {
     if (!containerRef.current || !s) return;
     if (!webglAvailable()) {
       setError('Your browser or device does not support WebGL, which this 3D board needs. Try a recent version of Chrome, Firefox, Safari or Edge.');
       return;
     }
+    const effective: PerformanceTier = detail ?? detectPerformanceTier();
+    setTier(effective);
     let disposed = false;
     import('../../../lib/snakes-scene')
       .then(({ SnakesScene }) => {
         if (disposed || !containerRef.current) return;
-        const scene = new SnakesScene(containerRef.current, s.positions.length, getGraphicsSettings(detectPerformanceTier()), {
+        const scene = new SnakesScene(containerRef.current, s.positions.length, getGraphicsSettings(effective), {
           onHop: () => play('move'),
           onJump: (kind) => play(kind === 'ladder' ? 'ladder' : 'snake'),
+          onBite: (kind) => play(BITE_SFX[kind]),
+          // GameOverModal plays the 'win' fanfare; this is just the sparkle burst.
+          onWin: () => play('cash'),
         });
         scene.setPositions(s.positions);
         lastKey.current = session.moveKey;
@@ -48,7 +70,7 @@ export default function SnakesLaddersBoard({ session, size, dicePosition }: Prop
       sceneRef.current?.dispose();
       sceneRef.current = null;
     };
-  }, [s?.positions.length]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [s?.positions.length, detail]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Turn state changes into pawn animations.
   useEffect(() => {
@@ -75,6 +97,17 @@ export default function SnakesLaddersBoard({ session, size, dicePosition }: Prop
   const roll = () => session.canMove && session.submitMove({ type: 'roll' });
   const diceColor = session.currentSeat === null ? undefined : SEAT_COLORS[session.currentSeat];
 
+  const detailLabel = tier === 'low' ? 'Low' : 'High';
+  const toggleDetail = () => {
+    const next: Detail = tier === 'low' ? 'high' : 'low';
+    setDetail(next);
+    try {
+      localStorage.setItem(DETAIL_KEY, next);
+    } catch {
+      /* storage unavailable */
+    }
+  };
+
   const diceClass =
     dicePosition === 'corner'
       ? 'absolute right-3 bottom-3'
@@ -93,6 +126,16 @@ export default function SnakesLaddersBoard({ session, size, dicePosition }: Prop
       {error && (
         <div role="alert" className="absolute inset-4 grid place-items-center rounded-2xl bg-rose-950/90 p-6 text-center text-rose-100">
           {error}
+        </div>
+      )}
+      {!error && (
+        <div className="absolute top-2 right-2 flex gap-1" role="toolbar" aria-label="Board view">
+          <button type="button" className="btn-ghost min-h-11 min-w-11 px-2 py-1 text-xs sm:min-h-9" onClick={() => sceneRef.current?.resetCamera()} title="Reset camera">
+            Reset camera
+          </button>
+          <button type="button" className="btn-ghost min-h-11 min-w-11 px-2 py-1 text-xs sm:min-h-9" onClick={toggleDetail} aria-pressed={tier !== 'low'} title="Toggle graphics detail" disabled={tier === null}>
+            Detail: {detailLabel}
+          </button>
         </div>
       )}
       {toast && (

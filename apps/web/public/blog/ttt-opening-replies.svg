@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" width="800" height="390" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Three replies to a corner opening in Tic Tac Toe</title>
+  <desc id="d">Three small Tic Tac Toe boards, each with X in the top-left corner. In the first, O has taken the centre, labelled correct and holds the draw. In the second, O has taken the opposite corner, labelled loses to a fork. In the third, O has taken an edge square, also labelled loses to a fork.</desc>
+  <rect width="800" height="390" rx="20" fill="#17173f"/>
+  <text x="400" y="40" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">X opens in a corner. How should O reply?</text>
+  <rect x="40" y="70" width="200" height="200" rx="12" fill="#0e0e2c"/>
+  <line x1="106.66666666666667" y1="78" x2="106.66666666666667" y2="262" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="48" y1="136.66666666666669" x2="232" y2="136.66666666666669" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="173.33333333333334" y1="78" x2="173.33333333333334" y2="262" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="48" y1="203.33333333333334" x2="232" y2="203.33333333333334" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <text x="73.33333333333334" y="118.21333333333334" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#f43f5e" opacity="1">X</text>
+  <text x="140" y="184.88000000000002" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#38bdf8" opacity="1">O</text>
+  <text x="140" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0">O takes the centre</text>
+  <text x="140" y="324" text-anchor="middle" font-size="14" fill="#4ade80">Correct: holds the draw</text>
+  <rect x="300" y="70" width="200" height="200" rx="12" fill="#0e0e2c"/>
+  <line x1="366.6666666666667" y1="78" x2="366.6666666666667" y2="262" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="308" y1="136.66666666666669" x2="492" y2="136.66666666666669" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="433.33333333333337" y1="78" x2="433.33333333333337" y2="262" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="308" y1="203.33333333333334" x2="492" y2="203.33333333333334" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <text x="333.3333333333333" y="118.21333333333334" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#f43f5e" opacity="1">X</text>
+  <text x="466.6666666666667" y="118.21333333333334" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#f43f5e" opacity="0.45">X</text>
+  <text x="333.3333333333333" y="251.54666666666668" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#f43f5e" opacity="0.45">X</text>
+  <text x="466.6666666666667" y="251.54666666666668" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#38bdf8" opacity="1">O</text>
+  <text x="400" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0">O takes a corner</text>
+  <text x="400" y="324" text-anchor="middle" font-size="14" fill="#f43f5e">Loses to a fork</text>
+  <rect x="560" y="70" width="200" height="200" rx="12" fill="#0e0e2c"/>
+  <line x1="626.6666666666666" y1="78" x2="626.6666666666666" y2="262" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="568" y1="136.66666666666669" x2="752" y2="136.66666666666669" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="693.3333333333334" y1="78" x2="693.3333333333334" y2="262" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <line x1="568" y1="203.33333333333334" x2="752" y2="203.33333333333334" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+  <text x="593.3333333333334" y="118.21333333333334" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#f43f5e" opacity="1">X</text>
+  <text x="660" y="118.21333333333334" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#38bdf8" opacity="1">O</text>
+  <text x="660" y="184.88000000000002" text-anchor="middle" font-size="41.333333333333336" font-weight="700" fill="#f43f5e" opacity="0.45">X</text>
+  <text x="660" y="300" text-anchor="middle" font-size="16" font-weight="700" fill="#e2e8f0">O takes an edge</text>
+  <text x="660" y="324" text-anchor="middle" font-size="14" fill="#f43f5e">Loses to a fork</text>
+  <text x="400" y="364" text-anchor="middle" font-size="13" fill="#94a3b8">Faded X marks show where X will play next to set up a fork.</text>
+</svg>

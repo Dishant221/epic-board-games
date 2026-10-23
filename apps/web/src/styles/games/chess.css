@@ -1,0 +1,143 @@
+/* Chess: board palette, Unicode piece styling, highlights and the piece slide. */
+
+.chess-board {
+  --chess-light: #d9d6f3;
+  --chess-dark: #5f5ca8;
+  --chess-last: rgb(250 204 21 / 0.4);
+  --chess-select: rgb(139 92 246 / 0.6);
+  --chess-target: rgb(14 14 44 / 0.42);
+  --chess-check: rgb(244 63 94);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  overflow: hidden;
+  border-radius: 0.75rem;
+  touch-action: none;
+  outline: none;
+}
+
+.chess-sq {
+  position: relative;
+}
+.chess-sq.light {
+  background: var(--chess-light);
+}
+.chess-sq.dark {
+  background: var(--chess-dark);
+}
+.chess-sq.last::before,
+.chess-sq.selected::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--chess-last);
+}
+.chess-sq.selected::before {
+  background: var(--chess-select);
+}
+/* Legal targets: a dot on empty squares, a ring around capturable pieces. */
+.chess-sq.dot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30%;
+  height: 30%;
+  border-radius: 50%;
+  background: var(--chess-target);
+  transform: translate(-50%, -50%);
+}
+.chess-sq.ring::after {
+  content: '';
+  position: absolute;
+  inset: 5%;
+  border-radius: 50%;
+  border: calc(var(--sq) * 0.09) solid var(--chess-target);
+}
+.chess-sq.check {
+  background: radial-gradient(circle at center, var(--chess-check) 0%, rgb(244 63 94 / 0.6) 45%, transparent 78%);
+  animation: chess-check-pulse 0.9s ease-in-out infinite alternate;
+}
+.chess-sq.cursor {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+  z-index: 1;
+}
+.chess-sq.grab {
+  cursor: grab;
+}
+.chess-sq.target {
+  cursor: pointer;
+}
+@keyframes chess-check-pulse {
+  from {
+    box-shadow: inset 0 0 0 0 rgb(244 63 94 / 0.5);
+  }
+  to {
+    box-shadow: inset 0 0 calc(var(--sq) * 0.45) calc(var(--sq) * 0.08) rgb(244 63 94 / 0.95);
+  }
+}
+
+.chess-coord {
+  position: absolute;
+  font-size: calc(var(--sq) * 0.2);
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.chess-coord.file {
+  right: 5%;
+  bottom: 4%;
+}
+.chess-coord.rank {
+  left: 5%;
+  top: 4%;
+}
+.chess-sq.light .chess-coord {
+  color: var(--chess-dark);
+}
+.chess-sq.dark .chess-coord {
+  color: var(--chess-light);
+}
+
+/* Both colours use the filled glyphs and are coloured here, so every OS renders
+   solid, legible pieces; a contrasting stroke keeps Black visible on dark squares. */
+.chess-glyph {
+  font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', 'DejaVu Sans', 'Apple Symbols', 'Symbola', sans-serif;
+  line-height: 1;
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.035em #2b2550;
+  color: #fbf8ff;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.45));
+}
+.chess-glyph.black {
+  color: #17142f;
+  -webkit-text-stroke: 0.045em #e4def8;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.55));
+}
+
+.chess-pieces {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.chess-piece {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 12.5%;
+  height: 12.5%;
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--sq) * 0.78);
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.2s ease;
+  will-change: transform;
+}
+.chess-piece.dragging {
+  transition: none;
+  z-index: 10;
+}

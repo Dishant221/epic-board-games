@@ -25,10 +25,14 @@
   --color-ink-700: #23235a;
   --color-ink-600: #34347a;
   --color-glow: #8b5cf6;
-  --color-p0: #f43f5e;
-  --color-p1: #38bdf8;
-  --color-p2: #facc15;
-  --color-p3: #4ade80;
+  /* Player seat colours — Okabe-Ito colour-blind-safe set (sky / vermilion /
+     bluish-green / yellow). Verified with the dataviz palette validator against
+     the dark board surface: CVD separation ΔE 11.0, normal-vision ΔE 18.4, all
+     ≥3:1 contrast. Keep these four distinguishable; they identify players. */
+  --color-p0: #56b4e9;
+  --color-p1: #e06a1b;
+  --color-p2: #0ba884;
+  --color-p3: #f0e442;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pop: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);

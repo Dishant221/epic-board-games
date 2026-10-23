@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 490" width="800" height="490" role="img" aria-labelledby="t d" font-family="Inter, Segoe UI, Arial, sans-serif">
+  <title id="t">Connect 4 board with a winning diagonal</title>
+  <desc id="d">A blue 7 by 6 Connect 4 board with red and yellow discs. Four red discs running diagonally up and to the right from column 4 are circled in green to show a winning line. Columns are numbered 1 to 7 beneath the board.</desc>
+  <rect width="800" height="490" rx="20" fill="#17173f"/>
+  <text x="400" y="42" text-anchor="middle" font-size="22" font-weight="700" fill="#e2e8f0">Connect 4: a 7-column by 6-row board</text>
+  <rect x="170" y="70" width="440" height="380" rx="14" fill="#1d4ed8"/>
+  <circle cx="210" cy="410" r="24" fill="#0e0e2c"/>
+  <circle cx="270" cy="410" r="24" fill="#facc15"/>
+  <circle cx="330" cy="410" r="24" fill="#facc15"/>
+  <circle cx="390" cy="410" r="24" fill="#f43f5e"/>
+  <circle cx="450" cy="410" r="24" fill="#f43f5e"/>
+  <circle cx="510" cy="410" r="24" fill="#facc15"/>
+  <circle cx="570" cy="410" r="24" fill="#f43f5e"/>
+  <circle cx="210" cy="350" r="24" fill="#0e0e2c"/>
+  <circle cx="270" cy="350" r="24" fill="#0e0e2c"/>
+  <circle cx="330" cy="350" r="24" fill="#0e0e2c"/>
+  <circle cx="390" cy="350" r="24" fill="#facc15"/>
+  <circle cx="450" cy="350" r="24" fill="#f43f5e"/>
+  <circle cx="510" cy="350" r="24" fill="#f43f5e"/>
+  <circle cx="570" cy="350" r="24" fill="#facc15"/>
+  <circle cx="210" cy="290" r="24" fill="#0e0e2c"/>
+  <circle cx="270" cy="290" r="24" fill="#0e0e2c"/>
+  <circle cx="330" cy="290" r="24" fill="#0e0e2c"/>
+  <circle cx="390" cy="290" r="24" fill="#0e0e2c"/>
+  <circle cx="450" cy="290" r="24" fill="#facc15"/>
+  <circle cx="510" cy="290" r="24" fill="#f43f5e"/>
+  <circle cx="570" cy="290" r="24" fill="#facc15"/>
+  <circle cx="210" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="270" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="330" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="390" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="450" cy="230" r="24" fill="#0e0e2c"/>
+  <circle cx="510" cy="230" r="24" fill="#f43f5e"/>
+  <circle cx="570" cy="230" r="24" fill="#f43f5e"/>
+  <circle cx="210" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="270" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="330" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="390" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="450" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="510" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="570" cy="170" r="24" fill="#0e0e2c"/>
+  <circle cx="210" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="270" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="330" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="390" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="450" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="510" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="570" cy="110" r="24" fill="#0e0e2c"/>
+  <circle cx="390" cy="410" r="27" fill="none" stroke="#4ade80" stroke-width="4"/>
+  <circle cx="450" cy="350" r="27" fill="none" stroke="#4ade80" stroke-width="4"/>
+  <circle cx="510" cy="290" r="27" fill="none" stroke="#4ade80" stroke-width="4"/>
+  <circle cx="570" cy="230" r="27" fill="none" stroke="#4ade80" stroke-width="4"/>
+  <text x="210" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">1</text>
+  <text x="270" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">2</text>
+  <text x="330" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">3</text>
+  <text x="390" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">4</text>
+  <text x="450" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">5</text>
+  <text x="510" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">6</text>
+  <text x="570" y="470" text-anchor="middle" font-size="14" fill="#94a3b8">7</text>
+  <circle cx="60" cy="140" r="14" fill="#f43f5e"/>  <text x="84" y="145" font-size="14" fill="#e2e8f0">Red moves first</text>
+  <circle cx="60" cy="180" r="14" fill="#facc15"/>  <text x="84" y="185" font-size="14" fill="#e2e8f0">Yellow replies</text>
+  <circle cx="60" cy="220" r="14" fill="none" stroke="#4ade80" stroke-width="4"/>  <text x="84" y="225" font-size="14" fill="#e2e8f0">Winning four</text>
+  <text x="640" y="140" font-size="14" fill="#cbd5e1">Discs fall to the</text>
+  <text x="640" y="160" font-size="14" fill="#cbd5e1">lowest empty space</text>
+  <text x="640" y="200" font-size="14" fill="#cbd5e1">Red has four in a</text>
+  <text x="640" y="220" font-size="14" fill="#cbd5e1">diagonal: game over</text>
+</svg>

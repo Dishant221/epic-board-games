@@ -1,0 +1,202 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import { BLOG_AUTHOR, formatDate, gameFor, getPublishedPosts, isoDate, postUrl, readingTime, tagUrl, type BlogPost } from '../../lib/blog';
+import '../../styles/blog.css';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts(); // newest first
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      newer: posts[i - 1] ?? null,
+      older: posts[i + 1] ?? null,
+      related: posts.filter((p) => p.data.game === post.data.game && p.id !== post.id).slice(0, 3),
+    },
+  }));
+}
+
+interface Props {
+  post: BlogPost;
+  newer: BlogPost | null;
+  older: BlogPost | null;
+  related: BlogPost[];
+}
+const { post, newer, older, related } = Astro.props;
+const { Content, headings } = await render(post);
+const game = gameFor(post);
+const site = Astro.site!.toString().replace(/\/$/, '');
+const url = `${site}${postUrl(post)}`;
+const heroUrl = `${site}${post.data.hero}`;
+const { words, minutes } = readingTime(post.body);
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const published = post.data.pubDate;
+const updated = post.data.updatedDate ?? post.data.pubDate;
+
+const title = `${post.data.title} | Epic Board Games Guides`;
+
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': url,
+    headline: post.data.title,
+    description: post.data.description,
+    image: { '@type': 'ImageObject', url: heroUrl, width: 1200, height: 630 },
+    datePublished: published.toISOString(),
+    dateModified: updated.toISOString(),
+    author: { '@type': 'Organization', name: BLOG_AUTHOR, url: site },
+    publisher: { '@type': 'Organization', name: 'Epic Board Games', url: site, logo: { '@type': 'ImageObject', url: `${site}/icon-512.png` } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    url,
+    inLanguage: 'en',
+    wordCount: words,
+    keywords: post.data.tags.join(', '),
+    articleSection: game.name,
+    about: { '@type': 'VideoGame', name: game.name, url: `${site}/games/${game.slug}` },
+    isPartOf: { '@type': 'Blog', name: 'Epic Board Games Guides', url: `${site}/blog` },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site}/` },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: `${site}/blog` },
+      { '@type': 'ListItem', position: 3, name: game.name, item: `${site}/blog#game-${game.slug}` },
+      { '@type': 'ListItem', position: 4, name: post.data.title, item: url },
+    ],
+  },
+];
+---
+
+<BaseLayout title={title} description={post.data.description} schema={schema} ogImage={post.data.hero}>
+  <div class="mx-auto max-w-7xl px-4 pt-8 md:pt-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400">
+      <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <li><a href="/" class="hover:text-white">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li><a href="/blog" class="hover:text-white">Guides</a></li>
+        <li aria-hidden="true">›</li>
+        <li><a href={`/blog#game-${game.slug}`} class="hover:text-white">{game.name}</a></li>
+        <li aria-hidden="true">›</li>
+        <li aria-current="page" class="text-slate-300">{post.data.title}</li>
+      </ol>
+    </nav>
+  </div>
+
+  <article class="mx-auto max-w-7xl px-4 pt-6" itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="mx-auto max-w-3xl">
+      <p class="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+        <a href={`/games/${game.slug}`} class="rounded-full bg-white/5 px-2.5 py-1 text-slate-200 ring-1 ring-white/10 hover:bg-white/10">
+          <span aria-hidden="true">{game.emoji}</span> {game.name}
+        </a>
+        {post.data.tags.map((tag) => (
+          <a href={tagUrl(tag)} class="rounded-full bg-violet-500/15 px-2.5 py-1 text-violet-200 hover:bg-violet-500/25">#{tag}</a>
+        ))}
+      </p>
+      <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight sm:text-4xl lg:text-5xl" itemprop="headline">{post.data.title}</h1>
+      <p class="mt-4 text-lg text-slate-300" itemprop="description">{post.data.description}</p>
+      <p class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-400">
+        <span>By <span itemprop="author" class="text-slate-200">{BLOG_AUTHOR}</span></span>
+        <span aria-hidden="true">·</span>
+        <span>Published <time datetime={isoDate(published)} itemprop="datePublished">{formatDate(published)}</time></span>
+        {post.data.updatedDate && (
+          <>
+            <span aria-hidden="true">·</span>
+            <span>Updated <time datetime={isoDate(updated)} itemprop="dateModified">{formatDate(updated)}</time></span>
+          </>
+        )}
+        <span aria-hidden="true">·</span>
+        <span>{minutes} min read</span>
+      </p>
+    </header>
+
+    <figure class="mx-auto mt-8 max-w-4xl">
+      <img
+        src={post.data.hero}
+        alt={post.data.heroAlt}
+        width="1200"
+        height="630"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="aspect-[1200/630] w-full rounded-3xl object-cover ring-1 ring-white/10"
+        itemprop="image"
+      />
+    </figure>
+
+    <div class="mx-auto mt-10 grid max-w-7xl gap-10 lg:grid-cols-[1fr_minmax(0,48rem)_1fr]">
+      <aside class="lg:order-3">
+        {toc.length > 0 && (
+          <nav aria-labelledby="toc-title" class="card toc p-5 lg:sticky lg:top-20">
+            <p id="toc-title" class="font-display text-sm font-bold tracking-wide text-slate-200 uppercase">On this page</p>
+            <ol class="mt-3 border-l border-white/10">
+              {toc.map((h) => (
+                <li><a href={`#${h.slug}`} data-depth={h.depth}>{h.text}</a></li>
+              ))}
+            </ol>
+          </nav>
+        )}
+      </aside>
+
+      <div class="prose min-w-0 lg:order-2" itemprop="articleBody">
+        <Content />
+      </div>
+
+      <aside class="hidden lg:order-1 lg:block">
+        <div class="card sticky top-20 p-5 text-sm">
+          <p class="text-4xl" aria-hidden="true">{game.emoji}</p>
+          <p class="mt-2 font-display text-lg font-bold">{game.name}</p>
+          <p class="mt-1 text-slate-400">{game.tagline}</p>
+          <dl class="mt-3 space-y-1 text-slate-300">
+            <div class="flex justify-between"><dt class="text-slate-500">Players</dt><dd>{game.minPlayers === game.maxPlayers ? game.maxPlayers : `${game.minPlayers}–${game.maxPlayers}`}</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">Length</dt><dd>~{game.minutes} min</dd></div>
+            <div class="flex justify-between"><dt class="text-slate-500">vs AI</dt><dd>{game.ai === 'opponent' ? 'Yes' : game.ai === 'hints' ? 'Hints' : '—'}</dd></div>
+          </dl>
+          <a href={`/games/${game.slug}`} class="btn-primary mt-4 w-full">Play now</a>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="mx-auto mt-12 max-w-3xl">
+      <div class="card flex flex-col items-start gap-4 p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p class="font-display text-xl font-bold">Ready to play {game.name}?</p>
+          <p class="mt-1 text-sm text-slate-400">Free in your browser{game.multiplayer ? ' — online with friends or ' : ' — '}{game.ai === 'opponent' ? 'against Buddy, Nova, Titan or the Oracle.' : game.multiplayer ? 'solo.' : 'at your own pace.'}</p>
+        </div>
+        <a href={`/games/${game.slug}`} class="btn-primary shrink-0 px-6 py-3"><span aria-hidden="true">{game.emoji}</span> Play {game.name}</a>
+      </div>
+
+      <nav aria-label="Newer and older guides" class="mt-8 grid gap-3 sm:grid-cols-2">
+        {older ? (
+          <a href={postUrl(older)} class="card group p-4 hover:ring-white/30">
+            <span class="text-xs text-slate-400">← Older guide</span>
+            <span class="mt-1 block font-semibold text-slate-100 group-hover:text-white">{older.data.title}</span>
+          </a>
+        ) : (
+          <span />
+        )}
+        {newer && (
+          <a href={postUrl(newer)} class="card group p-4 text-right hover:ring-white/30">
+            <span class="text-xs text-slate-400">Newer guide →</span>
+            <span class="mt-1 block font-semibold text-slate-100 group-hover:text-white">{newer.data.title}</span>
+          </a>
+        )}
+      </nav>
+    </footer>
+  </article>
+
+  {related.length > 0 && (
+    <section class="mx-auto mt-16 max-w-7xl px-4" aria-labelledby="related-title">
+      <div class="mb-5 flex items-end justify-between">
+        <h2 id="related-title" class="text-2xl font-bold">Related {game.name} guides</h2>
+        <a href="/blog" class="text-sm font-semibold text-violet-300 hover:text-violet-200">All guides →</a>
+      </div>
+      <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {related.map((p) => <PostCard post={p} compact />)}
+      </ul>
+    </section>
+  )}
+</BaseLayout>

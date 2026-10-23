@@ -1,0 +1,185 @@
+/* Checkers board: walnut frame, dark/tan squares, glossy discs. `--cell` (px) is set by the board. */
+
+.ck-frame {
+  padding: 2.4%;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #6b4226 0%, #3f2416 55%, #2a170d 100%);
+  box-shadow:
+    0 24px 48px -12px rgb(0 0 0 / 0.7),
+    inset 0 1px 0 rgb(255 255 255 / 0.12),
+    inset 0 -2px 6px rgb(0 0 0 / 0.5);
+}
+
+.ck-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.5);
+  outline: none;
+  cursor: default;
+}
+.ck-board:focus-visible {
+  box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.5), 0 0 0 3px var(--color-glow);
+}
+
+/* Squares */
+.ck-sq {
+  position: relative;
+}
+.ck-sq--dark {
+  background: linear-gradient(135deg, #4a2c1c, #35200f);
+}
+.ck-sq--light {
+  background: linear-gradient(135deg, #dcc094, #c4a06d);
+}
+.ck-sq--last {
+  box-shadow: inset 0 0 0 999px rgb(250 204 21 / 0.22);
+}
+.ck-sq--selected {
+  box-shadow: inset 0 0 0 3px #facc15, inset 0 0 0 999px rgb(250 204 21 / 0.18);
+}
+.ck-sq--cursor {
+  box-shadow: inset 0 0 0 3px var(--color-glow);
+}
+.ck-sq--selected.ck-sq--cursor {
+  box-shadow: inset 0 0 0 3px #facc15, inset 0 0 0 6px var(--color-glow);
+}
+.ck-sq--target::after,
+.ck-sq--capture-target::after {
+  content: '';
+  position: absolute;
+  inset: 34%;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.55);
+  box-shadow: 0 0 10px rgb(255 255 255 / 0.4);
+  animation: ck-target-in 180ms ease-out both;
+}
+.ck-sq--capture-target::after {
+  inset: 12%;
+  background: transparent;
+  border: 3px solid rgb(251 191 36 / 0.85);
+}
+.ck-sq--movable:hover {
+  box-shadow: inset 0 0 0 999px rgb(255 255 255 / 0.08);
+}
+.ck-sq--target:hover,
+.ck-sq--capture-target:hover {
+  cursor: pointer;
+}
+
+/* Pieces layer: discs are positioned with translate() so moves animate as slides. */
+.ck-pieces {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ck-piece {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5%;
+  height: 12.5%;
+  transition: transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 120ms;
+  will-change: transform;
+}
+.ck-piece--instant {
+  transition: none;
+}
+.ck-piece--lifted {
+  opacity: 0;
+}
+.ck-piece--ghost {
+  z-index: 2;
+}
+.ck-piece--ghost .ck-disc {
+  animation: ck-capture 520ms ease-out forwards;
+}
+.ck-piece--moving {
+  z-index: 3;
+}
+
+.ck-disc {
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  box-shadow:
+    0 3px 6px rgb(0 0 0 / 0.55),
+    inset 0 -4px 6px rgb(0 0 0 / 0.35),
+    inset 0 2px 3px rgb(255 255 255 / 0.25);
+}
+.ck-disc::after {
+  /* Turned groove near the rim. */
+  content: '';
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  border: 2px solid rgb(255 255 255 / 0.12);
+  box-shadow: inset 0 0 4px rgb(0 0 0 / 0.35);
+}
+.ck-disc--0 {
+  background: radial-gradient(circle at 35% 30%, #fda4af 0%, #f43f5e 32%, #9f1239 78%, #4c0519 100%);
+}
+.ck-disc--1 {
+  background: radial-gradient(circle at 35% 30%, #64748b 0%, #1e293b 38%, #0b1020 82%, #000 100%);
+}
+.ck-disc--capturer {
+  animation: ck-pulse 1.1s ease-in-out infinite;
+}
+
+.ck-crown {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: calc(var(--cell, 48px) * 0.46);
+  line-height: 1;
+  color: #fcd34d;
+  text-shadow: 0 1px 2px rgb(0 0 0 / 0.8), 0 0 10px rgb(252 211 77 / 0.5);
+}
+.ck-crown--pop {
+  animation: ck-crown-pop 650ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* Drag avatar follows the pointer; the real disc is hidden meanwhile. */
+.ck-avatar {
+  z-index: 10;
+  transition: none;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 10px rgb(0 0 0 / 0.5));
+}
+.ck-avatar .ck-disc {
+  transform: scale(1.1);
+}
+
+/* Small discs in the captured-count rows. */
+.ck-mini {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.6), inset 0 -1px 2px rgb(0 0 0 / 0.4);
+  animation: pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes ck-capture {
+  0% { transform: scale(1); opacity: 1; }
+  35% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.3); opacity: 0; }
+}
+@keyframes ck-crown-pop {
+  0% { transform: scale(0) rotate(-30deg); opacity: 0; }
+  60% { transform: scale(1.35) rotate(8deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes ck-pulse {
+  0%, 100% { box-shadow: 0 3px 6px rgb(0 0 0 / 0.55), inset 0 -4px 6px rgb(0 0 0 / 0.35), inset 0 2px 3px rgb(255 255 255 / 0.25), 0 0 0 0 rgb(251 191 36 / 0.7); }
+  50% { box-shadow: 0 3px 6px rgb(0 0 0 / 0.55), inset 0 -4px 6px rgb(0 0 0 / 0.35), inset 0 2px 3px rgb(255 255 255 / 0.25), 0 0 0 6px rgb(251 191 36 / 0); }
+}
+@keyframes ck-target-in {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
