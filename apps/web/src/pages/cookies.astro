@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '2026-10-23';
+const site = Astro.site!.toString().replace(/\/$/, '');
+const schema = [{
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+    { '@type': 'ListItem', position: 2, name: 'Cookie Policy', item: `${site}/cookies` },
+  ],
+}];
+---
+
+<BaseLayout title="Cookie Policy — Epic Board Games" description="Which cookies and local-storage keys Epic Board Games uses, what they do, how long they last, and how to control them." schema={schema}>
+  <article class="mx-auto max-w-3xl space-y-4 px-4 py-12 text-slate-300 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white">
+    <nav aria-label="Breadcrumb" class="text-sm text-slate-400"><a href="/" class="hover:text-white">Home</a> <span aria-hidden="true">›</span> Cookie Policy</nav>
+    <h1 class="text-4xl font-bold text-white">Cookie Policy</h1>
+    <p class="text-sm text-slate-500">Last updated {updated}</p>
+    <p>Cookies are small text files a website stores in your browser. We use as few as possible. This page lists every cookie and browser-storage key we set, and explains how to control them.</p>
+
+    <h2>Strictly necessary</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead><tr class="border-b border-white/10 text-slate-400"><th class="py-2 pr-4">Name</th><th class="py-2 pr-4">Purpose</th><th class="py-2 pr-4">Type</th><th class="py-2">Expires</th></tr></thead>
+        <tbody class="divide-y divide-white/5">
+          <tr><td class="py-2 pr-4 font-mono text-xs">__Host-ebg_session</td><td class="py-2 pr-4">Keeps you signed in. HttpOnly, Secure, same-site only.</td><td class="py-2 pr-4">Cookie</td><td class="py-2">30 days or sign-out</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>You can play every game without signing in; the session cookie is only set when you create an account or sign in. Because it is strictly necessary for the service you asked for, it does not require consent.</p>
+
+    <h2>Preferences (stored only on your device)</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead><tr class="border-b border-white/10 text-slate-400"><th class="py-2 pr-4">Key</th><th class="py-2 pr-4">Purpose</th><th class="py-2">Expires</th></tr></thead>
+        <tbody class="divide-y divide-white/5">
+          <tr><td class="py-2 pr-4 font-mono text-xs">ebg:muted</td><td class="py-2 pr-4">Your sound on/off choice.</td><td class="py-2">Until cleared</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">ebg:snakes:detail</td><td class="py-2 pr-4">3D graphics detail level for Snakes, Dragons &amp; Ladders.</td><td class="py-2">Until cleared</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">ebg:flappy:best</td><td class="py-2 pr-4">Your Flappy Flyer best score.</td><td class="py-2">Until cleared</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">ebg:tip:fullscreen</td><td class="py-2 pr-4">Remembers that you have seen the fullscreen tip.</td><td class="py-2">Until cleared</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">ebg:cookie-notice</td><td class="py-2 pr-4">Remembers that you dismissed the cookie notice.</td><td class="py-2">Until cleared</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These live in your browser's local storage, are never sent to us, and are deleted when you clear site data.</p>
+
+    <h2>Analytics and advertising</h2>
+    <p>We currently use <strong>no analytics and no advertising cookies</strong>, and no third-party scripts load on our pages. If we introduce advertising (for example Google AdSense) or analytics in the future, we will update this page and the <a class="underline" href="/privacy">Privacy Policy</a> first, name every third-party vendor, and — where the law requires it — ask for your consent through a consent banner before any such cookie is set. Visitors in the European Economic Area, the UK and Switzerland would be able to refuse non-essential cookies with one click, and visitors in California would have a “Do Not Sell or Share My Personal Information” control.</p>
+
+    <h2>How to control cookies</h2>
+    <ul class="list-disc space-y-1 pl-6">
+      <li>Signing out deletes the session cookie immediately.</li>
+      <li>Your browser lets you view, block or delete cookies and site data: see the help pages for <a class="underline" href="https://support.google.com/chrome/answer/95647" rel="noopener">Chrome</a>, <a class="underline" href="https://support.mozilla.org/kb/clear-cookies-and-site-data-firefox" rel="noopener">Firefox</a>, <a class="underline" href="https://support.apple.com/guide/safari/manage-cookies-sfri11471/mac" rel="noopener">Safari</a> and <a class="underline" href="https://support.microsoft.com/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" rel="noopener">Edge</a>.</li>
+      <li>Blocking the session cookie means you cannot stay signed in, but every game still works in solo and pass-and-play modes.</li>
+    </ul>
+
+    <h2>Questions</h2>
+    <p>Write to <a class="underline" href="mailto:privacy@epic-board-games.example.com">privacy@epic-board-games.example.com</a> or use the <a class="underline" href="/contact">contact form</a>.</p>
+  </article>
+</BaseLayout>

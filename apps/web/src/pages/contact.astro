@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/common/ContactForm';
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact Epic Board Games',
+    url: `${site}/contact`,
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Epic Board Games',
+      url: site,
+      contactPoint: [
+        { '@type': 'ContactPoint', contactType: 'customer support', email: 'support@epic-board-games.example.com', availableLanguage: 'English' },
+        { '@type': 'ContactPoint', contactType: 'privacy', email: 'privacy@epic-board-games.example.com' },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+      { '@type': 'ListItem', position: 2, name: 'Contact', item: `${site}/contact` },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Contact Us — Epic Board Games" description="Get in touch with the Epic Board Games team: report a bug, request a game, ask about your account or privacy, or say hello. We reply within two working days." schema={schema}>
+  <div class="mx-auto max-w-5xl px-4 py-12">
+    <nav aria-label="Breadcrumb" class="mb-4 text-sm text-slate-400"><a href="/" class="hover:text-white">Home</a> <span aria-hidden="true">›</span> Contact</nav>
+    <h1 class="text-4xl font-bold">Contact us</h1>
+    <p class="mt-3 max-w-2xl text-lg text-slate-300">A real person reads every message. We usually reply within two working days.</p>
+
+    <div class="mt-8 grid gap-8 md:grid-cols-[1fr_320px]">
+      <ContactForm client:visible />
+
+      <aside class="space-y-4">
+        <section class="card p-5">
+          <h2 class="font-display text-lg font-semibold">Email</h2>
+          <ul class="mt-2 space-y-2 text-sm text-slate-300">
+            <li><span class="text-slate-500">Support:</span> <a class="text-violet-300 underline" href="mailto:support@epic-board-games.example.com">support@epic-board-games.example.com</a></li>
+            <li><span class="text-slate-500">Privacy &amp; data requests:</span> <a class="text-violet-300 underline" href="mailto:privacy@epic-board-games.example.com">privacy@epic-board-games.example.com</a></li>
+            <li><span class="text-slate-500">Security reports:</span> <a class="text-violet-300 underline" href="mailto:security@epic-board-games.example.com">security@epic-board-games.example.com</a> (see <a class="underline" href="/.well-known/security.txt">security.txt</a>)</li>
+          </ul>
+        </section>
+        <section class="card p-5">
+          <h2 class="font-display text-lg font-semibold">Before you write</h2>
+          <ul class="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-300">
+            <li>Game rules and tips are in the <a class="text-violet-300 underline" href="/blog">Guides</a>.</li>
+            <li>Common questions are answered in the <a class="text-violet-300 underline" href="/faq">FAQ</a>.</li>
+            <li>You can export or delete your account yourself from your <a class="text-violet-300 underline" href="/profile">profile</a>.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

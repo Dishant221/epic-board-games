@@ -1,0 +1,75 @@
+---
+import { GAMES } from '@ebg/game-core';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const sections: { title: string; items: [string, string][] }[] = [
+  {
+    title: 'Playing',
+    items: [
+      ['Is Epic Board Games really free?', `Yes. All ${GAMES.length} games are free to play in your browser with no download, no in-app purchases and no "energy" timers. Creating a free account unlocks online multiplayer, friends and leaderboards.`],
+      ['Do I need an account?', 'No. Solo games, games against the AI and pass-and-play on one device work without signing in. You need an account only for online multiplayer, private rooms, friends and leaderboards.'],
+      ['How does online matchmaking work?', 'Choose a game, pick Online Multiplayer and you join that game’s queue. The match starts as soon as the table is full, or after 60 seconds if at least two players are waiting. If nobody joins, we offer a game against the AI instead.'],
+      ['How do I play with my family and friends?', 'Add them from the Friends page (search by username), then open a game and choose Play with Friends. Share the invite link or ping a friend; the room starts when the host presses Start.'],
+      ['What are Buddy, Nova, Titan and the Oracle?', 'Our four AI personalities. Buddy plays casually and makes lots of mistakes, Nova is a solid club player, Titan is sharp and aggressive, and the Oracle plays perfectly where perfect play exists (Tic Tac Toe, Connect 4) and near-perfectly elsewhere.'],
+      ['Can I play in fullscreen?', 'Yes. Tap the ⛶ button in the game bar or press F. On phones you can also add the site to your home screen for an app-like experience.'],
+      ['What happens if I lose connection?', 'Your seat is kept. Reconnect and you are back in the game with the current board. In online games each turn has a 45-second clock; after three missed turns the server plays for you so nobody else is stuck.'],
+    ],
+  },
+  {
+    title: 'Games',
+    items: [
+      ['Does Chess follow all the rules?', 'Yes: castling, en passant, promotion, check, checkmate, stalemate, the 50-move rule, threefold repetition and insufficient material are all enforced.'],
+      ['Is Epic Business the same as Monopoly?', 'No. Epic Business is our own property-trading game with original districts, cards and names. It shares the genre’s familiar rhythm — roll, buy, build, trade, collect rent — and is not affiliated with any other board game brand.'],
+      ['Are the Sudoku puzzles always solvable?', 'Every puzzle is generated with exactly one solution and checked by a solver before you see it. Mahjong Solitaire deals are built so that they can always be cleared.'],
+      ['Can two people solve the jigsaw together?', 'Yes. Epic Puzzle Board is co-operative: in a private room both players can place pieces at the same time, and the score shows who placed what.'],
+    ],
+  },
+  {
+    title: 'Account & privacy',
+    items: [
+      ['How is my data protected?', 'Passwords are hashed with a per-user salt, the only cookie is your session, every move is validated on the server, and there are no advertising trackers. Details are in the Privacy Policy.'],
+      ['Can I export or delete my account?', 'Yes, instantly, from your profile page: download a JSON export of everything we hold, or delete your account. Finished games are kept anonymously so other players keep their statistics.'],
+      ['How do I block someone?', 'On the Friends page, use the 🚫 button next to a person in search results, requests or your friends list. Blocked people cannot find you, send requests or ping you.'],
+      ['Is voice chat recorded?', 'No. Voice travels directly between players (or through an encrypted relay when a direct connection is impossible) and is never stored.'],
+      ['What is the minimum age?', 'Accounts are for people aged 13 and over. Younger children can play solo and pass-and-play games with a parent without an account.'],
+    ],
+  },
+];
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: sections.flatMap((s) => s.items.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: site },
+      { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${site}/faq` },
+    ],
+  },
+];
+---
+
+<BaseLayout title="Frequently Asked Questions — Epic Board Games" description="Answers about playing free board games online: accounts, matchmaking, playing with friends, AI difficulty, fullscreen, game rules, privacy and account deletion." schema={schema}>
+  <div class="mx-auto max-w-3xl px-4 py-12">
+    <nav aria-label="Breadcrumb" class="mb-4 text-sm text-slate-400"><a href="/" class="hover:text-white">Home</a> <span aria-hidden="true">›</span> FAQ</nav>
+    <h1 class="text-4xl font-bold">Frequently asked questions</h1>
+    <p class="mt-3 text-lg text-slate-300">Can't find what you need? <a class="text-violet-300 underline" href="/contact">Contact us</a> or read the <a class="text-violet-300 underline" href="/blog">guides</a>.</p>
+    {sections.map((s) => (
+      <section class="mt-10" aria-labelledby={`faq-${s.title.toLowerCase().replace(/[^a-z]+/g, '-')}`}>
+        <h2 id={`faq-${s.title.toLowerCase().replace(/[^a-z]+/g, '-')}`} class="mb-4 text-2xl font-bold">{s.title}</h2>
+        <div class="space-y-3">
+          {s.items.map(([q, a]) => (
+            <details class="card group p-4">
+              <summary class="cursor-pointer list-none font-semibold marker:hidden"><span class="mr-2 inline-block transition group-open:rotate-90">›</span>{q}</summary>
+              <p class="mt-2 text-slate-300">{a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

@@ -1,4 +1,5 @@
 import { handleChangePassword, handleDeleteAccount, handleExportAccount } from './account';
+import { handleContact } from './contact';
 import { handleLogin, handleLogout, handleMe, handleSignup } from './auth';
 import type { Env } from './env';
 import {
@@ -47,6 +48,7 @@ const ROUTES: Route[] = [
   { method: 'GET', pattern: /^\/api\/account\/export$/, handler: handleExportAccount },
   { method: 'DELETE', pattern: /^\/api\/account$/, handler: handleDeleteAccount },
   { method: 'GET', pattern: /^\/api\/leaderboard$/, handler: handleLeaderboard },
+  { method: 'POST', pattern: /^\/api\/contact$/, handler: handleContact },
   { method: 'GET', pattern: /^\/api\/profile$/, handler: handleGetProfile },
   { method: 'PATCH', pattern: /^\/api\/profile$/, handler: handleUpdateProfile },
   { method: 'GET', pattern: /^\/api\/users\/search$/, handler: handleUserSearch },
@@ -101,6 +103,8 @@ export default {
       env.DB.prepare('DELETE FROM sessions WHERE expires_at < ?').bind(now),
       env.DB.prepare('DELETE FROM notifications WHERE created_at < ?').bind(now - RETENTION_MS),
       env.DB.prepare('DELETE FROM audit_log WHERE created_at < ?').bind(now - RETENTION_MS),
+      // Contact messages: keep for 180 days.
+      env.DB.prepare('DELETE FROM contact_messages WHERE created_at < ? AND handled_at IS NULL').bind(now - 2 * RETENTION_MS),
     ]);
   },
 
