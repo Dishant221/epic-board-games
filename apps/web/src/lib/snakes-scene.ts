@@ -12,7 +12,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { JUMPS, squareToGrid, type Jump } from '@ebg/game-core';
 import type { GraphicsSettings } from './performance-tier';
 
-const SEAT_HEX = [0xf43f5e, 0x38bdf8, 0xfacc15, 0x4ade80];
+// Seat colours — Okabe-Ito colour-blind-safe set; mirrors --color-p0..p3 in global.css.
+const SEAT_HEX = [0x56b4e9, 0xe06a1b, 0x0ba884, 0xf0e442];
 const TILE_COLORS = ['#fde68a', '#bbf7d0', '#bae6fd', '#fbcfe8', '#ddd6fe'];
 const CONFETTI_HEX = [0xf43f5e, 0x38bdf8, 0xfacc15, 0x4ade80, 0xa78bfa, 0xffffff];
 
