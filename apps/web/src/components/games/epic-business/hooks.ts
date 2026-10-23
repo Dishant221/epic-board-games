@@ -77,8 +77,8 @@ interface WalkCallbacks {
  * ~2 s; "go back 3" walks backwards; being sent to the Lock-up is a single arc.
  * A new move arriving mid-walk continues from the token's current square.
  */
-export function useTokenWalk(s: EpicBusinessState, moveKey: number, { onPassPayday }: WalkCallbacks): TokenWalk {
-  const targets = s.players.map((p) => p.position);
+export function useTokenWalk(s: EpicBusinessState | null, moveKey: number, { onPassPayday }: WalkCallbacks): TokenWalk {
+  const targets = s ? s.players.map((p) => p.position) : [];
   const targetKey = targets.join(',');
   const [display, setDisplay] = useState<number[]>(targets);
   const [motion, setMotion] = useState<TokenWalk['motion']>(null);
@@ -94,7 +94,11 @@ export function useTokenWalk(s: EpicBusinessState, moveKey: number, { onPassPayd
       return;
     }
     const seat = targets.findIndex((t, i) => t !== displayRef.current[i]);
-    if (seat === -1) return;
+    if (seat === -1) {
+      // Nothing to walk (or a walk just finished and its final timer was cleared by this re-run).
+      setMotion(null);
+      return;
+    }
     const target = targets[seat]!;
     const from = displayRef.current[seat]!;
     const put = (space: number) => {
@@ -102,7 +106,7 @@ export function useTokenWalk(s: EpicBusinessState, moveKey: number, { onPassPayd
       setDisplay(displayRef.current);
     };
     const forward = (target - from + BOARD_SIZE) % BOARD_SIZE;
-    const player = s.players[seat];
+    const player = s?.players[seat];
     const jump = player?.inLockUp && target === LOCK_UP_SPACE;
     let timer: number | undefined;
 
@@ -164,7 +168,7 @@ export interface Diffs {
  * cards and tile flashes for purchases and new buildings. Entries expire on
  * their own; timers are cleared on unmount.
  */
-export function useStateDiffs(s: EpicBusinessState, moveKey: number): Diffs {
+export function useStateDiffs(s: EpicBusinessState | null, moveKey: number): Diffs {
   const prev = useRef<EpicBusinessState | null>(null);
   const lastKey = useRef(moveKey);
   const nextId = useRef(1);
@@ -173,6 +177,7 @@ export function useStateDiffs(s: EpicBusinessState, moveKey: number): Diffs {
   const later = useTimers();
 
   useEffect(() => {
+    if (!s) return;
     const p = prev.current;
     prev.current = s;
     if (moveKey === lastKey.current && p !== null) return;

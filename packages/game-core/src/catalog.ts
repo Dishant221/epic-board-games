@@ -86,7 +86,7 @@ export const GAMES: readonly GameInfo[] = [
     minutes: 45,
     gradient: 'from-amber-500 to-orange-500',
     rules: [
-      'Everyone starts with 1,500 credits. Roll two dice and move clockwise around the 40-space board.',
+      'Everyone starts with 1,500 credits. Roll two dice and move around the 40-space board, passing Payday each lap.',
       'Land on an unowned district, transit hub or utility to buy it, or pass and let it go to auction.',
       'Pay rent when you land on a rival’s property. Rent rises when they own the whole colour group and when they build.',
       'Own every district in a colour group to build offices (up to 4) and then a tower.',
