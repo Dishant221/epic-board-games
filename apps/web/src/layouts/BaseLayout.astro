@@ -16,7 +16,11 @@ interface Props {
 }
 
 const { title, description, schema = [], ogImage = '/og-image.png', noindex = false, immersive = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+// build.format:'file' yields paths like /about.html and /index.html; the Worker
+// serves the clean URLs (/about, /) and the sitemap lists those, so the
+// canonical and og:url must match them — never the .html variant.
+const cleanPath = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/index\.html$/, '').replace(/\.html$/, '').replace(/(.)\/$/, '$1') || '/';
+const canonical = new URL(cleanPath, Astro.site);
 const image = new URL(ogImage, Astro.site);
 const siteName = 'Epic Board Games';
 
