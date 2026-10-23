@@ -3,6 +3,10 @@
 A map of every function and where it lives, plus "to change X, touch these files".
 Keep this up to date when you add or move a function. Generated 2026-10-23.
 
+> For *operating* the live site (infrastructure, user data, deploys, scaling, ads &
+> analytics, backup/recovery, security) see the handbook in [`docs/ops/`](docs/ops/README.md).
+> This file is about the **code**; that one is about **running it**.
+
 ## How a change flows
 
 1. Work on the `testing` branch (never commit straight to `main` = production).

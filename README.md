@@ -120,6 +120,12 @@ For fast UI work, run `npm run dev:web`. It starts Astro with hot reload on :432
    - Add required reviewers to `production`.
 4. Push to `testing` to deploy the testing Worker. Merge to `main` to deploy production. Both deploys run the tests and the D1 migrations first.
 
+## Operations handbook
+
+How to run, change, scale, monetise, back up and secure the live site is documented in
+[`docs/ops/`](docs/ops/README.md) — infrastructure, user-data management, deploys,
+scaling, Google AdSense/Analytics/Search Console, backup & recovery, and security.
+
 ## Roadmap
 
 These follow the phases in the spec:
